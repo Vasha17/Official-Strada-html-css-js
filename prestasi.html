@@ -1,0 +1,1477 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SMA Strada Bhakti Wiyata</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <style>
+        /* --- Global Variables & Reset --- */
+        :root {
+            --strada-blue: #1E3F7B;
+            --strada-blue-light: #2A5495;
+            --strada-gold: #FFD700;
+            --text-dark: #333;
+            --text-light: #f4f4f4;
+            --bg-light-gray: #f8f8f8;
+            --bg-light-blue: #eef5fb;
+            --border-color: #ddd;
+            --header-height: 70px;
+            --transition: all 0.3s ease;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html, body {
+            height: 100%;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+
+        main {
+            flex: 1;
+        }
+
+        body {
+            font-family: 'Open Sans', sans-serif;
+            line-height: 1.6;
+            color: var(--text-dark);
+            background: linear-gradient(to bottom, #f0f8ff, #fff);
+            overflow-x: hidden;
+            margin: 0; /* Tambahkan ini */
+            padding: 0; /* Tambahkan ini */
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+
+        img, video {
+            max-width: 100%;
+            height: auto; /* Penting untuk menjaga rasio aspek */
+            display: block; /* Hindari spasi di bawah gambar */
+        }
+        html {
+            scroll-behavior: smooth;
+            scroll-padding-top: var(--header-height);
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        section {
+            padding: 80px 0;
+        }
+
+        h1, h2, h3, h4, h5, h6 {
+            font-family: 'Montserrat', sans-serif;
+            color: var(--strada-blue);
+            margin-bottom: 1.2rem;
+        }
+
+        h2.section-title {
+            text-align: center;
+            position: relative;
+            padding-bottom: 1rem;
+            font-size: 2.5rem;
+        }
+
+        h2.section-title::after {
+            content: '';
+            display: block;
+            width: 60px;
+            height: 4px;
+            background-color: var(--strada-blue);
+            margin: 0.8rem auto 0;
+        }
+
+        /* --- Header Top (Date & Running Text) --- */
+        .header-top {
+            background-color: #FFD700;
+            color: black;
+            padding: 0.5rem 0;
+            font-size: 0.9rem;
+            border-bottom: 1px solid rgba(255,255,255,0.1);
+        }
+
+        .header-top .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+
+        .date-display {
+            margin-right: 1.5rem;
+            white-space: nowrap;
+            font-weight: bold;
+        }
+
+        .running-text {
+            flex-grow: 1;
+            overflow: hidden;
+            position: relative;
+            height: 1.5rem;
+        }
+
+        .news-tickers {
+            position: absolute;
+            width: 100%;
+            margin: 0;
+            padding: 0;
+            list-style: none;
+            animation: scrollText 20s linear infinite;
+        }
+
+        .news-tickers li {
+            white-space: nowrap;
+        }
+
+        @keyframes scrollText {
+            from { transform: translateX(100%); }
+            to { transform: translateX(-100%); }
+        }
+
+        /* --- Main Navigation --- */
+        .main-header {
+            background-color: #064ea2;
+            position: sticky;
+            top: 0px;
+            z-index: 1000;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+            height: var(--header-height);
+        }
+
+        .main-nav {
+            height: 100%;
+        }
+
+        .main-nav .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            height: 100%;
+            position: relative;
+            gap: 1rem;
+            padding-right: auto; 
+            padding: 0 20px;
+        }
+
+       .logo {
+            position: static;
+            margin-left: auto; /* Push logo to the right */
+            padding: 0;
+            height: 50px;
+            display: flex;
+            align-items: auto;
+        }
+
+
+        .logo-img {
+            max-width: 100px;
+            height: auto;
+            height: 50px;
+            filter: brightness(0) invert(1);
+        }
+
+        /* Responsive Mobile */
+        @media (max-width: 992px) {
+        .submenu {
+            background-color: white !important;
+        }
+
+        .submenu a {
+            color: #1E3F7B !important;  /* biru tua agar kontras dengan putih */
+            padding: 10px 15px;
+            display: block;
+        }
+
+        .submenu a:hover {
+            background-color: #f0f0f0;
+            color: #000;
+        }
+
+         .mega-menu-content {
+            background: #fff !important;
+            box-shadow: none;
+            border-radius: 0;
+            padding: 1rem;
+            grid-template-columns: 1fr;
+        }
+
+        .mega-menu-column h3 {
+            color: var(--strada-blue) !important; /* Judul kolom biru */
+            background: #fff !important;
+            font-weight: bold;
+            font-size: 1.1rem;
+            margin-bottom: 0.5rem;
+            border-bottom: 1px solid #eee;
+            padding: 0.5rem 0 0.2rem 0;
+        }
+
+        .mega-menu-column ul li a {
+            color: #222 !important; /* Nama sekolah/cabang hitam */
+            background: #fff !important;
+            font-size: 0.97em;
+            padding: 0.4rem 0;
+            transition: color 0.2s, background 0.2s;
+        }
+
+        .mega-menu-column ul li a:hover {
+            color: var(--strada-blue) !important;
+            background: #f3f8ff !important;
+        }
+    }
+
+        .nav-right {
+            display: flex;
+            align-items: center;
+            gap: 1.2rem;
+            width: auto; /* Ubah dari 100% ke auto */
+            order: 2; /* Pastikan nav-right di sebelah kanan */
+        }
+
+        .logo {
+            position: flex;
+            left: 90%;
+            margin-left: auto;
+            padding-right: 0;
+        }
+
+        .logo-img {
+            max-width: 80px;
+            height: auto;
+        }
+
+        .hamburger-menu {
+            order: 1; /* Pastikan hamburger tetap di kiri */
+            margin-right: auto;
+        }
+
+        .search-icon {
+            order: 3; /* Search icon di sebelah nav-right */
+        }
+
+        .nav-list {
+            display: flex;
+            margin: 0;
+            padding: 0;
+            list-style: none;
+        }
+
+        .nav-item {
+            position: relative;
+        }
+
+        .nav-item > a {
+            color: white;
+            text-decoration: none;
+            font-weight: 600;
+            padding: 0.5rem 1.2rem;
+            border-radius: 2rem;
+            display: block;
+            transition: var(--transition);
+            font-size: 0.95rem;
+            display: flex;
+            align-items: center;
+        }
+
+        .nav-item > a:hover {
+            background-color: rgba(255,255,255,0.15);
+        }
+
+        .nav-item.active > a {
+            background-color: white;
+            color: var(--strada-blue);
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+        }
+
+        .nav-item > a i {
+            margin-left: 0.5rem;
+            font-size: 0.8rem;
+        }
+
+        /* Submenu Styling */
+        .submenu {
+            position: absolute;
+            top: 100%;
+            left: 0;
+            background-color: white;
+            min-width: 220px;
+            border-radius: 0.5rem;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.15);
+            opacity: 0;
+            visibility: hidden;
+            transition: var(--transition);
+            z-index: 1000;
+            transform: translateY(10px);
+            padding: 0.5rem 0;
+            list-style: none; /* Ensure no bullets */
+            padding-left: 0; /* Remove indentation */
+        }
+
+        .nav-item:hover .submenu {
+            opacity: 1;
+            visibility: visible;
+            transform: translateY(0);
+        }
+
+        .submenu li a {
+            color: var(--text-dark);
+            padding: 0.8rem 1.5rem;
+            display: block;
+            transition: var(--transition);
+            font-size: 0.9rem;
+            padding-left: 1.5rem;
+        }
+
+        .submenu li a:hover {
+            background-color: var(--bg-light-blue);
+            color: var(--strada-blue);
+        }
+
+        .profil-content ul {
+            list-style-type: none; /* Remove bullets */
+            padding-left: 0; /* Remove default padding */
+        }
+
+        .profil-content li {
+            margin-bottom: 0.5rem;
+            padding-left: 0; /* Remove any padding */
+        }
+
+        /* Mega Menu */
+        .mega-menu-content {
+            position: absolute;
+            left: 10%;
+            transform: translateX(-50%);
+            width: 100vw;
+            background-color: white;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+            opacity: 0;
+            visibility: hidden;
+            transition: var(--transition);
+            z-index: 1000;
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 0.5rem;
+            padding: 2rem;
+            border-top: 3px solid var(--strada-blue-light);
+            transform: translate(-50%, 10px);
+        }
+
+        .mega-menu-trigger:hover .mega-menu-content {
+            opacity: 1;
+            visibility: visible;
+            transform: translate(-50%, 0);
+        }
+
+        .mega-menu-column h3 {
+            color: var(--strada-blue);
+            font-size: 1.1rem;
+            margin-bottom: 1rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 1px solid #eee;
+        }
+
+        .mega-menu-column ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .mega-menu-column ul li a {
+            color: #555;
+            padding: 0.4rem 0;
+            display: block;
+            transition: var(--transition);
+            font-size: 0.9rem;
+        }
+
+        .mega-menu-column ul li a:hover {
+            color: var(--strada-blue-light);
+            padding-left: 0.5rem;
+        }
+
+        /* Navigation Right */
+        .nav-right {
+            display: flex;
+            align-items: center;
+            gap: 1.2rem;
+        }
+
+        .search-icon {
+            color: white;
+            font-size: 1.2rem;
+            transition: var(--transition);
+            cursor: pointer;
+            margin-right: auto;
+        }
+
+        .search-icon:hover {
+            color: var(--strada-gold);
+            transform: scale(1.1);
+        }
+
+        /* Hamburger Menu */
+        .hamburger-menu {
+            display: none;
+            flex-direction: column;
+            justify-content: space-between;
+            width: 30px;
+            height: 22px;
+            background: transparent;
+            border: none;
+            cursor: pointer;
+            padding: 0;
+            z-index: 1001;
+        }
+
+        .hamburger-menu .bar {
+            width: 100%;
+            height: 3px;
+            background-color: white;
+            transition: var(--transition);
+            border-radius: 2px;
+        }
+
+        .hamburger-menu.active .bar:nth-child(1) {
+            transform: translateY(9px) rotate(45deg);
+        }
+
+        .hamburger-menu.active .bar:nth-child(2) {
+            opacity: 0;
+        }
+
+        .hamburger-menu.active .bar:nth-child(3) {
+            transform: translateY(-9px) rotate(-45deg);
+        }
+        
+
+  /* Enhanced Footer Styles */
+  .main-footer {
+  width: 100vw; /* Pastikan lebar layar penuh */
+  margin: 0;
+  padding: 50px 0 20px;
+  background: linear-gradient(135deg, #0a2a5a, #1E3F7B);
+  color: white;
+  overflow-x: hidden;
+}
+
+.footer-content {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 40px;
+  padding: 0 20px;
+}
+
+.footer-wrapper {
+    max-width: 100%;
+    margin: 0;
+    padding: 0 20px;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.main-footer {
+    background: linear-gradient(135deg, #0a2a5a 0%, #1E3F7B 100%);
+    color: white;
+    padding: 50px 0 20px;
+    margin-top: 80px;
+}
+
+.main-footer::before {
+    content: '';
+    top: -10px;
+    left: 0;
+    width: 100%;
+    height: 20px;
+    background: url('wave-pattern.png') repeat-x;
+}
+
+.footer-content {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 40px;
+    margin-bottom: 40px;
+}
+
+.footer-column h3 {
+    color: #FFD700;
+    font-size: 1.3rem;
+    margin-bottom: 1.5rem;
+    position: relative;
+    padding-bottom: 10px;
+}
+
+.footer-column h3::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 50px;
+    height: 2px;
+    background: #FFD700;
+}
+
+.footer-links li {
+    margin-bottom: 12px;
+    position: relative;
+    padding-left: 15px;
+}
+
+.footer-links li::before {
+    content: '•';
+    color: #FFD700;
+    position: absolute;
+    left: 0;
+}
+
+.footer-links a {
+    color: rgba(255,255,255,0.8);
+    transition: all 0.3s ease;
+    display: inline-block;
+}
+
+.footer-links a:hover {
+    color: #FFD700;
+    transform: translateX(5px);
+}
+
+.contact-info p {
+    margin-bottom: 15px;
+    display: flex;
+    align-items: flex-start;
+    color: rgba(255,255,255,0.8);
+}
+
+.contact-info i {
+    color: #FFD700;
+    margin-right: 12px;
+    margin-top: 3px;
+}
+
+.social-links {
+    display: flex;
+    gap: 15px;
+    margin-top: 20px;
+}
+
+.social-links a {
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    background: rgba(255,255,255,0.1);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    transition: all 0.3s ease;
+}
+
+.social-links a:hover {
+    background: #FFD700;
+    color: #1E3F7B;
+    transform: translateY(-3px);
+}
+
+.map-container {
+    height: 180px;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    border: 2px solid rgba(255,255,255,0.1);
+}
+
+.footer-branding {
+    display: flex;
+    align-items: center;
+}
+
+.footer-copyright {
+    text-align: center;
+    flex-grow: 1;
+}
+
+.footer-hymne a {
+    display: flex;
+    align-items: center;
+    justify-content: center; 
+    gap: 8px;
+    transition: all 0.3s ease;
+}
+
+.footer-hymne a:hover {
+    color: white;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .footer-content {
+        grid-template-columns: 1fr;
+        gap: 30px;
+    }
+    
+    .footer-bottom {
+        flex-direction: column;
+        text-align: center;
+        gap: 15px;
+    }
+    
+    .footer-branding {
+        justify-content: center;
+        margin-bottom: 15px;
+    }
+}
+
+
+/* --- Prestasi Section --- */
+.prestasi-filter {
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+.prestasi-filter .filter-btn, .prestasi-filter select {
+    padding: 8px 18px;
+    margin: 0 5px;
+    border: 1px solid var(--strada-blue);
+    border-radius: 20px;
+    background-color: #fff;
+    color: var(--strada-blue);
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.prestasi-filter .filter-btn:hover,
+.prestasi-filter select:hover {
+    background-color: var(--strada-blue-light);
+    color: #fff;
+}
+
+.prestasi-filter .filter-btn.active {
+    background-color: var(--strada-blue);
+    color: #fff;
+}
+
+.prestasi-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 30px;
+}
+
+.prestasi-item {
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+    overflow: hidden;
+    text-align: center;
+    padding-bottom: 20px;
+    position: relative;
+    transition: transform 0.3s ease;
+}
+
+.prestasi-item:hover {
+    transform: translateY(-5px);
+}
+
+.prestasi-item img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    margin-bottom: 15px;
+}
+
+.prestasi-item h3 {
+    font-size: 1.2em;
+    margin-bottom: 5px;
+    padding: 0 15px;
+}
+
+.prestasi-item p {
+    font-size: 0.95em;
+    color: #666;
+    padding: 0 15px;
+}
+
+.prestasi-badge {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    background-color: var(--strada-blue);
+    color: #fff;
+    padding: 5px 10px;
+    border-radius: 5px;
+    font-size: 0.8em;
+    font-weight: 700;
+}
+
+.prestasi-badge.bermutu { background-color: #4CAF50; } /* Hijau */
+.prestasi-badge.berkarakter { background-color: #FF9800; } /* Orange */
+.prestasi-badge.berprestasi { background-color: #2196F3; } /* Biru */
+
+.prestasi-item img {
+  display: block;
+  max-width: 100%;
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+  border-radius: 8px 8px 0 0;
+}
+
+.prestasi-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, max-content));
+  gap: 30px;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 1rem;
+  box-sizing: border-box;
+}
+
+/* Animasi sederhana untuk item yang muncul */
+@keyframes fadeInPrestasiItem {
+    from { opacity: 0; transform: translateY(10px) scale(0.98); }
+    to { opacity: 1; transform: translateY(0) scale(1); }
+}
+.prestasi-item {
+    animation: fadeInPrestasiItem 0.4s ease-out forwards;
+}
+
+        /* --- Responsive Design --- */
+        @media (max-width: 992px) {
+            .hamburger-menu {
+                display: flex;
+            }
+            
+            .nav-list {
+                position: fixed;
+                top: var(--header-height);
+                left: 0;
+                width: 100%;
+                background-color: var(--strada-blue);
+                flex-direction: column;
+                padding: 1rem 0;
+                transform: translateX(-100%);
+                transition: transform 0.4s ease;
+                z-index: 999;
+                height: calc(100vh - var(--header-height));
+                overflow-y: auto;
+                box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+            }
+            
+            .nav-list.active {
+                transform: translateX(0);
+            }
+            
+            .nav-item {
+                width: 100%;
+            }
+            
+            .nav-item > a {
+                border-radius: 0;
+                padding: 1rem 1.5rem;
+                border-bottom: 1px solid rgba(255,255,255,0.1);
+            }
+            
+            .submenu, .mega-menu-content {
+                position: static;
+                width: auto;
+                box-shadow: none;
+                opacity: 1;
+                visibility: visible;
+                display: none;
+                background-color: rgba(0,0,0,0.1);
+                margin-top: 0;
+                transform: none !important;
+                border-radius: 0;
+                padding: 0;
+            }
+            
+            .nav-item:hover .submenu,
+            .mega-menu-trigger:hover .mega-menu-content {
+                display: block;
+            }
+            
+            .mega-menu-content {
+                grid-template-columns: 1fr;
+                gap: 1rem;
+                padding: 1rem;
+            }
+            
+            .hero-content h1 {
+                font-size: 2.5rem;
+            }
+            
+            .hero-content h2 {
+                font-size: 1.5rem;
+            }
+        }
+
+        @media (max-width: 768px) {
+            h1 { font-size: 2.2rem; }
+            h2 { font-size: 1.8rem; }
+            h2.section-title { font-size: 2rem; }
+            
+            .hero-section {
+                height: 70vh;
+            }
+            
+            .hero-content h1 {
+                font-size: 2.2rem;
+            }
+            
+            .hero-content p {
+                font-size: 1rem;
+            }
+            
+            .tab-content-wrapper {
+                padding: 1.5rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .header-top .container {
+                flex-direction: column;
+                gap: 0.5rem;
+            }
+            
+            .date-display {
+                margin-right: 0;
+            }
+            
+            .running-text {
+                width: 100%;
+            }
+            
+            .hero-content h1 {
+                font-size: 1.8rem;
+            }
+            
+            .hero-content h2 {
+                font-size: 1.3rem;
+            }
+            
+            .btn {
+                width: 100%;
+            }
+        }
+
+        /* --- Animation Enhancements --- */
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .animated {
+            animation: fadeIn 0.6s ease-out forwards;
+        }
+
+        .delay-1 {
+            animation-delay: 0.2s;
+        }
+
+        .delay-2 {
+            animation-delay: 0.4s;
+        }
+
+        .delay-3 {
+            animation-delay: 0.6s;
+        }
+
+        /* --- Back to Top Button --- */
+        .back-to-top {
+            position: fixed;
+            bottom: 2rem;
+            right: 2rem;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background: var(--strada-blue);
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2rem;
+            cursor: pointer;
+            opacity: 0;
+            visibility: hidden;
+            transition: var(--transition);
+            z-index: 999;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+        }
+
+        .back-to-top.visible {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .back-to-top:hover {
+            background: var(--strada-blue-light);
+            transform: translateY(-5px);
+        }
+
+        .fab-button {
+        position: fixed;
+        bottom: 1.5rem;
+        right: 1.5rem;
+        width: 3.5rem;
+        height: 3.5rem;
+        background-color: #1659c5; /* biru tailwind */
+        color: white;
+        border: none;
+        border-radius: 9999px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25);
+        z-index: 999;
+        transition: background-color 0.3s, transform 0.3s;
+        }
+
+        .fab-button:hover {
+        background-color: #2563eb; /* biru lebih gelap saat hover */
+        transform: scale(1.05);
+        }
+
+        .fab-button i {
+        font-size: 1.25rem;
+        }
+
+
+    /* Tab Styles */
+.tab-nav {
+    display: flex;
+    margin-bottom: 1.5rem;
+    border-bottom: 2px solid #eee;
+}
+
+.tab-btn {
+    padding: 0.8rem 1.5rem;
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-weight: 600;
+    color: #666;
+    position: relative;
+}
+
+.tab-btn.active {
+    color: var(--strada-blue);
+}
+
+.tab-btn.active::after {
+    content: '';
+    position: absolute;
+    bottom: -2px;
+    left: 0;
+    width: 100%;
+    height: 3px;
+    background: var(--strada-blue);
+}
+
+.tab-content {
+    display: none;
+    animation: fadeIn 0.5s ease;
+}
+
+.tab-content.active {
+    display: block;
+}
+
+
+ /* Header Styles */
+        .program-header {
+            background: linear-gradient(135deg, var(--strada-blue), var(--strada-blue-light));
+            color: white;
+            padding: 80px 0 40px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+            margin-bottom: 40px;
+        }
+
+        .program-header::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxMDAlIiBoZWlnaHQ9IjEwMCUiPjxkZWZzPjxwYXR0ZXJuIGlkPSJwYXR0ZXJuIiB3aWR0aD0iNDAiIGhlaWdodD0iNDAiIHBhdHRlcm5Vbml0cz0idXNlclNwYWNlT25Vc2UiIHBhdHRlcm5UcmFuc2Zvcm09InJvdGF0ZSg0NSkiPjxyZWN0IHdpZHRoPSIyMCIgaGVpZ2h0PSIyMCIgZmlsbD0icmdiYSgyNTUsMjU1LDI1NSwwLjA1KSIvPjwvcGF0dGVybj48L2RlZnM+PHJlY3Qgd2lkdGg9IjEwMCUiIGhlaWdodD0iMTAwJSIgZmlsbD0idXJsKCNwYXR0ZXJuKSIvPjwvc3ZnPg==');
+            opacity: 0.3;
+        }
+
+        .program-header h1 {
+            font-size: 2.8rem;
+            margin-bottom: 15px;
+            position: relative;
+            z-index: 1;
+            text-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            color: #fff !important; /* Ubah warna teks menjadi putih */
+        }
+
+        .program-header p {
+            font-size: 1.2rem;
+            max-width: 800px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 1;
+            opacity: 0.9;
+        }
+    </style>
+
+<head>
+<!-- Header Top with Date and News Ticker -->
+    <div class="header-top">
+        <div class="container">
+            <div class="date-display">
+                <span id="current-date"></span>
+            </div>
+            <div class="running-text">
+                <ul id="akademinews" class="news-tickers">
+                    <li>Selamat datang di website SMA Strada Bhakti Wiyata. Informasi terbaru di SMA Strada Bhakti Wiyata dapat dilihat di bagian <strong>pengumuman</strong>.</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+   <!-- Main Header with Navigation -->
+    <header class="main-header">
+        <nav class="main-nav">
+            <div class="container">
+                <ul class="nav-list">
+                    <li class="nav-item has-submenu">
+                        <a href="profil.html">Profil <i class="fas fa-caret-down"></i></a>
+                        <ul class="submenu">
+                            <li><a href="#sambutan-kepala-sekolah-content">Sambutan Kepala Sekolah</a></li>
+                            <li><a href="#sejarah-content">Sejarah</a></li>
+                            <li><a href="#visi-misi-content">Visi & Misi</a></li>
+                            <li><a href="#nilai-dasar-content">Nilai Dasar</a></li>
+                            <li><a href="#motto-content">Motto</a></li>
+                            <li><a href="#sarana-prasarana-content">Sarana & Prasarana</a></li>
+                            <li><a href="#struktur-organisasi-content">Struktur Organisasi</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item"><a href="prestasi.html">Prestasi</a></li>
+                    <li class="nav-item"><a href="program-sekolah.html">Program Sekolah</a></li>
+                    <li class="nav-item"><a href="galeri.html">Galeri</a></li>
+                    <li class="nav-item"><a href="pendaftaran.html">Pendaftaran</a></li>
+                    <li class="nav-item"><a href="kontak.html">Kontak</a></li>
+                    <li class="nav-item"><a href="sekolah.html">Sekolah</a></li>
+                    <li class="nav-item has-submenu mega-menu-trigger">
+                        <a href="#"> Web Sekolah <i class="fas fa-caret-down"></i></a>
+                        <div class="mega-menu-content">
+                            <div class="mega-menu-column">
+                                <h3>TK Strada</h3>
+                                <ul>
+                                    <li><a href="#">Bhakti Nusa</a></li>
+                                    <li><a href="#">Bhakti Utama</a></li>
+                                    <li><a href="#">Bhakti Wiyata</a></li>
+                                    <li><a href="#">Bina Sejahtera</a></li>
+                                    <li><a href="#">Budi Luhur</a></li>
+                                </ul>
+                            </div>
+                            <div class="mega-menu-column">
+                                <h3>SD Strada</h3>
+                                <ul>
+                                    <li><a href="#">Bhakti Nusa</a></li>
+                                    <li><a href="#">Bhakti Utama</a></li>
+                                    <li><a href="#">Bhakti Wiyata I</a></li>
+                                    <li><a href="#">Bhakti Wiyata II</a></li>
+                                    <li><a href="#">Budi Luhur I</a></li>
+                                </ul>
+                            </div>
+                            <div class="mega-menu-column">
+                                <h3>SMP Strada</h3>
+                                <ul>
+                                    <li><a href="#">Bhakti Mulia</a></li>
+                                    <li><a href="#">Bhakti Nusa</a></li>
+                                    <li><a href="#">Bhakti Utama</a></li>
+                                    <li><a href="#">Bhakti Wiyata</a></li>
+                                    <li><a href="#">Budi Luhur</a></li>
+                                </ul>
+                            </div>
+                            <div class="mega-menu-column">
+                                <h3>SMA Strada</h3>
+                                <ul>
+                                    <li><a href="index.html" class="active">Bhakti Wiyata</a></li>
+                                    <li><a href="#">Santo Thomas Aquino</a></li>
+                               </ul>
+                            </div>
+                            <div class="mega-menu-column">
+                                <h3>SMK Strada</h3>
+                                <ul>
+                                    <li><a href="#">Budi Luhur</a></li>
+                                    <li><a href="#">Daan Mogot</a></li>
+                                    <li><a href="#">SMK Strada I</a></li>
+                                    <li><a href="#">SMK Strada II</a></li>
+                                    <li><a href="#">SMK Strada III</a></li>
+                                </ul>
+                            </div>
+                            <div class="mega-menu-column">
+                                <h3>Kantor</h3>
+                                <ul>
+                                    <li><a href="#">Perkumpulan Strada</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </li>
+                </ul>                
+
+                <div class="nav-right">
+                    <a href="#" class="search-icon" aria-label="Cari"><i class="fas fa-search"></i></a>
+                    <button class="hamburger-menu" aria-label="Menu">
+                        <span class="bar"></span>
+                        <span class="bar"></span>
+                        <span class="bar"></span>
+                    </button>
+
+                <div class="logo">
+                     <img src="asset/Logo.jpg" alt="Logo SMA Strada Bhakti Wiyata">
+                </div>
+                    </div>
+                </div>
+            </div>
+        </nav>
+    </header>
+</head>
+
+<body>
+ <div class="content-wrapper">
+    <!-- Hero Section -->
+      <!-- Header -->
+    <div class="program-header">
+        <div class="container">
+           <white><h1>Prestasi Siswa</h1></white>
+        </div>
+    </div>
+
+<!-- Prestasi Section -->
+<section id="prestasi" class="content-section">
+    <div class="container">
+        <div class="prestasi-filter">
+            <button class="filter-btn active" data-filter="all">Semua</button>
+            <button class="filter-btn" data-filter="bermutu" id="link-bermutu">Bermutu (Akademik)</button>
+            <button class="filter-btn" data-filter="berkarakter" id="link-berkarakter">Berkarakter (Sosial/Religi)</button>
+            <button class="filter-btn" data-filter="berprestasi" id="link-berprestasi">Berprestasi (Seni/Olahraga)</button>
+            <select class="filter-tahun">
+                <option value="all">Semua Tahun</option>
+                <option value="2019">2019</option>
+            </select>
+        </div>
+        <div class="prestasi-grid">
+            <div class="prestasi-item" data-category="berprestasi" data-tahun="2019">
+                <img src="asset/lomba band.jpg" alt="Lomba Band">
+                <h3>Lomba Band SMA di SMAK Penabur Harapan Indah</h3>
+                <p><i>12 Oktober 2019</i></p>
+                <p>Juara III & The Best Guitarist |  Grup</p>
+                <p>Tingkat: Kota Bekasi</p>
+                <span class="prestasi-badge berprestasi">Berprestasi</span>
+            </div>
+            <div class="prestasi-item" data-category="berprestasi" data-tahun="2019">
+                <img src="asset/taekwondo.jpg" alt="Lomba Taekwondo">
+                <h3>Lomba Taekwondo di POPKI Cibubur</h3>
+                <p><i>17 November 2019</i></p>
+                <p>Juara III |  Perorangan</p>
+                <p>Tingkat: Nasional</p>
+                <span class="prestasi-badge berprestasi">Berprestasi</span>
+            </div>
+            <div class="prestasi-item" data-category="berprestasi" data-tahun="2019">
+                <img src="asset/piano.jpg" alt="Lomba piano">
+                <h3>Kontes Bermain Piano Diamond Award</h3>
+                <p><i>10 November 2019</i></p>
+                <p>Juara I |  Perorangan</p>
+                <p>Tingkat: Nasional</p>
+                <span class="prestasi-badge berprestasi">Berprestasi</span>
+            </div>
+            <div class="prestasi-item" data-category="berprestasi" data-tahun="2019">
+                <img src="asset/lomba band dinas.jpg" alt="Lomba Band">
+                <h3>Lomba Band Dinas Pariwisata Jawa Barat</h3>
+                <p><i>23 November 2019</i></p>
+                <p>Juara III |  Grup</p>
+                <p>Tingkat: Provinsi</p>
+                <span class="prestasi-badge berprestasi">Berprestasi</span>
+            </div>
+            <div class="prestasi-item" data-category="berkarakter" data-tahun="2019">
+                <img src="asset/pidato.jpg" alt="Lomba Pidato">
+                <h3>Lomba Pidato Kebangsaan di SMA Marsudirini Bekasi</h3>
+                <p><i> 30 November 2019</i></p>
+                <p>Juara II |  Perorangan</p>
+                <p>Tingkat: Kota Bekasi</p>
+                <span class="prestasi-badge berkarakter">Berkarakter</span>
+            </div>
+            <div class="prestasi-item" data-category="bermutu" data-tahun="2019">
+                <img src="asset/vlog.jpg" alt="Lomba Vlog">
+                <h3>Lomba Vlog Kementrian Pertanian</h3>
+                <p><i>5 Desember 2019</i></p>
+                <p>Juara II |  Perorangan</p>
+                <p>Tingkat: Nasional</p>
+                <span class="prestasi-badge bermutu">Bermutu</span>
+            </div>
+        </div>
+    </div>
+</section>
+</main> 
+</body>
+
+
+<footer class="main-footer">
+  <div class="footer-wrapper">
+        <div class="footer-content">
+            <!-- Column 1: About & Logo -->
+            <div class="footer-column">
+                <img src="asset/Logo.jpg" alt="Strada Logo" class="footer-logo" style="height: 60px; margin-bottom: 20px;">
+                <p style="margin-bottom: 20px; line-height: 1.6; color: rgba(255,255,255,0.8); text-align: justify;">
+                    SMA Strada Bhakti Wiyata adalah bagian dari jaringan pendidikan Strada yang berkomitmen untuk membentuk generasi unggul, peduli, dan berjiwa melayani.
+                </p>
+                <div class="social-links">
+                    <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                    <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
+                    <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+                </div>
+            </div>
+
+            <!-- Column 2: Contact Info -->
+            <div class="footer-column">
+                <h3>Hubungi Kami</h3>
+                <div class="contact-info">
+                    <p><i class="fas fa-map-marker-alt"></i> Jl. Bintara Raya No.38, Kranji, Bekasi Barat</p>
+                    <p><i class="fas fa-phone"></i> (021)-89455578</p>
+                    <p><i class="fas fa-envelope"></i> smastradabhaktiwiyata@gmail.com</p>
+                    <p><i class="fas fa-clock"></i> Senin-Jumat: 07.00 - 16.00 WIB</p>
+                </div>
+            </div>
+
+            <!-- Column 3: Map & Newsletter -->
+            <div class="footer-column">
+                <h3>Lokasi Kami</h3>
+                <div class="map-container">
+                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3966.123456789012!2d106.987654321!3d-6.123456789!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zNsKwMDcnMjQuNCJTIDEwNsKwNTknMTUuNiJF!5e0!3m2!1sen!2sid!4v1234567890123!5m2!1sen!2sid" allowfullscreen="" loading="lazy"></iframe>
+                </div>
+            </div>
+
+        <!-- Column 4: Footer statistic -->
+        <div class="footer-column">
+            <h3>Statistik</h3>
+            <ul style="list-style: none; padding: 0; color: rgba(255,255,255,0.8); font-size: 0.95rem;">
+                <li style="margin-bottom: 10px;">
+                <i class="fas fa-chart-line" style="color:#FFD700; width: 20px;"></i>
+                <strong>Total:</strong> <span id="stat-total">-</span> / <span id="stat-total-views">-</span>
+                </li>
+                <li style="margin-bottom: 10px;">
+                <i class="fas fa-calendar-day" style="color:#FFD700; width: 20px;"></i>
+                <strong>Hari Ini:</strong> <span id="stat-today">-</span> / <span id="stat-today-views">-</span>
+                </li>
+                <li style="margin-bottom: 10px;">
+                <i class="fas fa-calendar-week" style="color:#FFD700; width: 20px;"></i>
+                <strong>Minggu Ini:</strong> <span id="stat-week">-</span> / <span id="stat-week-views">-</span>
+                </li>
+                <li style="margin-bottom: 10px;">
+                <i class="fas fa-calendar-alt" style="color:#FFD700; width: 20px;"></i>
+                <strong>Bulan Ini:</strong> <span id="stat-month">-</span> / <span id="stat-month-views">-</span>
+                </li>
+            </ul>
+            </div>
+        </div>
+    </div>
+
+            <div class="footer-copyright">
+                <p>&copy; 2025 SMA Strada Bhakti Wiyata. All Rights Reserved.</p>
+                <p style="text-align:center; font-size: 0.8em; margin-top: 5px; color: rgba(255,255,255,0.6);">
+                </p>
+            </div>
+            
+           <div class="footer-hymne">
+                <a href="https://youtu.be/sD9UOIZrO5g?feature=shared" target="_blank" style="color: #FFD700; text-decoration: none; align-items: center;">
+                    <i class="fas fa-music"></i> Dengarkan Hymne Strada
+                </a>
+            </div>
+        </div>
+    </div>
+</footer>
+<button class="back-to-top" id="backToTopBtn" aria-label="Kembali ke atas">
+    <i class="fas fa-arrow-up"></i>
+</button>
+</html>
+
+      <script>
+document.addEventListener("DOMContentLoaded", function () {
+    function switchTabByHash() {
+        const hash = window.location.hash;
+        if (!hash) return;
+
+        // Sembunyikan semua tab
+        document.querySelectorAll('.tab-pane').forEach(tab => {
+            tab.style.display = 'none';
+        });
+
+        // Tampilkan tab yang sesuai hash
+        const targetTab = document.querySelector(hash);
+        if (targetTab) {
+            targetTab.style.display = 'block';
+        }
+    }
+
+    // Saat halaman pertama kali dibuka dengan hash
+    switchTabByHash();
+
+    // Saat diklik menu hash
+    document.querySelectorAll('.submenu a').forEach(link => {
+        link.addEventListener('click', function (e) {
+            e.preventDefault(); // Hindari scroll langsung
+            const targetId = this.getAttribute('href');
+
+            // Ubah hash di URL (tanpa reload)
+            history.pushState(null, null, targetId);
+
+            // Switch tab
+            switchTabByHash();
+        });
+    });
+
+    // Jika user klik back/forward di browser
+    window.addEventListener('popstate', switchTabByHash);
+});
+
+    document.addEventListener("DOMContentLoaded", function () {
+        const hash = window.location.hash;
+        if (hash) {
+            const target = document.querySelector(hash);
+            if (target) {
+                // Optional: kalau pakai tab toggle
+                document.querySelectorAll('.tab-pane').forEach(el => el.style.display = 'none');
+                target.style.display = 'block';
+            }
+        }
+    });
+
+    document.addEventListener('DOMContentLoaded', function() {
+        // Set current date
+        const now = new Date();
+        const options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
+        document.getElementById('current-date').textContent = now.toLocaleDateString('id-ID', options);
+
+        // Hamburger menu toggle
+        const hamburger = document.querySelector('.hamburger-menu');
+        const navList = document.querySelector('.nav-list');
+        hamburger.addEventListener('click', function() {
+            this.classList.toggle('active');
+            navList.classList.toggle('active');
+        });
+
+        // Close menu when clicking on links (mobile)
+        document.querySelectorAll('.nav-list a').forEach(link => {
+            link.addEventListener('click', () => {
+                if (window.innerWidth <= 992) {
+                    hamburger.classList.remove('active');
+                    navList.classList.remove('active');
+                }
+            });
+        });
+
+        // Tab switching functionality
+        const tabLinks = document.querySelectorAll('.internal-nav-tabs .nav-tab');
+        const tabPanes = document.querySelectorAll('.tab-content-wrapper .tab-pane');
+        tabLinks.forEach(link => {
+            link.addEventListener('click', function(e) {
+                e.preventDefault();
+                tabLinks.forEach(tab => tab.classList.remove('active'));
+                tabPanes.forEach(pane => pane.classList.remove('active'));
+                this.classList.add('active');
+                const targetId = this.getAttribute('data-target');
+                const targetPane = document.querySelector(targetId);
+                if (targetPane) {
+                    targetPane.classList.add('active');
+                    // Smooth scroll to the tab content
+                    document.querySelector('.tab-content-wrapper').scrollIntoView({ behavior: 'smooth', block: 'start' });
+                }
+            });
+        });
+        // Initialize first tab as active
+        if (tabLinks.length > 0) {
+            tabLinks[0].click();
+        }
+
+        // Initialize footer statistics
+        const stats = {
+            total: [3377, 100299],
+            today: [15, 32],
+            week: [193, 2841],
+            month: [548, 11234]
+        };
+        document.getElementById("stat-total").textContent = stats.total[0];
+        document.getElementById("stat-total-views").textContent = stats.total[1];
+        document.getElementById("stat-today").textContent = stats.today[0];
+        document.getElementById("stat-today-views").textContent = stats.today[1];
+        document.getElementById("stat-week").textContent = stats.week[0];
+        document.getElementById("stat-week-views").textContent = stats.week[1];
+        document.getElementById("stat-month").textContent = stats.month[0];
+        document.getElementById("stat-month-views").textContent = stats.month[1];
+
+
+    // Back to Top Button
+    const backToTopBtn = document.getElementById('backToTopBtn');
+    window.addEventListener('scroll', function() {
+        if (window.scrollY > 300) {
+            backToTopBtn.classList.add('visible');
+        } else {
+            backToTopBtn.classList.remove('visible');
+        }
+    });
+    backToTopBtn.addEventListener('click', function() {
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+    });
+});
+
+document.addEventListener('DOMContentLoaded', function () {
+    // Filter Prestasi
+    const filterBtns = document.querySelectorAll('.filter-btn');
+    const tahunSelect = document.querySelector('.filter-tahun');
+    const items = document.querySelectorAll('.prestasi-item');
+
+    function filterPrestasi() {
+        const kategori = document.querySelector('.filter-btn.active').dataset.filter;
+        const tahun = tahunSelect.value;
+        items.forEach(item => {
+            const matchKategori = (kategori === 'all') || (item.dataset.category === kategori);
+            const matchTahun = (tahun === 'all') || (item.dataset.tahun === tahun);
+            if (matchKategori && matchTahun) {
+                item.style.display = '';
+            } else {
+                item.style.display = 'none';
+            }
+        });
+    }
+
+    filterBtns.forEach(btn => {
+        btn.addEventListener('click', function () {
+            filterBtns.forEach(b => b.classList.remove('active'));
+            this.classList.add('active');
+            filterPrestasi();
+        });
+    });
+
+    tahunSelect.addEventListener('change', filterPrestasi);
+
+    filterPrestasi(); // Inisialisasi awal
+});
+</script>
+</body>
+</html>

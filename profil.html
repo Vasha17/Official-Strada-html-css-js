@@ -1,0 +1,2668 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SMA Strada Bhakti Wiyata</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <style>
+        /* --- Global Variables & Reset --- */
+        :root {
+            --strada-blue: #1E3F7B;
+            --strada-blue-light: #2A5495;
+            --strada-gold: #FFD700;
+            --text-dark: #333;
+            --text-light: #f4f4f4;
+            --bg-light-gray: #f8f8f8;
+            --bg-light-blue: #eef5fb;
+            --border-color: #ddd;
+            --header-height: 70px;
+            --transition: all 0.3s ease;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html, body {
+            height: 100%;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+
+        main {
+            flex: 1;
+        }
+
+        body {
+            font-family: 'Open Sans', sans-serif;
+            line-height: 1.6;
+            color: var(--text-dark);
+            background: linear-gradient(to bottom, #f0f8ff, #fff);
+            overflow-x: hidden;
+            margin: 0; /* Tambahkan ini */
+            padding: 0; /* Tambahkan ini */
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+
+        img, video {
+            max-width: 100%;
+            height: auto; /* Penting untuk menjaga rasio aspek */
+            display: block; /* Hindari spasi di bawah gambar */
+        }
+        html {
+            scroll-behavior: smooth;
+            scroll-padding-top: var(--header-height);
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        section {
+            padding: 80px 0;
+        }
+
+        h1, h2, h3, h4, h5, h6 {
+            font-family: 'Montserrat', sans-serif;
+            color: var(--strada-blue);
+            margin-bottom: 1.2rem;
+        }
+
+        h2.section-title {
+            text-align: center;
+            position: relative;
+            padding-bottom: 1rem;
+            font-size: 2.5rem;
+        }
+
+        h2.section-title::after {
+            content: '';
+            display: block;
+            width: 60px;
+            height: 4px;
+            background-color: var(--strada-blue);
+            margin: 0.8rem auto 0;
+        }
+
+        /* --- Header Top (Date & Running Text) --- */
+        .header-top {
+            background-color: #FFD700;
+            color: black;
+            padding: 0.5rem 0;
+            font-size: 0.9rem;
+            border-bottom: 1px solid rgba(255,255,255,0.1);
+        }
+
+        .header-top .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+
+        .date-display {
+            margin-right: 1.5rem;
+            white-space: nowrap;
+            font-weight: bold;
+        }
+
+        .running-text {
+            flex-grow: 1;
+            overflow: hidden;
+            position: relative;
+            height: 1.5rem;
+        }
+
+        .news-tickers {
+            position: absolute;
+            width: 100%;
+            margin: 0;
+            padding: 0;
+            list-style: none;
+            animation: scrollText 20s linear infinite;
+        }
+
+        .news-tickers li {
+            white-space: nowrap;
+        }
+
+        @keyframes scrollText {
+            from { transform: translateX(100%); }
+            to { transform: translateX(-100%); }
+        }
+
+        /* --- Main Navigation --- */
+        .main-header {
+            background-color: #064ea2;
+            position: sticky;
+            top: 0px;
+            z-index: 1000;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+            height: var(--header-height);
+        }
+
+        .main-nav {
+            height: 100%;
+        }
+
+        .main-nav .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            height: 100%;
+            position: relative;
+            gap: 1rem;
+            padding-right: auto; 
+            padding: 0 20px;
+        }
+
+       .logo {
+            position: static;
+            margin-left: auto; /* Push logo to the right */
+            padding: 0;
+            height: 50px;
+            display: flex;
+            align-items: auto;
+        }
+
+
+        .logo-img {
+            max-width: 100px;
+            height: auto;
+            height: 50px;
+            filter: brightness(0) invert(1);
+        }
+
+        /* Responsive Mobile */
+        @media (max-width: 992px) {
+        .submenu {
+            background-color: white !important;
+        }
+
+        .submenu a {
+            color: #1E3F7B !important;  /* biru tua agar kontras dengan putih */
+            padding: 10px 15px;
+            display: block;
+        }
+
+        .submenu a:hover {
+            background-color: #f0f0f0;
+            color: #000;
+        }
+
+         .mega-menu-content {
+            background: #fff !important;
+            box-shadow: none;
+            border-radius: 0;
+            padding: 1rem;
+            grid-template-columns: 1fr;
+        }
+
+        .mega-menu-column h3 {
+            color: var(--strada-blue) !important; /* Judul kolom biru */
+            background: #fff !important;
+            font-weight: bold;
+            font-size: 1.1rem;
+            margin-bottom: 0.5rem;
+            border-bottom: 1px solid #eee;
+            padding: 0.5rem 0 0.2rem 0;
+        }
+
+        .mega-menu-column ul li a {
+            color: #222 !important; /* Nama sekolah/cabang hitam */
+            background: #fff !important;
+            font-size: 0.97em;
+            padding: 0.4rem 0;
+            transition: color 0.2s, background 0.2s;
+        }
+
+        .mega-menu-column ul li a:hover {
+            color: var(--strada-blue) !important;
+            background: #f3f8ff !important;
+        }
+    }
+
+        .nav-right {
+            display: flex;
+            align-items: center;
+            gap: 1.2rem;
+            width: auto; /* Ubah dari 100% ke auto */
+            order: 2; /* Pastikan nav-right di sebelah kanan */
+        }
+
+        .logo {
+            position: flex;
+            left: 90%;
+            margin-left: auto;
+            padding-right: 0;
+        }
+
+        .logo-img {
+            max-width: 80px;
+            height: auto;
+        }
+
+        .hamburger-menu {
+            order: 1; /* Pastikan hamburger tetap di kiri */
+            margin-right: auto;
+        }
+
+        .search-icon {
+            order: 3; /* Search icon di sebelah nav-right */
+        }
+
+        .nav-list {
+            display: flex;
+            margin: 0;
+            padding: 0;
+            list-style: none;
+        }
+
+        .nav-item {
+            position: relative;
+        }
+
+        .nav-item > a {
+            color: white;
+            text-decoration: none;
+            font-weight: 600;
+            padding: 0.5rem 1.2rem;
+            border-radius: 2rem;
+            display: block;
+            transition: var(--transition);
+            font-size: 0.95rem;
+            display: flex;
+            align-items: center;
+        }
+
+        .nav-item > a:hover {
+            background-color: rgba(255,255,255,0.15);
+        }
+
+        .nav-item.active > a {
+            background-color: white;
+            color: var(--strada-blue);
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+        }
+
+        .nav-item > a i {
+            margin-left: 0.5rem;
+            font-size: 0.8rem;
+        }
+
+        /* Submenu Styling */
+        .submenu {
+            position: absolute;
+            top: 100%;
+            left: 0;
+            background-color: white;
+            min-width: 220px;
+            border-radius: 0.5rem;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.15);
+            opacity: 0;
+            visibility: hidden;
+            transition: var(--transition);
+            z-index: 1000;
+            transform: translateY(10px);
+            padding: 0.5rem 0;
+            list-style: none; /* Ensure no bullets */
+            padding-left: 0; /* Remove indentation */
+        }
+
+        .nav-item:hover .submenu {
+            opacity: 1;
+            visibility: visible;
+            transform: translateY(0);
+        }
+
+        .submenu li a {
+            color: var(--text-dark);
+            padding: 0.8rem 1.5rem;
+            display: block;
+            transition: var(--transition);
+            font-size: 0.9rem;
+            padding-left: 1.5rem;
+        }
+
+        .submenu li a:hover {
+            background-color: var(--bg-light-blue);
+            color: var(--strada-blue);
+        }
+
+        .profil-content ul {
+            list-style-type: none; /* Remove bullets */
+            padding-left: 0; /* Remove default padding */
+        }
+
+        .profil-content li {
+            margin-bottom: 0.5rem;
+            padding-left: 0; /* Remove any padding */
+        }
+
+        /* Mega Menu */
+        .mega-menu-content {
+            position: absolute;
+            left: 10%;
+            transform: translateX(-50%);
+            width: 100vw;
+            background-color: white;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+            opacity: 0;
+            visibility: hidden;
+            transition: var(--transition);
+            z-index: 1000;
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 0.5rem;
+            padding: 2rem;
+            border-top: 3px solid var(--strada-blue-light);
+            transform: translate(-50%, 10px);
+        }
+
+        .mega-menu-trigger:hover .mega-menu-content {
+            opacity: 1;
+            visibility: visible;
+            transform: translate(-50%, 0);
+        }
+
+        .mega-menu-column h3 {
+            color: var(--strada-blue);
+            font-size: 1.1rem;
+            margin-bottom: 1rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 1px solid #eee;
+        }
+
+        .mega-menu-column ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .mega-menu-column ul li a {
+            color: #555;
+            padding: 0.4rem 0;
+            display: block;
+            transition: var(--transition);
+            font-size: 0.9rem;
+        }
+
+        .mega-menu-column ul li a:hover {
+            color: var(--strada-blue-light);
+            padding-left: 0.5rem;
+        }
+
+        /* Navigation Right */
+        .nav-right {
+            display: flex;
+            align-items: center;
+            gap: 1.2rem;
+        }
+
+        .search-icon {
+            color: white;
+            font-size: 1.2rem;
+            transition: var(--transition);
+            cursor: pointer;
+            margin-right: auto;
+        }
+
+        .search-icon:hover {
+            color: var(--strada-gold);
+            transform: scale(1.1);
+        }
+
+        /* Hamburger Menu */
+        .hamburger-menu {
+            display: none;
+            flex-direction: column;
+            justify-content: space-between;
+            width: 30px;
+            height: 22px;
+            background: transparent;
+            border: none;
+            cursor: pointer;
+            padding: 0;
+            z-index: 1001;
+        }
+
+        .hamburger-menu .bar {
+            width: 100%;
+            height: 3px;
+            background-color: white;
+            transition: var(--transition);
+            border-radius: 2px;
+        }
+
+        .hamburger-menu.active .bar:nth-child(1) {
+            transform: translateY(9px) rotate(45deg);
+        }
+
+        .hamburger-menu.active .bar:nth-child(2) {
+            opacity: 0;
+        }
+
+        .hamburger-menu.active .bar:nth-child(3) {
+            transform: translateY(-9px) rotate(-45deg);
+        }
+        
+
+  /* Enhanced Footer Styles */
+  .main-footer {
+  width: 100vw; /* Pastikan lebar layar penuh */
+  margin: 0;
+  padding: 50px 0 20px;
+  background: linear-gradient(135deg, #0a2a5a, #1E3F7B);
+  color: white;
+  overflow-x: hidden;
+}
+
+.footer-content {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 40px;
+  padding: 0 20px;
+}
+
+.footer-wrapper {
+    max-width: 100%;
+    margin: 0;
+    padding: 0 20px;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.main-footer {
+    background: linear-gradient(135deg, #0a2a5a 0%, #1E3F7B 100%);
+    color: white;
+    padding: 50px 0 20px;
+    margin-top: 80px;
+}
+
+.main-footer::before {
+    content: '';
+    top: -10px;
+    left: 0;
+    width: 100%;
+    height: 20px;
+    background: url('wave-pattern.png') repeat-x;
+}
+
+.footer-content {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 40px;
+    margin-bottom: 40px;
+}
+
+.footer-column h3 {
+    color: #FFD700;
+    font-size: 1.3rem;
+    margin-bottom: 1.5rem;
+    position: relative;
+    padding-bottom: 10px;
+}
+
+.footer-column h3::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 50px;
+    height: 2px;
+    background: #FFD700;
+}
+
+.footer-links li {
+    margin-bottom: 12px;
+    position: relative;
+    padding-left: 15px;
+}
+
+.footer-links li::before {
+    content: '•';
+    color: #FFD700;
+    position: absolute;
+    left: 0;
+}
+
+.footer-links a {
+    color: rgba(255,255,255,0.8);
+    transition: all 0.3s ease;
+    display: inline-block;
+}
+
+.footer-links a:hover {
+    color: #FFD700;
+    transform: translateX(5px);
+}
+
+.contact-info p {
+    margin-bottom: 15px;
+    display: flex;
+    align-items: flex-start;
+    color: rgba(255,255,255,0.8);
+}
+
+.contact-info i {
+    color: #FFD700;
+    margin-right: 12px;
+    margin-top: 3px;
+}
+
+.social-links {
+    display: flex;
+    gap: 15px;
+    margin-top: 20px;
+}
+
+.social-links a {
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    background: rgba(255,255,255,0.1);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    transition: all 0.3s ease;
+}
+
+.social-links a:hover {
+    background: #FFD700;
+    color: #1E3F7B;
+    transform: translateY(-3px);
+}
+
+.map-container {
+    height: 180px;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    border: 2px solid rgba(255,255,255,0.1);
+}
+
+.footer-branding {
+    display: flex;
+    align-items: center;
+}
+
+.footer-copyright {
+    text-align: center;
+    flex-grow: 1;
+}
+
+.footer-hymne a {
+    display: flex;
+    align-items: center;
+    justify-content: center; 
+    gap: 8px;
+    transition: all 0.3s ease;
+}
+
+.footer-hymne a:hover {
+    color: white;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .footer-content {
+        grid-template-columns: 1fr;
+        gap: 30px;
+    }
+    
+    .footer-bottom {
+        flex-direction: column;
+        text-align: center;
+        gap: 15px;
+    }
+    
+    .footer-branding {
+        justify-content: center;
+        margin-bottom: 15px;
+    }
+}
+
+/* Add these styles to your existing CSS */
+
+/* Tab Navigation */
+.internal-nav-tabs {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 40px;
+    gap: 15px;
+    flex-wrap: wrap;
+    background-color: var(--bg-light-blue);
+    padding: 15px;
+    border-radius: 50px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+}
+
+.nav-tab {
+    background-color: var(--bg-light-gray);
+    color: var(--strada-blue);
+    padding: 12px 25px;
+    border-radius: 25px;
+    font-weight: 600;
+    transition: all 0.3s ease;
+    border: 1px solid var(--border-color);
+    cursor: pointer;
+    text-align: center;
+    font-size: 0.95rem;
+    white-space: nowrap;
+}
+
+.nav-tab:hover {
+    background-color: var(--strada-blue-light);
+    color: white;
+    border-color: var(--strada-blue-light);
+    transform: translateY(-2px);
+}
+
+.nav-tab.active {
+    background-color: var(--strada-blue);
+    color: white;
+    border-color: var(--strada-blue);
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+}
+
+/* Tab Content */
+.tab-content-wrapper {
+    background-color: #fff;
+    padding: 40px;
+    border-radius: 12px;
+    box-shadow: 0 5px 20px rgba(0,0,0,0.05);
+    margin-bottom: 40px;
+    transition: all 0.3s ease;
+}
+
+.tab-pane {
+    display: none;
+    animation: fadeIn 0.5s ease-out;
+}
+
+.tab-pane.active {
+    display: block;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* Content Styles */
+.subsection-title {
+    color: var(--strada-blue-light);
+    margin: 2rem 0 1.5rem;
+    text-align: center;
+    font-size: 1.8rem;
+    position: relative;
+    padding-bottom: 15px;
+}
+
+.subsection-title::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 80px;
+    height: 3px;
+    background-color: var(--strada-gold);
+}
+
+.content-image {
+    max-width: 100%;
+    height: auto;
+    border-radius: 8px;
+    margin: 25px auto;
+    display: block;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+    border: 1px solid rgba(0,0,0,0.05);
+}
+
+.sambutan-paragraf p {
+    text-align: justify;
+    margin-bottom: 1.5rem;
+    line-height: 1.8;
+    color: #555;
+}
+
+/* Tambahkan di style anda */
+.sambutan-grid {
+    display: grid;
+    grid-template-columns: 220px 1fr;
+    gap: 32px;
+    align-items: flex-start;
+}
+
+.sambutan-foto {
+    width: 100%;
+    max-width: 220px;
+    border-radius: 10px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.10);
+    margin: 0;
+}
+
+@media (max-width: 768px) {
+    .sambutan-grid {
+        grid-template-columns: 1fr;
+        gap: 20px;
+    }
+    .sambutan-foto {
+        max-width: 180px;
+        margin: 0 auto;
+    }
+}
+
+/* List Styles */
+.profil-content ul {
+    list-style-type: none;
+    padding-left: 0;
+    margin: 1.5rem 0;
+}
+
+.profil-content li {
+    margin-bottom: 1rem;
+    padding-left: 1.5rem;
+    position: relative;
+    line-height: 1.6;
+}
+
+.profil-content li::before {
+    content: '•';
+    color: var(--strada-blue);
+    font-weight: bold;
+    position: absolute;
+    left: 0;
+}
+
+/* Facilities Grid */
+.facilities-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 30px;
+    margin: 40px 0;
+}
+
+.facility-item {
+    background-color: #fff;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+    transition: all 0.3s ease;
+    border: 1px solid rgba(0,0,0,0.05);
+}
+
+.facility-item:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 25px rgba(0,0,0,0.12);
+}
+
+.facility-item img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    border-bottom: 1px solid rgba(0,0,0,0.05);
+}
+
+.facility-item h3 {
+    padding: 20px 20px 10px;
+    color: var(--strada-blue);
+    font-size: 1.2rem;
+}
+
+.facility-item p {
+    padding: 0 20px 20px;
+    color: #666;
+    line-height: 1.6;
+}
+
+.text-center {
+    text-align: center;
+}
+
+.mt-4 {
+    margin-top: 40px;
+}
+
+/* Responsive Adjustments */
+@media (max-width: 768px) {
+    .internal-nav-tabs {
+        flex-direction: column;
+        align-items: center;
+        border-radius: 12px;
+        padding: 10px;
+    }
+    
+    .nav-tab {
+        width: 100%;
+        padding: 12px;
+        border-radius: 8px;
+    }
+    
+    .tab-content-wrapper {
+        padding: 25px;
+
+    }
+}
+
+/* --- Profil Sekolah (dengan Curved Tabs) --- */
+.internal-nav-tabs {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 40px;
+    gap: 15px;
+    flex-wrap: wrap;
+}
+
+.nav-tab {
+    background-color: var(--bg-light-gray);
+    color: var(--strada-blue);
+    padding: 12px 30px;
+    border-radius: 25px; /* Memberikan efek lengkung */
+    font-weight: 600;
+    transition: all 0.3s ease;
+    border: 1px solid var(--border-color);
+}
+
+.nav-tab:hover {
+    background-color: var(--strada-blue-light);
+    color: #000;
+    border-color: var(--strada-blue-light);
+}
+
+.nav-tab.active {
+    background-color: var(--strada-blue);
+    color: #fff;
+    border-color: var(--strada-blue);
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+}
+
+.tab-content-wrapper {
+    background-color: #fff;
+    padding: 30px;
+    border-radius: 8px;
+    box-shadow: 0 0 15px rgba(0,0,0,0.05);
+}
+
+.tab-pane {
+    display: none; /* Default hidden */
+}
+
+.tab-pane.active {
+    display: block; /* Show active tab */
+}
+
+.content-image {
+    width: 100%;
+    max-width: 600px;
+    margin: 20px auto;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+}
+
+.btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0.8rem 2rem;
+    border-radius: 2rem;
+    font-weight: 600;
+    text-align: center;
+    transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+    border: 2px solid transparent;
+    cursor: pointer;
+    font-size: 1rem;
+    text-decoration: none;
+    position: relative;
+    overflow: hidden;
+}
+
+.btn-secondary {
+    background-color: var(--strada-blue);
+    color: white;
+    border-color: var(--strada-blue);
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+.btn-secondary:hover {
+    background-color: var(--strada-blue-light);
+    transform: translateY(-3px);
+    box-shadow: 0 5px 15px rgba(30, 63, 123, 0.3);
+}
+
+.btn-secondary:active {
+    transform: translateY(1px);
+    box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+}
+
+/* Optional: Add an icon */
+.btn-secondary i {
+    margin-left: 8px;
+    font-size: 0.9em;
+    transition: transform 0.3s ease;
+}
+
+.btn-secondary:hover i {
+    transform: translateX(3px);
+}
+
+        /* --- Responsive Design --- */
+        @media (max-width: 992px) {
+            .hamburger-menu {
+                display: flex;
+            }
+            
+            .nav-list {
+                position: fixed;
+                top: var(--header-height);
+                left: 0;
+                width: 100%;
+                background-color: var(--strada-blue);
+                flex-direction: column;
+                padding: 1rem 0;
+                transform: translateX(-100%);
+                transition: transform 0.4s ease;
+                z-index: 999;
+                height: calc(100vh - var(--header-height));
+                overflow-y: auto;
+                box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+            }
+            
+            .nav-list.active {
+                transform: translateX(0);
+            }
+            
+            .nav-item {
+                width: 100%;
+            }
+            
+            .nav-item > a {
+                border-radius: 0;
+                padding: 1rem 1.5rem;
+                border-bottom: 1px solid rgba(255,255,255,0.1);
+            }
+            
+            .submenu, .mega-menu-content {
+                position: static;
+                width: auto;
+                box-shadow: none;
+                opacity: 1;
+                visibility: visible;
+                display: none;
+                background-color: rgba(0,0,0,0.1);
+                margin-top: 0;
+                transform: none !important;
+                border-radius: 0;
+                padding: 0;
+            }
+            
+            .nav-item:hover .submenu,
+            .mega-menu-trigger:hover .mega-menu-content {
+                display: block;
+            }
+            
+            .mega-menu-content {
+                grid-template-columns: 1fr;
+                gap: 1rem;
+                padding: 1rem;
+            }
+            
+            .hero-content h1 {
+                font-size: 2.5rem;
+            }
+            
+            .hero-content h2 {
+                font-size: 1.5rem;
+            }
+        }
+
+        @media (max-width: 768px) {
+            h1 { font-size: 2.2rem; }
+            h2 { font-size: 1.8rem; }
+            h2.section-title { font-size: 2rem; }
+            
+            .hero-section {
+                height: 70vh;
+            }
+            
+            .hero-content h1 {
+                font-size: 2.2rem;
+            }
+            
+            .hero-content p {
+                font-size: 1rem;
+            }
+            
+            .tab-content-wrapper {
+                padding: 1.5rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .header-top .container {
+                flex-direction: column;
+                gap: 0.5rem;
+            }
+            
+            .date-display {
+                margin-right: 0;
+            }
+            
+            .running-text {
+                width: 100%;
+            }
+            
+            .hero-content h1 {
+                font-size: 1.8rem;
+            }
+            
+            .hero-content h2 {
+                font-size: 1.3rem;
+            }
+            
+            .btn {
+                width: 100%;
+            }
+        }
+
+        /* --- Animation Enhancements --- */
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .animated {
+            animation: fadeIn 0.6s ease-out forwards;
+        }
+
+        .delay-1 {
+            animation-delay: 0.2s;
+        }
+
+        .delay-2 {
+            animation-delay: 0.4s;
+        }
+
+        .delay-3 {
+            animation-delay: 0.6s;
+        }
+
+        /* --- Back to Top Button --- */
+        .back-to-top {
+            position: fixed;
+            bottom: 2rem;
+            right: 2rem;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background: var(--strada-blue);
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2rem;
+            cursor: pointer;
+            opacity: 0;
+            visibility: hidden;
+            transition: var(--transition);
+            z-index: 999;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+        }
+
+        .back-to-top.visible {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .back-to-top:hover {
+            background: var(--strada-blue-light);
+            transform: translateY(-5px);
+        }
+
+        .fab-button {
+        position: fixed;
+        bottom: 1.5rem;
+        right: 1.5rem;
+        width: 3.5rem;
+        height: 3.5rem;
+        background-color: #1659c5; /* biru tailwind */
+        color: white;
+        border: none;
+        border-radius: 9999px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25);
+        z-index: 999;
+        transition: background-color 0.3s, transform 0.3s;
+        }
+
+        .fab-button:hover {
+        background-color: #2563eb; /* biru lebih gelap saat hover */
+        transform: scale(1.05);
+        }
+
+        .fab-button i {
+        font-size: 1.25rem;
+        }
+
+
+    /* Tab Styles */
+.tab-nav {
+    display: flex;
+    margin-bottom: 1.5rem;
+    border-bottom: 2px solid #eee;
+}
+
+.tab-btn {
+    padding: 0.8rem 1.5rem;
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-weight: 600;
+    color: #666;
+    position: relative;
+}
+
+.tab-btn.active {
+    color: var(--strada-blue);
+}
+
+.tab-btn.active::after {
+    content: '';
+    position: absolute;
+    bottom: -2px;
+    left: 0;
+    width: 100%;
+    height: 3px;
+    background: var(--strada-blue);
+}
+
+.tab-content {
+    display: none;
+    animation: fadeIn 0.5s ease;
+}
+
+.tab-content.active {
+    display: block;
+}
+
+/* Organizational Structure */
+.organizational-structure {
+    margin-bottom: 50px;
+    padding: 20px;
+    background: white;
+    border-radius: 10px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+}
+
+.structure-container {
+    position: relative;
+    margin-top: 20px;
+}
+
+.structure-image {
+    width: 100%;
+    border-radius: 8px;
+    border: 1px solid #eee;
+    transition: transform 0.3s ease;
+}
+
+.structure-image:hover {
+    transform: scale(1.02);
+}
+
+.structure-download {
+    text-align: center;
+    margin-top: 20px;
+}
+
+.download-btn {
+    display: inline-flex;
+    align-items: center;
+    padding: 10px 20px;
+    background: var(--strada-blue);
+    color: white;
+    border-radius: 30px;
+    font-weight: 600;
+    transition: all 0.3s ease;
+}
+
+.download-btn:hover {
+    background: var(--strada-blue-light);
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(30, 63, 123, 0.2);
+}
+
+.download-btn i {
+    margin-right: 8px;
+}
+
+/* Teaching Staff Section */
+.teaching-staff-section {
+    background: white;
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+}
+
+.staff-controls {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 20px;
+    margin-bottom: 30px;
+}
+
+.filter-controls {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+.filter-btn {
+    padding: 8px 20px;
+    background: var(--bg-light-gray);
+    border: none;
+    border-radius: 30px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-weight: 600;
+    color: var(--text-dark);
+}
+
+.filter-btn.active {
+    background: var(--strada-blue);
+    color: white;
+}
+
+.filter-btn:hover:not(.active) {
+    background: #e0e0e0;
+}
+
+.staff-search {
+    position: relative;
+    min-width: 250px;
+}
+
+.staff-search input {
+    width: 100%;
+    padding: 10px 15px 10px 40px;
+    border: 1px solid #ddd;
+    border-radius: 30px;
+}
+
+.staff-search i {
+    position: absolute;
+    left: 15px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: #777;
+}
+
+/* Staff Grid */
+.staff-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 25px;
+}
+
+.staff-card {
+    background: white;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 3px 10px rgba(0,0,0,0.08);
+    transition: all 0.3s ease;
+    border: 1px solid #f0f0f0;
+}
+
+.staff-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+}
+
+.staff-image {
+    height: 200px;
+    position: relative;
+    overflow: hidden;
+}
+
+.staff-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.5s ease;
+}
+
+.staff-card:hover .staff-image img {
+    transform: scale(1.05);
+}
+
+.staff-badge {
+    position: absolute;
+    top: 15px;
+    left: 15px;
+    right: auto;
+    bottom: auto;
+    width: 50px;
+    height: 50px;
+    background: var(--strada-blue);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-size: 20px;
+    border: 4px solid white;
+    z-index: 2;
+    transition: all 0.3s ease;
+}
+
+.staff-card:hover .staff-badge {
+    transform: scale(1.1) translateY(-5px);
+}
+
+.staff-info {
+    padding: 20px;
+}
+
+.staff-info h3 {
+    color: var(--strada-blue);
+    margin-bottom: 5px;
+}
+
+.subject {
+    color: var(--strada-gold);
+    font-weight: 600;
+    margin-bottom: 15px;
+    display: block;
+}
+
+.staff-meta {
+    display: flex;
+    gap: 15px;
+    margin-bottom: 10px;
+    font-size: 0.9em;
+    color: #666;
+}
+
+.staff-meta i {
+    margin-right: 5px;
+    color: var(--strada-blue);
+}
+
+.bio {
+    color: #555;
+    font-size: 0.9em;
+    margin-bottom: 20px;
+    line-height: 1.5;
+}
+
+.staff-contact {
+    display: flex;
+    gap: 10px;
+}
+
+.contact-btn, .profile-btn {
+    flex: 1;
+    padding: 8px;
+    text-align: center;
+    border-radius: 5px;
+    font-size: 0.85em;
+    transition: all 0.3s ease;
+}
+
+.contact-btn {
+    background: var(--strada-blue);
+    color: white;
+}
+
+.profile-btn {
+    background: #f0f0f0;
+    color: var(--text-dark);
+}
+
+.contact-btn:hover {
+    background: var(--strada-blue-light);
+}
+
+.profile-btn:hover {
+    background: #e0e0e0;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .staff-controls {
+        flex-direction: column;
+        align-items: stretch;
+    }
+    
+    .filter-controls {
+        justify-content: center;
+    }
+    
+    .staff-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+
+ /* Header Styles */
+        .program-header {
+            background: linear-gradient(135deg, var(--strada-blue), var(--strada-blue-light));
+            color: white;
+            padding: 80px 0 40px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+            margin-bottom: 40px;
+        }
+
+        .program-header::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxMDAlIiBoZWlnaHQ9IjEwMCUiPjxkZWZzPjxwYXR0ZXJuIGlkPSJwYXR0ZXJuIiB3aWR0aD0iNDAiIGhlaWdodD0iNDAiIHBhdHRlcm5Vbml0cz0idXNlclNwYWNlT25Vc2UiIHBhdHRlcm5UcmFuc2Zvcm09InJvdGF0ZSg0NSkiPjxyZWN0IHdpZHRoPSIyMCIgaGVpZ2h0PSIyMCIgZmlsbD0icmdiYSgyNTUsMjU1LDI1NSwwLjA1KSIvPjwvcGF0dGVybj48L2RlZnM+PHJlY3Qgd2lkdGg9IjEwMCUiIGhlaWdodD0iMTAwJSIgZmlsbD0idXJsKCNwYXR0ZXJuKSIvPjwvc3ZnPg==');
+            opacity: 0.3;
+        }
+
+        .program-header h1 {
+            font-size: 2.8rem;
+            margin-bottom: 15px;
+            position: relative;
+            z-index: 1;
+            text-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            color: #fff !important; /* Ubah warna teks menjadi putih */
+        }
+
+        .program-header p {
+            font-size: 1.2rem;
+            max-width: 800px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 1;
+            opacity: 0.9;
+        }
+
+    </style>
+
+<head>
+<!-- Header Top with Date and News Ticker -->
+    <div class="header-top">
+        <div class="container">
+            <div class="date-display">
+                <span id="current-date"></span>
+            </div>
+            <div class="running-text">
+                <ul id="akademinews" class="news-tickers">
+                    <li>Selamat datang di website SMA Strada Bhakti Wiyata. Informasi terbaru di SMA Strada Bhakti Wiyata dapat dilihat di bagian <strong>pengumuman</strong>.</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+   <!-- Main Header with Navigation -->
+    <header class="main-header">
+        <nav class="main-nav">
+            <div class="container">
+                <ul class="nav-list">
+                    <li class="nav-item has-submenu">
+                        <a href="profil.html">Profil <i class="fas fa-caret-down"></i></a>
+                        <ul class="submenu">
+                            <li><a href="#sambutan-kepala-sekolah-content">Sambutan Kepala Sekolah</a></li>
+                            <li><a href="#sejarah-content">Sejarah</a></li>
+                            <li><a href="#visi-misi-content">Visi & Misi</a></li>
+                            <li><a href="#nilai-dasar-content">Nilai Dasar</a></li>
+                            <li><a href="#motto-content">Motto</a></li>
+                            <li><a href="#sarana-prasarana-content">Sarana & Prasarana</a></li>
+                            <li><a href="#struktur-organisasi-content">Struktur Organisasi</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item"><a href="prestasi.html">Prestasi</a></li>
+                    <li class="nav-item"><a href="program-sekolah.html">Program Sekolah</a></li>
+                    <li class="nav-item"><a href="galeri.html">Galeri</a></li>
+                    <li class="nav-item"><a href="pendaftaran.html">Pendaftaran</a></li>
+                    <li class="nav-item"><a href="kontak.html">Kontak</a></li>
+                    <li class="nav-item"><a href="sekolah.html">Sekolah</a></li>
+                    <li class="nav-item has-submenu mega-menu-trigger">
+                        <a href="#"> Web Sekolah <i class="fas fa-caret-down"></i></a>
+                        <div class="mega-menu-content">
+                            <div class="mega-menu-column">
+                                <h3>TK Strada</h3>
+                                <ul>
+                                    <li><a href="#">Bhakti Nusa</a></li>
+                                    <li><a href="#">Bhakti Utama</a></li>
+                                    <li><a href="#">Bhakti Wiyata</a></li>
+                                    <li><a href="#">Bina Sejahtera</a></li>
+                                    <li><a href="#">Budi Luhur</a></li>
+                                </ul>
+                            </div>
+                            <div class="mega-menu-column">
+                                <h3>SD Strada</h3>
+                                <ul>
+                                    <li><a href="#">Bhakti Nusa</a></li>
+                                    <li><a href="#">Bhakti Utama</a></li>
+                                    <li><a href="#">Bhakti Wiyata I</a></li>
+                                    <li><a href="#">Bhakti Wiyata II</a></li>
+                                    <li><a href="#">Budi Luhur I</a></li>
+                                </ul>
+                            </div>
+                            <div class="mega-menu-column">
+                                <h3>SMP Strada</h3>
+                                <ul>
+                                    <li><a href="#">Bhakti Mulia</a></li>
+                                    <li><a href="#">Bhakti Nusa</a></li>
+                                    <li><a href="#">Bhakti Utama</a></li>
+                                    <li><a href="#">Bhakti Wiyata</a></li>
+                                    <li><a href="#">Budi Luhur</a></li>
+                                </ul>
+                            </div>
+                            <div class="mega-menu-column">
+                                <h3>SMA Strada</h3>
+                                <ul>
+                                    <li><a href="index.html" class="active">Bhakti Wiyata</a></li>
+                                    <li><a href="#">Santo Thomas Aquino</a></li>
+                               </ul>
+                            </div>
+                            <div class="mega-menu-column">
+                                <h3>SMK Strada</h3>
+                                <ul>
+                                    <li><a href="#">Budi Luhur</a></li>
+                                    <li><a href="#">Daan Mogot</a></li>
+                                    <li><a href="#">SMK Strada I</a></li>
+                                    <li><a href="#">SMK Strada II</a></li>
+                                    <li><a href="#">SMK Strada III</a></li>
+                                </ul>
+                            </div>
+                            <div class="mega-menu-column">
+                                <h3>Kantor</h3>
+                                <ul>
+                                    <li><a href="#">Perkumpulan Strada</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </li>
+                </ul>                
+
+                <div class="nav-right">
+                    <a href="#" class="search-icon" aria-label="Cari"><i class="fas fa-search"></i></a>
+                    <button class="hamburger-menu" aria-label="Menu">
+                        <span class="bar"></span>
+                        <span class="bar"></span>
+                        <span class="bar"></span>
+                    </button>
+
+                <div class="logo">
+                     <img src="asset/Logo.jpg" alt="Logo SMA Strada Bhakti Wiyata">
+                </div>
+                    </div>
+                </div>
+            </div>
+        </nav>
+    </header>
+</head>
+
+<body>
+ <div class="content-wrapper">
+    <!-- Hero Section -->
+
+      <!-- Header -->
+    <div class="program-header">
+        <div class="container">
+           <white><h1>Profil Sekolah</h1></white>
+        </div>
+    </div>
+
+<nav class="internal-nav-tabs">
+    <a href="#sambutan-kepala-sekolah" class="nav-tab" data-target="#sambutan-kepala-sekolah-content">Sambutan Kepala Sekolah</a>
+    <a href="#sejarah" class="nav-tab" data-target="#sejarah-content">Sejarah</a>
+    <a href="#struktur-organisasi" class="nav-tab" data-target="#struktur-organisasi-content">Struktur Organisasi</a>
+    <a href="#visi-misi" class="nav-tab" data-target="#visi-misi-content">Visi & Misi</a>
+    <a href="#nilai-dasar" class="nav-tab" data-target="#nilai-dasar-content">Nilai Dasar</a>
+    <a href="#motto" class="nav-tab" data-target="#motto-content">Motto</a>
+    <a href="#sarana-dan-prasarana" class="nav-tab" data-target="#sarana-dan-prasarana-content">Sarana & Prasarana</a>
+</nav>
+<section class="tab-content-wrapper">
+  <div id="sambutan-kepala-sekolah-content" class="tab-pane">
+    <h3 class="subsection-title">Sambutan Kepala Sekolah</h3>
+    <div class="sambutan-grid">
+      
+      <!-- Foto dan Nama -->
+      <div class="sambutan-foto-wrapper">
+        <img src="asset/kepala-sekolah.jpeg" alt="Kepala Sekolah" class="content-image sambutan-foto">
+        <p style="text-align:center; font-weight:bold; margin-top:1em;">Prima Setyaningrum, S.Pd., M.M.</p>
+      </div>
+      
+      <!-- Paragraf Sambutan -->
+      <div class="sambutan-paragraf">
+       <p style="text-align:justify; margin-bottom:1.5em;">
+            Terimakasih kepada para pengunjung yang telah mengunjungi website SMA Strada Bhakti Wiyata.
+        </p>
+        <p style="text-align:justify; margin-bottom:1.5em;">
+            Perkenankan kami menjelaskan mengenai sekolah SMA STRADA BHAKTI WIYATA, yang merupakan sekolah milik Keuskupan Agung Jakarta. Perkumpulan Strada telah berkarya sejak tahun 1924 dan sampai dengan tahun 2018 sudah memasuki usia ke-94 dalam mengembangkan pelayanan di bidang pendidikan.
+        </p>
+        <p style="text-align:justify; margin-bottom:1.5em;">
+            Perkumpulan Strada ini telah mengelola sebanyak 70 sekolah dari TK, SD, SMP, SMA dan SMK yang tersebar di wilayah Jakarta, Tangerang, dan Bekasi.
+        </p>
+        <p style="text-align:justify; margin-bottom:1.5em;">
+            Puji Syukur kepada Tuhan, tahun pelajaran 2018–2019 telah membuka 1 sekolah lagi yang ke-71 yaitu SMA Strada Bhakti Wiyata di Jl. Bintara Raya 38, Kranji, Bekasi Barat.
+        </p>
+        <p style="text-align:justify; margin-bottom:1.5em;">
+            Pada kesempatan tahun pelajaran 2024–2025, siswa SMA Strada Bhakti Wiyata berjumlah 438 siswa dan jumlah GuKar 33 orang. Semuanya ini berkat Tuhan dan terima kasih kepada orang tua yang telah mempercayakan putra–putrinya untuk kami dampingi dan kami didik.
+        </p>
+        <p style="text-align:justify; margin-bottom:1.5em;">
+            Semoga SMA Strada Bhakti Wiyata Bekasi ini dapat menjawab keinginan orang tua murid dan masyarakat yang menginginkan adanya SMA di Cabang Bekasi, khususnya di Komplek Strada Bhakti Wiyata.
+        </p>
+        <p style="text-align:justify; margin-bottom:1.5em;">
+            Semoga SMA Bhakti Wiyata dapat menjadi komunitas pendidikan yang unggul, peduli dan berjiwa melayani.
+        </p>
+        <p style="text-align:justify; margin-bottom:1.5em;"><strong>SMA Strada Bhakti Wiyata... Maju Bersama, Hebat Semua.</strong></p>
+
+        <p style="text-align:justify; margin-bottom:1.5em;"><strong>Salam AMDG</strong></p>
+      </div>
+
+    </div>
+  </div>
+
+    <div id="sejarah-content" class="tab-pane">
+        <h3 class="subsection-title">Sejarah</h3>
+        <p style="text-align:justify; margin-bottom:1.5em;">SMA Strada Bhakti Wiyata, sebagai sekolah menengah kedua di bawah Perkumpulan Strada, didirikan untuk memenuhi kebutuhan pendidikan masyarakat di sekitar Kranji, Bekasi. Lokasi sekolah terintegrasi dalam Kompleks Strada Bhakti Wiyata, yang mencakup TK, SD Strada Bhakti Wiyata I dan II, serta SMP Strada Bhakti Wiyata, dan berdekatan dengan Gereja Katolik Santo Mikael.</p>
+        <p style="text-align:justify; margin-bottom:1.5em;">Pendirian SMA ini berawal dari survei yang dilakukan oleh Kantor Cabang Bekasi. Dari 2.480 responden, 2.254 orang (90,9%) menyatakan harapan agar Perkumpulan Strada mendirikan SMA di kawasan tersebut. Dengan dasar ini, SMA Strada Bhakti Wiyata didirikan sesuai dengan Anggaran Dasar Perkumpulan Strada No. AHU.124.AH.01.08 tahun 2012, yang menekankan penyelenggaraan pendidikan formal dari tingkat dasar hingga perguruan tinggi. Proses pendirian dimulai dengan surat dari Ketua Pengurus Strada pada 25 Februari 2015, yang menginisiasi studi kelayakan untuk mendirikan sekolah baru. Selanjutnya, pada 14 November 2016, Direktur Perkumpulan Strada membentuk panitia pendirian SMA.</p>
+        <p style="text-align:justify; margin-bottom:1.5em;">Akhirnya, pada 1 Juli 2017, SMA Strada Bhakti Wiyata resmi didirikan. Tahun pertama sekolah ini dijadikan sebagai tahun persiapan, dipimpin oleh Kepala Sekolah oleh Ibu Emilia, S.Pd, dan didukung oleh Wakil Kepala Sekolah Susana Indah Nugroho Heny, S.Pd, serta sejumlah guru yang ahli di bidangnya. Di tahun selanjutnya pada tahun 2023 dipimpin oleh Kepala Sekolah oleh Bapak Yohanes Vajar Juniyanto, S.Pd, M.M, pada tahun 2024 dipimpin oleh Kepala Sekolah oleh Ibu Prima Setyaningrum, S.Pd, M.M.</p>
+        <p style="text-align:justify; margin-bottom:1.5em;">Sejak awal berdirinya, SMA STRADA Bhakti Wiyata telah berkembang pesat, baik dalam hal kualitas pengajaran maupun fasilitas pendidikan. Kurikulum sekolah ini dirancang tidak hanya untuk mengejar prestasi akademik, tetapi juga untuk membentuk karakter siswa agar menjadi pribadi yang berintegritas, bertanggung jawab, serta peduli terhadap sesama dan lingkungan.</p>
+        <p style="text-align:justify; margin-bottom:1.5em;">Selain fokus pada pendidikan akademik, SMA STRADA Bhakti Wiyata juga menekankan pentingnya pengembangan soft skills melalui berbagai kegiatan ekstrakurikuler, seperti seni, olahraga, dan organisasi siswa. Kegiatan ini bertujuan untuk membangun sikap kepemimpinan, kerja sama tim, dan kreativitas siswa. Dalam perjalanannya, SMA STRADA Bhakti Wiyata telah melahirkan banyak lulusan yang sukses di berbagai bidang, baik di tingkat nasional maupun internasional. Sekolah ini terus berkomitmen untuk memberikan pendidikan terbaik yang sesuai dengan perkembangan zaman, namun tetap berakar pada nilai-nilai moral dan spiritual yang kokoh.</p>
+        <p style="text-align:justify; margin-bottom:1.5em;">Dengan semangat pembaruan dan dedikasi terhadap dunia pendidikan, SMA STRADA Bhakti Wiyata terus menjadi salah satu lembaga pendidikan yang diperhitungkan di Indonesia, berupaya mencetak generasi muda yang cerdas, berkarakter, dan siap menghadapi tantangan global. SMA Strada Bhakti Wiyata terus berupaya memenuhi harapan masyarakat dan berkontribusi pada pengembangan pendidikan di kawasan Kranji dan sekitarnya.</p>
+    </div>
+
+ <div id="struktur-organisasi-content" class="tab-pane">
+    <div class="organizational-structure">
+        <h3 class="subsection-title">Struktur Organisasi</h3>
+        <div class="structure-container">
+            <img src="http://bhaktiwiyata.smastrada.sch.id/wp-content/uploads/sites/5/2024/10/Krem-Pastel-Abstrak-Bagan-Organisasi-Grafik-1.png"
+                 alt="Struktur Organisasi SMA Strada Bhakti Wiyata"
+                 class="structure-image">
+            <div class="structure-download">
+                <a href="http://bhaktiwiyata.smastrada.sch.id/wp-content/uploads/sites/5/2024/10/Krem-Pastel-Abstrak-Bagan-Organisasi-Grafik-1.png"
+                   download="Struktur-Organisasi-SMA-Strada-Bhakti-Wiyata"
+                   class="download-btn">
+                    <i class="fas fa-download"></i> Unduh Struktur Organisasi
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <div class="teaching-staff-section">
+        <h3 class="subsection-title">Staff Pengajar</h3>
+
+        <div class="staff-controls">
+            <div class="filter-controls">
+                <button class="filter-btn active" data-filter="all">Semua</button>
+                <button class="filter-btn" data-filter="matematika">Matematika</button>
+                <button class="filter-btn" data-filter="bahasa">Bahasa</button>
+                <button class="filter-btn" data-filter="sains">Sains</button>
+                <button class="filter-btn" data-filter="sosial">Sosial</button>
+                <button class="filter-btn" data-filter="agama">Agama</button>
+                <button class="filter-btn" data-filter="ekonomi">Seni</button>
+                <button class="filter-btn" data-filter="informatika">Informatika</button>
+                <button class="filter-btn" data-filter="pjok">PJOK</button>
+                <button class="filter-btn" data-filter="bk">BK</button>
+                <button class="filter-btn" data-filter="staff">Staff Non-Pengajar</button>
+            </div>
+
+            <div class="staff-search">
+                <input type="text" placeholder="Cari guru..." class="search-input">
+                <i class="fas fa-search"></i>
+            </div>
+        </div>
+
+        <div class="staff-grid">
+            <div class="staff-card" data-category="staff">
+                <div class="staff-image">
+                    <img src="asset/prima-setiyaningrum.jpg" alt="Prima Setyaningrum">
+                    <div class="staff-badge">
+                        <i class="fas fa-user-tie"></i>
+                    </div>
+                </div>
+                <div class="staff-info">
+                    <h3>Prima Setyaningrum, S.Pd., MM.</h3>
+                    <p class="subject">Kepala Sekolah</p>
+                    <p class="bio"></p>
+                    <div class="staff-contact">
+                        <a href="mailto:prima.setiyaningrum@smastrada.sch.id" class="contact-btn">
+                            <i class="fas fa-envelope"></i> Email
+                        </a>
+                        <a href="#" class="profile-btn">
+                            <i class="fas fa-user-tie"></i> Profil
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="staff-card" data-category="staff">
+                <div class="staff-image">
+                    <img src="asset/susana-indah-nugroho.jpg" alt="Susana Indah Nugroho">
+                    <div class="staff-badge">
+                        <i class="fas fa-user-tie"></i>
+                    </div>
+                </div>
+                <div class="staff-info">
+                    <h3>Susana Indah Nugroho, S.Pd.</h3>
+                    <p class="subject">Waka Bidang Kurikulum</p>
+                    <p class="bio"></p>
+                    <div class="staff-contact">
+                        <a href="mailto:susana.nugroho@smastrada.sch.id" class="contact-btn">
+                            <i class="fas fa-envelope"></i> Email
+                        </a>
+                        <a href="#" class="profile-btn">
+                            <i class="fas fa-user-tie"></i> Profil
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="staff-card" data-category="staff">
+                <div class="staff-image">
+                    <img src="asset/ega-meista-purba.jpg" alt="Ega Meista Purba">
+                    <div class="staff-badge">
+                        <i class="fas fa-user-tie"></i>
+                    </div>
+                </div>
+                <div class="staff-info">
+                    <h3>Ega Meista Purba, S.Pd.</h3>
+                    <p class="subject">Waka Bidang Kesiswaan</p>
+                    <p class="bio"></p>
+                    <div class="staff-contact">
+                        <a href="mailto:ega.purba@smastrada.sch.id" class="contact-btn">
+                            <i class="fas fa-envelope"></i> Email
+                        </a>
+                        <a href="#" class="profile-btn">
+                            <i class="fas fa-user-tie"></i> Profil
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="staff-card" data-category="sosial">
+                <div class="staff-image">
+                    <img src="asset/vanessa-ruth-esmeralda.jpg" alt="Vanessa Ruth Esmeralda">
+                    <div class="staff-badge">
+                        <i class="fas fa-scroll"></i>
+                    </div>
+                </div>
+                <div class="staff-info">
+                    <h3>Vanessa Ruth Esmeralda, S.Pd.</h3>
+                    <p class="subject">Sosiologi dan Sejarah</p>
+                    <p class="bio">Wali Kelas XI, Koordinator P5 dan mengajar Sosiologi dan Sejarah</p>
+                    <div class="staff-contact">
+                        <a href="mailto:vanessa.esmeralda@smastrada.sch.id" class="contact-btn">
+                            <i class="fas fa-envelope"></i> Email
+                        </a>
+                        <a href="#" class="profile-btn">
+                            <i class="fas fa-user-tie"></i> Profil
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="staff-card" data-category="sains">
+                <div class="staff-image">
+                    <img src="asset/fransiska-tri-vonia-nango-geto.jpg" alt="Fransiska Tri Vonia Nango Geto">
+                    <div class="staff-badge">
+                        <i class="fas fa-atom"></i>
+                    </div>
+                </div>
+                <div class="staff-info">
+                    <h3>Fransiska Tri Vonia Nango Geto, S.Pd.</h3>
+                    <p class="subject">Fisika</p>
+                    <p class="bio">Koordinator Outbond Kelas X, dan mengajar Fisika</p>
+                    <div class="staff-contact">
+                        <a href="mailto:fransiska.geto@smastrada.sch.id" class="contact-btn">
+                            <i class="fas fa-envelope"></i> Email
+                        </a>
+                        <a href="#" class="profile-btn">
+                            <i class="fas fa-user-tie"></i> Profil
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="staff-card" data-category="sains">
+                <div class="staff-image">
+                    <img src="asset/novita-purnama-sari-simarmata.jpg" alt="Novita Purnama Sari Simarmata">
+                    <div class="staff-badge">
+                        <i class="fas fa-flask"></i>
+                    </div>
+                </div>
+                <div class="staff-info">
+                    <h3>Novita Purnama Sari Simarmata, S.Pd.</h3>
+                    <p class="subject">Kimia</p>
+                    <p class="bio">Koordinator PSTS Kelas X dan PSAS Ganjil, atau PSTS Ganjil dan P</p>
+                    <div class="staff-contact">
+                        <a href="mailto:novita.simarmata@smastrada.sch.id" class="contact-btn">
+                            <i class="fas fa-envelope"></i> Email
+                        </a>
+                        <a href="#" class="profile-btn">
+                            <i class="fas fa-user-tie"></i> Profil
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="staff-card" data-category="agama">
+                <div class="staff-image">
+                    <img src="asset/desi-kristiani.jpg" alt="Desi Kristiani">
+                    <div class="staff-badge">
+                        <i class="fas fa-cross"></i>
+                    </div>
+                </div>
+                <div class="staff-info">
+                    <h3>Desi Kristiani, A.S., S.Ag.</h3>
+                    <p class="subject">Pendidikan Agama</p>
+                    <p class="bio">Wali Kelas X, Koordinator P5 mengajar Pendidikan Agama</p>
+                    <div class="staff-contact">
+                        <a href="mailto:desi.kristiani@smastrada.sch.id" class="contact-btn">
+                            <i class="fas fa-envelope"></i> Email
+                        </a>
+                        <a href="#" class="profile-btn">
+                            <i class="fas fa-user-tie"></i> Profil
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="staff-card" data-category="bahasa">
+                <div class="staff-image">
+                    <img src="asset/rosa-dyah-ambar-setiyaningsih.jpg" alt="Rosa Dyah Ambar Setyaningsih">
+                    <div class="staff-badge">
+                        <i class="fas fa-language"></i>
+                    </div>
+                </div>
+                <div class="staff-info">
+                    <h3>Rosa Dyah Ambar Setyaningsih, S.Pd.</h3>
+                    <p class="subject">Bahasa Indonesia</p>
+                    <p class="bio">Wali Kelas X, Koordinator P5 mengajar Bahasa Indonesia</p>
+                    <div class="staff-contact">
+                        <a href="mailto:rosa.setiyaningsih@smastrada.sch.id" class="contact-btn">
+                            <i class="fas fa-envelope"></i> Email
+                        </a>
+                        <a href="#" class="profile-btn">
+                            <i class="fas fa-user-tie"></i> Profil
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="staff-card" data-category="bk">
+                <div class="staff-image">
+                    <img src="asset/brian-krisna-kumara.jpg" alt="Brian Krisna Kumara">
+                    <div class="staff-badge">
+                        <i class="fas fa-comments"></i>
+                    </div>
+                </div>
+                <div class="staff-info">
+                    <h3>Brian Krisna Kumara, S.Pd.</h3>
+                    <p class="subject">BK</p>
+                    <p class="bio">Mengajar BK dan TIM TATIB SEKOLAH</p>
+                    <div class="staff-contact">
+                        <a href="mailto:brian.kumara@smastrada.sch.id" class="contact-btn">
+                            <i class="fas fa-envelope"></i> Email
+                        </a>
+                        <a href="#" class="profile-btn">
+                            <i class="fas fa-user-tie"></i> Profil
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="staff-card" data-category="bahasa">
+                <div class="staff-image">
+                    <img src="asset/marselina-yolanda-intan.jpg" alt="Marselina Yolanda Intan">
+                    <div class="staff-badge">
+                        <i class="fas fa-laptop-code"></i>
+                    </div>
+                </div>
+                <div class="staff-info">
+                    <h3>Marselina Yolanda Intan, M.Pd.</h3>
+                    <p class="subject">Bahasa Inggris</p>
+                    <p class="bio">Wali Kelas XI Bisnis Informatika 1, Koordinator PSTS Genap dan PSAS Genap</p>
+                    <div class="staff-contact">
+                        <a href="mailto:marselina.intan@smastrada.sch.id" class="contact-btn">
+                            <i class="fas fa-envelope"></i> Email
+                        </a>
+                        <a href="#" class="profile-btn">
+                            <i class="fas fa-user-tie"></i> Profil
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="staff-card" data-category="sosial">
+                <div class="staff-image">
+                    <img src="asset/hartono-siregar.jpg" alt="Hartono Siregar">
+                    <div class="staff-badge">
+                        <i class="fas fa-balance-scale"></i>
+                    </div>
+                </div>
+                <div class="staff-info">
+                    <h3>Hartono Siregar, S.Pd.</h3>
+                    <p class="subject">PPkN</p>
+                    <p class="bio">Wali Kelas XI Bisnis Informatika, mengajar PKN</p>
+                    <div class="staff-contact">
+                        <a href="mailto:hartono.siregar@smastrada.sch.id" class="contact-btn">
+                            <i class="fas fa-envelope"></i> Email
+                        </a>
+                        <a href="#" class="profile-btn">
+                            <i class="fas fa-user-tie"></i> Profil
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="staff-card" data-category="sosial">
+                <div class="staff-image">
+                    <img src="asset/ade-putri.jpg" alt="Ade Putri">
+                    <div class="staff-badge">
+                        <i class="fas fa-globe"></i>
+                    </div>
+                </div>
+                <div class="staff-info">
+                    <h3>Ade Putri, S.Pd.</h3>
+                    <p class="subject">Geografi</p>
+                    <p class="bio">Wali Kelas XI Teknik, Koordinator P5, Mengajar Geografi dan Pembina Pramuka</p>
+                    <div class="staff-contact">
+                        <a href="mailto:ade.putri@smastrada.sch.id" class="contact-btn">
+                            <i class="fas fa-envelope"></i> Email
+                        </a>
+                        <a href="#" class="profile-btn">
+                            <i class="fas fa-user-tie"></i> Profil
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="staff-card" data-category="sains">
+                <div class="staff-image">
+                    <img src="asset/christoporus-meinam-cahyandalu.jpg" alt="Christoporus Meinam Cahyandalu">
+                    <div class="staff-badge">
+                        <i class="fas fa-dna"></i>
+                    </div>
+                </div>
+                <div class="staff-info">
+                    <h3>Christoporus Meinam Cahyandalu, S.Pd.</h3>
+                    <p class="subject">Biologi</p>
+                    <p class="bio">Wali Kelas XI Kesehatan, Koordinator AKM, dan Admin Sokrates</p>
+                    <div class="staff-contact">
+                        <a href="mailto:christoporus.cahyandalu@smastrada.sch.id" class="contact-btn">
+                            <i class="fas fa-envelope"></i> Email
+                        </a>
+                        <a href="#" class="profile-btn">
+                            <i class="fas fa-user-tie"></i> Profil
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="staff-card" data-category="pjok">
+                <div class="staff-image">
+                    <img src="asset/servatius-yudo-pamungkas.jpg" alt="Servatius Yudo Pamungkas">
+                    <div class="staff-badge">
+                        <i class="fas fa-running"></i>
+                    </div>
+                </div>
+                <div class="staff-info">
+                    <h3>Servatius Yudo Pamungkas, S.Pd.</h3>
+                    <p class="subject">PJOK</p>
+                    <p class="bio">Wali Kelas XI Humaniora mengajar PJOK</p>
+                    <div class="staff-contact">
+                        <a href="mailto:servatius.pamungkas@smastrada.sch.id" class="contact-btn">
+                            <i class="fas fa-envelope"></i> Email
+                        </a>
+                        <a href="#" class="profile-btn">
+                            <i class="fas fa-user-tie"></i> Profil
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="staff-card" data-category="sosial">
+                <div class="staff-image">
+                    <img src="asset/redemptus-eka-putra.jpg" alt="Redemptus Eka Putra">
+                    <div class="staff-badge">
+                        <i class="fas fa-dollar-sign"></i>
+                    </div>
+                </div>
+                <div class="staff-info">
+                    <h3>Redemptus Eka Putra, S.Pd.</h3>
+                    <p class="subject">Ekonomi</p>
+                    <p class="bio">Mengajar Ekonomi dan Koordinator Pensi</p>
+                    <div class="staff-contact">
+                        <a href="mailto:redemptus.putra@smastrada.sch.id" class="contact-btn">
+                            <i class="fas fa-envelope"></i> Email
+                        </a>
+                        <a href="#" class="profile-btn">
+                            <i class="fas fa-user-tie"></i> Profil
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="staff-card" data-category="seni">
+                <div class="staff-image">
+                    <img src="asset/melky-alexander-sihombing.jpg" alt="Melky Alexander Sihombing">
+                    <div class="staff-badge">
+                        <i class="fas fa-palette"></i>
+                    </div>
+                </div>
+                <div class="staff-info">
+                    <h3>Melky Alexander Sihombing, S.Sn.</h3>
+                    <p class="subject">Seni Budaya</p>
+                    <p class="bio">Wali Kelas XII, Koordinator Pelepasan, dan Koordinator Pensi, mengajar Seni Musik dan (Seni Budaya)</p>
+                    <div class="staff-contact">
+                        <a href="mailto:melky.sihombing@smastrada.sch.id" class="contact-btn">
+                            <i class="fas fa-envelope"></i> Email
+                        </a>
+                        <a href="#" class="profile-btn">
+                            <i class="fas fa-user-tie"></i> Profil
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="staff-card" data-category="bahasa">
+                <div class="staff-image">
+                    <img src="asset/ade-irawan.jpg" alt="Ade Irawan">
+                    <div class="staff-badge">
+                        <i class="fas fa-language"></i>
+                    </div>
+                </div>
+                <div class="staff-info">
+                    <h3>Ade Irawan, S.Pd.</h3>
+                    <p class="subject">Bahasa Inggris</p>
+                    <p class="bio">Wali Kelas XII dan Koordinator P5 Bahasa</p>
+                    <div class="staff-contact">
+                        <a href="mailto:ade.irawan@smastrada.sch.id" class="contact-btn">
+                            <i class="fas fa-envelope"></i> Email
+                        </a>
+                        <a href="#" class="profile-btn">
+                            <i class="fas fa-user-tie"></i> Profil
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="staff-card" data-category="matematika">
+                <div class="staff-image">
+                    <img src="asset/fransiska-romana-andriyati.jpg" alt="Fransiska Romana Andriyati">
+                    <div class="staff-badge">
+                        <i class="fas fa-square-root-alt"></i>
+                    </div>
+                </div>
+                <div class="staff-info">
+                    <h3>Fransiska Romana Andriyati, S.Pd.</h3>
+                    <p class="subject">Matematika</p>
+                    <p class="bio">Wali Kelas XII, Koordinator PSAJ, Mengajar Matematika, dan Koordinator Buku Tahunan</p>
+                    <div class="staff-contact">
+                        <a href="mailto:fransiska.andriyati@smastrada.sch.id" class="contact-btn">
+                            <i class="fas fa-envelope"></i> Email
+                        </a>
+                        <a href="#" class="profile-btn">
+                            <i class="fas fa-user-tie"></i> Profil
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="staff-card" data-category="agama">
+                <div class="staff-image">
+                    <img src="asset/dra-martina-sulistyo-hastuti.jpg" alt="Dra. Martina Sulistyo Hastuti">
+                    <div class="staff-badge">
+                        <i class="fas fa-cross"></i>
+                    </div>
+                </div>
+                <div class="staff-info">
+                    <h3>Dra. Martina Sulistyo Hastuti</h3>
+                    <p class="subject">Pendidikan Agama</p>
+                    <p class="bio">Wali Kelas XII, mengajar Pendidikan Agama, Koordinator Koordinator (Penjamin Mutu)</p>
+                    <div class="staff-contact">
+                        <a href="mailto:martina.hastuti@smastrada.sch.id" class="contact-btn">
+                            <i class="fas fa-envelope"></i> Email
+                        </a>
+                        <a href="#" class="profile-btn">
+                            <i class="fas fa-user-tie"></i> Profil
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="staff-card" data-category="bahasa">
+                <div class="staff-image">
+                    <img src="asset/stefanus-toni-kurniawan.jpg" alt="Stefanus Toni Kurniawan">
+                    <div class="staff-badge">
+                        <i class="fas fa-language"></i>
+                    </div>
+                </div>
+                <div class="staff-info">
+                    <h3>Stefanus Toni Kurniawan, S.Pd.</h3>
+                    <p class="subject">Bahasa Indonesia</p>
+                    <p class="bio">Pembina OSIS mengajar Bahasa Indonesia</p>
+                    <div class="staff-contact">
+                        <a href="mailto:stefanus.kurniawan@smastrada.sch.id" class="contact-btn">
+                            <i class="fas fa-envelope"></i> Email
+                        </a>
+                        <a href="#" class="profile-btn">
+                            <i class="fas fa-user-tie"></i> Profil
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="staff-card" data-category="matematika">
+                <div class="staff-image">
+                    <img src="asset/maria-ratnaningrum-onta.jpg" alt="Maria Ratnaningrum Onta">
+                    <div class="staff-badge">
+                        <i class="fas fa-square-root-alt"></i>
+                    </div>
+                </div>
+                <div class="staff-info">
+                    <h3>Maria Ratnaningrum Onta, S.Pd.</h3>
+                    <p class="subject">Matematika</p>
+                    <p class="bio">Mengajar Matematika dan TIM TATIB SEKOLAH</p>
+                    <div class="staff-contact">
+                        <a href="mailto:maria.onta@smastrada.sch.id" class="contact-btn">
+                            <i class="fas fa-envelope"></i> Email
+                        </a>
+                        <a href="#" class="profile-btn">
+                            <i class="fas fa-user-tie"></i> Profil
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="staff-card" data-category="informatika">
+                <div class="staff-image">
+                    <img src="asset/esther-rouli-borusere.jpg" alt="Esther Rouli Borusere">
+                    <div class="staff-badge">
+                        <i class="fas fa-laptop-code"></i>
+                    </div>
+                </div>
+                <div class="staff-info">
+                    <h3>Esther Rouli Borusere, S.Kom.</h3>
+                    <p class="subject">TIK</p>
+                    <p class="bio">Mengajar TIK dan Koordinator Web Sekolah</p>
+                    <div class="staff-contact">
+                        <a href="mailto:esther.borusere@smastrada.sch.id" class="contact-btn">
+                            <i class="fas fa-envelope"></i> Email
+                        </a>
+                        <a href="#" class="profile-btn">
+                            <i class="fas fa-user-tie"></i> Profil
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="staff-card" data-category="staff">
+                <div class="staff-image">
+                    <img src="asset/veronica-narula-dinivanty.jpg" alt="Veronica Narula Dinivanty">
+                    <div class="staff-badge">
+                        <i class="fas fa-users-cog"></i>
+                    </div>
+                </div>
+                <div class="staff-info">
+                    <h3>Veronica Narula Dinivanty, S.Akn.</h3>
+                    <p class="subject">TU Keuangan</p>
+                    <p class="bio"></p>
+                    <div class="staff-contact">
+                        <a href="mailto:veronica.dinivanty@smastrada.sch.id" class="contact-btn">
+                            <i class="fas fa-envelope"></i> Email
+                        </a>
+                        <a href="#" class="profile-btn">
+                            <i class="fas fa-user-tie"></i> Profil
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="staff-card" data-category="staff">
+                <div class="staff-image">
+                    <img src="asset/y-indira-widodo.jpg" alt="Y. Indira Widodo">
+                    <div class="staff-badge">
+                        <i class="fas fa-users-cog"></i>
+                    </div>
+                </div>
+                <div class="staff-info">
+                    <h3>Y. Indira Widodo</h3>
+                    <p class="subject">TU Administrasi</p>
+                    <p class="bio"></p>
+                    <div class="staff-contact">
+                        <a href="mailto:y.widodo@smastrada.sch.id" class="contact-btn">
+                            <i class="fas fa-envelope"></i> Email
+                        </a>
+                        <a href="#" class="profile-btn">
+                            <i class="fas fa-user-tie"></i> Profil
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="staff-card" data-category="staff">
+                <div class="staff-image">
+                    <img src="asset/diego-branchcombe-wisnu-reza.jpg" alt="Diego Branchcombe Wisnu Reza">
+                    <div class="staff-badge">
+                        <i class="fas fa-book-reader"></i>
+                    </div>
+                </div>
+                <div class="staff-info">
+                    <h3>Diego Branchcombe Wisnu Reza</h3>
+                    <p class="subject">Pustakawan</p>
+                    <p class="bio"></p>
+                    <div class="staff-contact">
+                        <a href="mailto:diego.reza@smastrada.sch.id" class="contact-btn">
+                            <i class="fas fa-envelope"></i> Email
+                        </a>
+                        <a href="#" class="profile-btn">
+                            <i class="fas fa-user-tie"></i> Profil
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="staff-card" data-category="staff">
+                <div class="staff-image">
+                    <img src="asset/mikael-andreas-sinulingga.jpg" alt="Mikael Andreas Sinulingga">
+                    <div class="staff-badge">
+                        <i class="fas fa-hand-holding-box"></i>
+                    </div>
+                </div>
+                <div class="staff-info">
+                    <h3>Mikael Andreas Sinulingga</h3>
+                    <p class="subject">Pembantu Sekolah</p>
+                    <p class="bio"></p>
+                    <div class="staff-contact">
+                        <a href="mailto:mikael.sinulingga@smastrada.sch.id" class="contact-btn">
+                            <i class="fas fa-envelope"></i> Email
+                        </a>
+                        <a href="#" class="profile-btn">
+                            <i class="fas fa-user-tie"></i> Profil
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="staff-card" data-category="staff">
+                <div class="staff-image">
+                    <img src="asset/muhammad-mamun.jpg" alt="Muhammad Mamun">
+                    <div class="staff-badge">
+                        <i class="fas fa-shield-alt"></i>
+                    </div>
+                </div>
+                <div class="staff-info">
+                    <h3>Muhammad Mamun</h3>
+                    <p class="subject">Satpam</p>
+                    <p class="bio"></p>
+                    <div class="staff-contact">
+                        <a href="mailto:muhammad.mamun@smastrada.sch.id" class="contact-btn">
+                            <i class="fas fa-envelope"></i> Email
+                        </a>
+                        <a href="#" class="profile-btn">
+                            <i class="fas fa-user-tie"></i> Profil
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+    <div id="visi-misi-content" class="tab-pane">
+        <h3 class="subsection-title">Visi</h3>
+        <p style="text-align:justify;">Komunitas Pendidikan yang unggul, peduli dan berjiwa melayani</p>
+        <h3 class="subsection-title">Misi</h3>
+        <ul>
+            <li style="text-align:justify; margin-bottom:1em;"> Menyelenggarakan pendidikan yang unggul bagi kaum muda agar berkembang menjadi pribadi yang cerdas, peduli, berkarakter, mandiri, dan cinta tanah air.</li>
+            <li style="text-align:justify; margin-bottom:1em;"> Meningkatkan kepedulian terhadap sesama, menghargai keberagaman, dan berjuang demi terpeliharanya lingkungan hidup.</li>
+            <li style="text-align:justify; margin-bottom:1em;"> Meningkatkan kualitas pelayanan pendidikan.</li>
+        </ul>
+    </div>
+
+    <div id="nilai-dasar-content" class="tab-pane">
+        <h3 class="subsection-title">Nilai Dasar</h3>
+        <ul>
+            <li style="text-align:justify; margin-bottom:1em;"> Pelayanan</li>
+            <li style="text-align:justify; margin-bottom:1em;"> Kejujuran</li>
+            <li style="text-align:justify; margin-bottom:1em;"> Disiplin</li>
+            <li style="text-align:justify; margin-bottom:1em;"> Kepedulian</li>
+            <li style="text-align:justify; margin-bottom:1em;"> Keunggulan</li>
+        </ul>
+    </div>
+
+    <div id="motto-content" class="tab-pane">
+        <h3 class="subsection-title">Motto</h3>
+        <p style="text-align:center;font-style:italic;font-weight:bold;">"NON SCHOLAE, SED VITAE DISCIMUS"</p>
+        <p style="text-align:center;">Kita Belajar Bukan untuk Sekolah, tetapi untuk Hidup</p>
+    </div>
+
+    <div id="sarana-dan-prasarana-content" class="tab-pane">
+        <h2 class="section-title">Sarana & Prasarana</h2>
+        <div class="facilities-grid">
+            <div class="facility-item">
+                <img src="https://live.staticflickr.com/65535/52208697829_f47d3693d4_w.jpg" alt="Kelas">
+                <h3>Ruang Kelas</h3>
+                <p>Dilengkapi AC dan proyektor untuk pembelajaran interaktif.</p>
+            </div>
+            <div class="facility-item">
+                <img src="images/fasilitas-lab.jpg" alt="Laboratorium">
+                <h3>Laboratorium Lengkap</h3>
+                <p>Fasilitas lab bahasa, komputer, fisika, kimia, dan biologi modern.</p>
+            </div>
+            <div class="facility-item">
+                <img src="https://live.staticflickr.com/65535/53072073161_dd97aef880_c.jpg" alt="Lapangan Olahraga">
+                <h3>Lapangan Olahraga</h3>
+                <p>Lapangan basket, voli, dan futsal untuk mendukung aktivitas siswa.</p>
+            </div>
+            <div class="facility-item">
+                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQhta7iIXuQnjM7cVP07LB8OeKasAJLczvO8Q&s" alt="Ruang UKS">
+                <h3>Ruang UKS</h3>
+                <p>Ruang UKS yang nyaman untuk perawatan kesehatan siswa.</p>
+            </div>
+            <div class="facility-item">
+                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTDiDReDQEkchb-5J4TPd5_eiNIv9d2Lyz0mg&s" alt="Aula">
+                <h3>Aula</h3>
+                <p>Aula serbaguna untuk kegiatan siswa dan acara sekolah.</p>
+            </div>
+            <div class="facility-item">
+                    <img src="images/fasilitas-lapangan.jpg" alt="Area Parkir">
+                    <h3>Area Parkir</h3>
+                    <p>Area parkir yang luas dan aman untuk kendaraan siswa dan staf.</p>
+            </div>
+        </div>
+        <div class="text-center mt-4">
+    <a href="https://www.youtube.com/watch?v=WpmKCtAYNyA" 
+       class="btn btn-secondary btn-virtual-tour" 
+       target="_blank" 
+       rel="noopener noreferrer">
+        🎥 Jelajahi Virtual Tour
+        <i class="fas fa-arrow-right"></i>
+    </a>
+       </div>
+</div>
+</section>
+</main>
+</body>
+
+
+<footer class="main-footer">
+  <div class="footer-wrapper">
+        <div class="footer-content">
+            <!-- Column 1: About & Logo -->
+            <div class="footer-column">
+                <img src="asset/Logo.jpg" alt="Strada Logo" class="footer-logo" style="height: 60px; margin-bottom: 20px;">
+                <p style="margin-bottom: 20px; line-height: 1.6; color: rgba(255,255,255,0.8); text-align: justify;">
+                    SMA Strada Bhakti Wiyata adalah bagian dari jaringan pendidikan Strada yang berkomitmen untuk membentuk generasi unggul, peduli, dan berjiwa melayani.
+                </p>
+                <div class="social-links">
+                    <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                    <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
+                    <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+                </div>
+            </div>
+
+            <!-- Column 2: Contact Info -->
+            <div class="footer-column">
+                <h3>Hubungi Kami</h3>
+                <div class="contact-info">
+                    <p><i class="fas fa-map-marker-alt"></i> Jl. Bintara Raya No.38, Kranji, Bekasi Barat</p>
+                    <p><i class="fas fa-phone"></i> (021)-89455578</p>
+                    <p><i class="fas fa-envelope"></i> smastradabhaktiwiyata@gmail.com</p>
+                    <p><i class="fas fa-clock"></i> Senin-Jumat: 07.00 - 16.00 WIB</p>
+                </div>
+            </div>
+
+            <!-- Column 3: Map & Newsletter -->
+            <div class="footer-column">
+                <h3>Lokasi Kami</h3>
+                <div class="map-container">
+                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3966.123456789012!2d106.987654321!3d-6.123456789!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zNsKwMDcnMjQuNCJTIDEwNsKwNTknMTUuNiJF!5e0!3m2!1sen!2sid!4v1234567890123!5m2!1sen!2sid" allowfullscreen="" loading="lazy"></iframe>
+                </div>
+            </div>
+
+        <!-- Column 4: Footer statistic -->
+        <div class="footer-column">
+            <h3>Statistik</h3>
+            <ul style="list-style: none; padding: 0; color: rgba(255,255,255,0.8); font-size: 0.95rem;">
+                <li style="margin-bottom: 10px;">
+                <i class="fas fa-chart-line" style="color:#FFD700; width: 20px;"></i>
+                <strong>Total:</strong> <span id="stat-total">-</span> / <span id="stat-total-views">-</span>
+                </li>
+                <li style="margin-bottom: 10px;">
+                <i class="fas fa-calendar-day" style="color:#FFD700; width: 20px;"></i>
+                <strong>Hari Ini:</strong> <span id="stat-today">-</span> / <span id="stat-today-views">-</span>
+                </li>
+                <li style="margin-bottom: 10px;">
+                <i class="fas fa-calendar-week" style="color:#FFD700; width: 20px;"></i>
+                <strong>Minggu Ini:</strong> <span id="stat-week">-</span> / <span id="stat-week-views">-</span>
+                </li>
+                <li style="margin-bottom: 10px;">
+                <i class="fas fa-calendar-alt" style="color:#FFD700; width: 20px;"></i>
+                <strong>Bulan Ini:</strong> <span id="stat-month">-</span> / <span id="stat-month-views">-</span>
+                </li>
+            </ul>
+            </div>
+        </div>
+    </div>
+
+            <div class="footer-copyright">
+                <p>&copy; 2025 SMA Strada Bhakti Wiyata. All Rights Reserved.</p>
+                <p style="text-align:center; font-size: 0.8em; margin-top: 5px; color: rgba(255,255,255,0.6);">
+                </p>
+            </div>
+            
+           <div class="footer-hymne">
+                <a href="https://youtu.be/sD9UOIZrO5g?feature=shared" target="_blank" style="color: #FFD700; text-decoration: none; align-items: center;">
+                    <i class="fas fa-music"></i> Dengarkan Hymne Strada
+                </a>
+            </div>
+        </div>
+    </div>
+</footer>
+<button class="back-to-top" id="backToTopBtn" aria-label="Kembali ke atas">
+    <i class="fas fa-arrow-up"></i>
+</button>
+</html>
+
+      <script>
+document.addEventListener("DOMContentLoaded", function () {
+    function switchTabByHash() {
+        const hash = window.location.hash;
+        if (!hash) return;
+
+        // Sembunyikan semua tab
+        document.querySelectorAll('.tab-pane').forEach(tab => {
+            tab.style.display = 'none';
+        });
+
+        // Tampilkan tab yang sesuai hash
+        const targetTab = document.querySelector(hash);
+        if (targetTab) {
+            targetTab.style.display = 'block';
+        }
+    }
+
+    // Saat halaman pertama kali dibuka dengan hash
+    switchTabByHash();
+
+    // Saat diklik menu hash
+    document.querySelectorAll('.submenu a').forEach(link => {
+        link.addEventListener('click', function (e) {
+            e.preventDefault(); // Hindari scroll langsung
+            const targetId = this.getAttribute('href');
+
+            // Ubah hash di URL (tanpa reload)
+            history.pushState(null, null, targetId);
+
+            // Switch tab
+            switchTabByHash();
+        });
+    });
+
+    // Jika user klik back/forward di browser
+    window.addEventListener('popstate', switchTabByHash);
+});
+
+    document.addEventListener("DOMContentLoaded", function () {
+        const hash = window.location.hash;
+        if (hash) {
+            const target = document.querySelector(hash);
+            if (target) {
+                // Optional: kalau pakai tab toggle
+                document.querySelectorAll('.tab-pane').forEach(el => el.style.display = 'none');
+                target.style.display = 'block';
+            }
+        }
+    });
+
+    document.addEventListener('DOMContentLoaded', function() {
+        // Set current date
+        const now = new Date();
+        const options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
+        document.getElementById('current-date').textContent = now.toLocaleDateString('id-ID', options);
+
+        // Hamburger menu toggle
+        const hamburger = document.querySelector('.hamburger-menu');
+        const navList = document.querySelector('.nav-list');
+        hamburger.addEventListener('click', function() {
+            this.classList.toggle('active');
+            navList.classList.toggle('active');
+        });
+
+        // Close menu when clicking on links (mobile)
+        document.querySelectorAll('.nav-list a').forEach(link => {
+            link.addEventListener('click', () => {
+                if (window.innerWidth <= 992) {
+                    hamburger.classList.remove('active');
+                    navList.classList.remove('active');
+                }
+            });
+        });
+
+        // Tab switching functionality
+        const tabLinks = document.querySelectorAll('.internal-nav-tabs .nav-tab');
+        const tabPanes = document.querySelectorAll('.tab-content-wrapper .tab-pane');
+        tabLinks.forEach(link => {
+            link.addEventListener('click', function(e) {
+                e.preventDefault();
+                tabLinks.forEach(tab => tab.classList.remove('active'));
+                tabPanes.forEach(pane => pane.classList.remove('active'));
+                this.classList.add('active');
+                const targetId = this.getAttribute('data-target');
+                const targetPane = document.querySelector(targetId);
+                if (targetPane) {
+                    targetPane.classList.add('active');
+                    // Smooth scroll to the tab content
+                    document.querySelector('.tab-content-wrapper').scrollIntoView({ behavior: 'smooth', block: 'start' });
+                }
+            });
+        });
+        // Initialize first tab as active
+        if (tabLinks.length > 0) {
+            tabLinks[0].click();
+        }
+
+        // Initialize footer statistics
+        const stats = {
+            total: [3377, 100299],
+            today: [15, 32],
+            week: [193, 2841],
+            month: [548, 11234]
+        };
+        document.getElementById("stat-total").textContent = stats.total[0];
+        document.getElementById("stat-total-views").textContent = stats.total[1];
+        document.getElementById("stat-today").textContent = stats.today[0];
+        document.getElementById("stat-today-views").textContent = stats.today[1];
+        document.getElementById("stat-week").textContent = stats.week[0];
+        document.getElementById("stat-week-views").textContent = stats.week[1];
+        document.getElementById("stat-month").textContent = stats.month[0];
+        document.getElementById("stat-month-views").textContent = stats.month[1];
+
+
+    // Back to Top Button
+    const backToTopBtn = document.getElementById('backToTopBtn');
+    window.addEventListener('scroll', function() {
+        if (window.scrollY > 300) {
+            backToTopBtn.classList.add('visible');
+        } else {
+            backToTopBtn.classList.remove('visible');
+        }
+    });
+    backToTopBtn.addEventListener('click', function() {
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+    });
+});
+
+document.addEventListener('DOMContentLoaded', function() {
+    // Filter functionality
+    const filterButtons = document.querySelectorAll('.filter-btn');
+    const staffCards = document.querySelectorAll('.staff-card');
+    const searchInput = document.querySelector('.search-input');
+    
+    // Filter by category
+    filterButtons.forEach(button => {
+        button.addEventListener('click', () => {
+            // Remove active class from all buttons
+            filterButtons.forEach(btn => btn.classList.remove('active'));
+            // Add active class to clicked button
+            button.classList.add('active');
+            
+            const filterValue = button.dataset.filter;
+            
+            // Filter staff cards
+            staffCards.forEach(card => {
+                if (filterValue === 'all' || card.dataset.category === filterValue) {
+                    card.style.display = 'block';
+                } else {
+                    card.style.display = 'none';
+                }
+            });
+        });
+    });
+    
+    // Search functionality
+    searchInput.addEventListener('input', () => {
+        const searchTerm = searchInput.value.toLowerCase();
+        
+        staffCards.forEach(card => {
+            const name = card.querySelector('h3').textContent.toLowerCase();
+            const subject = card.querySelector('.subject').textContent.toLowerCase();
+            const bio = card.querySelector('.bio').textContent.toLowerCase();
+            
+            if (name.includes(searchTerm) || subject.includes(searchTerm) || bio.includes(searchTerm)) {
+                card.style.display = 'block';
+            } else {
+                card.style.display = 'none';
+            }
+        });
+    });
+});
+</script>
+</body>
+</html>

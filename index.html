@@ -1,0 +1,2649 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SMA Strada Bhakti Wiyata</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <style>
+        /* --- Global Variables & Reset --- */
+        :root {
+            --strada-blue: #1E3F7B;
+            --strada-blue-light: #2A5495;
+            --strada-gold: #FFD700;
+            --text-dark: #333;
+            --text-light: #f4f4f4;
+            --bg-light-gray: #f8f8f8;
+            --bg-light-blue: #eef5fb;
+            --border-color: #ddd;
+            --header-height: 70px;
+            --transition: all 0.3s ease;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html, body {
+            height: 100%;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+
+        main {
+            flex: 1;
+        }
+
+        body {
+            font-family: 'Open Sans', sans-serif;
+            line-height: 1.6;
+            color: var(--text-dark);
+            background: linear-gradient(to bottom, #f0f8ff, #fff);
+            overflow-x: hidden;
+            margin: 0; /* Tambahkan ini */
+            padding: 0; /* Tambahkan ini */
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+
+        img, video {
+            max-width: 100%;
+            height: auto; /* Penting untuk menjaga rasio aspek */
+            display: block; /* Hindari spasi di bawah gambar */
+        }
+        html {
+            scroll-behavior: smooth;
+            scroll-padding-top: var(--header-height);
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        section {
+            padding: 80px 0;
+        }
+
+        h1, h2, h3, h4, h5, h6 {
+            font-family: 'Montserrat', sans-serif;
+            color: var(--strada-blue);
+            margin-bottom: 1.2rem;
+        }
+
+        h2.section-title {
+            text-align: center;
+            position: relative;
+            padding-bottom: 1rem;
+            font-size: 2.5rem;
+        }
+
+        h2.section-title::after {
+            content: '';
+            display: block;
+            width: 60px;
+            height: 4px;
+            background-color: var(--strada-blue);
+            margin: 0.8rem auto 0;
+        }
+
+        /* --- Header Top (Date & Running Text) --- */
+        .header-top {
+            background-color: #FFD700;
+            color: black;
+            padding: 0.5rem 0;
+            font-size: 0.9rem;
+            border-bottom: 1px solid rgba(255,255,255,0.1);
+        }
+
+        .header-top .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+
+        .date-display {
+            margin-right: 1.5rem;
+            white-space: nowrap;
+            font-weight: bold;
+        }
+
+        .running-text {
+            flex-grow: 1;
+            overflow: hidden;
+            position: relative;
+            height: 1.5rem;
+        }
+
+        .news-tickers {
+            position: absolute;
+            width: 100%;
+            margin: 0;
+            padding: 0;
+            list-style: none;
+            animation: scrollText 20s linear infinite;
+        }
+
+        .news-tickers li {
+            white-space: nowrap;
+        }
+
+        @keyframes scrollText {
+            from { transform: translateX(100%); }
+            to { transform: translateX(-100%); }
+        }
+
+        /* --- Main Navigation --- */
+        .main-header {
+            background-color: #064ea2;
+            position: sticky;
+            top: 0px;
+            z-index: 1000;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+            height: var(--header-height);
+        }
+
+        .main-nav {
+            height: 100%;
+        }
+
+        .main-nav .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            height: 100%;
+            position: relative;
+            gap: 1rem;
+            padding-right: auto; 
+            padding: 0 20px;
+        }
+
+       .logo {
+            position: static;
+            margin-left: auto; /* Push logo to the right */
+            padding: 0;
+            height: 50px;
+            display: flex;
+            align-items: auto;
+        }
+
+
+        .logo-img {
+            max-width: 100px;
+            height: auto;
+            height: 50px;
+            filter: brightness(0) invert(1);
+        }
+
+        /* Responsive Mobile */
+        @media (max-width: 992px) {
+        .submenu {
+            background-color: white !important;
+        }
+
+        .submenu a {
+            color: #1E3F7B !important;  /* biru tua agar kontras dengan putih */
+            padding: 10px 15px;
+            display: block;
+        }
+
+        .submenu a:hover {
+            background-color: #f0f0f0;
+            color: #000;
+        }
+
+         .mega-menu-content {
+            background: #fff !important;
+            box-shadow: none;
+            border-radius: 0;
+            padding: 1rem;
+            grid-template-columns: 1fr;
+        }
+
+        .mega-menu-column h3 {
+            color: var(--strada-blue) !important; /* Judul kolom biru */
+            background: #fff !important;
+            font-weight: bold;
+            font-size: 1.1rem;
+            margin-bottom: 0.5rem;
+            border-bottom: 1px solid #eee;
+            padding: 0.5rem 0 0.2rem 0;
+        }
+
+        .mega-menu-column ul li a {
+            color: #222 !important; /* Nama sekolah/cabang hitam */
+            background: #fff !important;
+            font-size: 0.97em;
+            padding: 0.4rem 0;
+            transition: color 0.2s, background 0.2s;
+        }
+
+        .mega-menu-column ul li a:hover {
+            color: var(--strada-blue) !important;
+            background: #f3f8ff !important;
+        }
+    }
+    
+        .main-nav .container {
+            display: flex;
+            justify-content: space-between;
+            position: relative;
+        }
+
+        .nav-right {
+            display: flex;
+            align-items: center;
+            gap: 1.2rem;
+            width: auto; /* Ubah dari 100% ke auto */
+            order: 2; /* Pastikan nav-right di sebelah kanan */
+        }
+
+        .logo {
+            position: flex;
+            left: 90%;
+            margin-left: auto;
+            padding-right: 0;
+        }
+
+        .logo-img {
+            max-width: 80px;
+            height: auto;
+        }
+
+        .hamburger-menu {
+            order: 1; /* Pastikan hamburger tetap di kiri */
+            margin-right: auto;
+        }
+
+        .search-icon {
+            order: 3; /* Search icon di sebelah nav-right */
+        }
+
+          .submenu li a {
+        color: white; /* Submenu juga putih */
+    }
+
+        .nav-list {
+            display: flex;
+            margin: 0;
+            padding: 0;
+            list-style: none;
+        }
+
+        .nav-item {
+            position: relative;
+        }
+
+        .nav-item > a {
+            color: white;
+            text-decoration: none;
+            font-weight: 600;
+            padding: 0.5rem 1.2rem;
+            border-radius: 2rem;
+            display: block;
+            transition: var(--transition);
+            font-size: 0.95rem;
+            display: flex;
+            align-items: center;
+        }
+
+        .nav-item > a:hover {
+            background-color: rgba(255,255,255,0.15);
+        }
+
+        .nav-item.active > a {
+            background-color: white;
+            color: var(--strada-blue);
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+        }
+
+        .nav-item > a i {
+            margin-left: 0.5rem;
+            font-size: 0.8rem;
+        }
+
+        /* Submenu Styling */
+        .submenu {
+            position: absolute;
+            top: 100%;
+            left: 0;
+            background-color: white;
+            min-width: 220px;
+            border-radius: 0.5rem;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.15);
+            opacity: 0;
+            visibility: hidden;
+            transition: var(--transition);
+            z-index: 1000;
+            transform: translateY(10px);
+            padding: 0.5rem 0;
+            list-style: none; /* Ensure no bullets */
+            padding-left: 0; /* Remove indentation */
+        }
+
+        .nav-item:hover .submenu {
+            opacity: 1;
+            visibility: visible;
+            transform: translateY(0);
+        }
+
+        .submenu li a {
+            color: var(--text-dark);
+            padding: 0.8rem 1.5rem;
+            display: block;
+            transition: var(--transition);
+            font-size: 0.9rem;
+            padding-left: 1.5rem;
+        }
+
+        .submenu li a:hover {
+            background-color: var(--bg-light-blue);
+            color: var(--strada-blue);
+        }
+
+        .profil-content ul {
+            list-style-type: none; /* Remove bullets */
+            padding-left: 0; /* Remove default padding */
+        }
+
+        .profil-content li {
+            margin-bottom: 0.5rem;
+            padding-left: 0; /* Remove any padding */
+        }
+
+        /* Mega Menu */
+        .mega-menu-content {
+            position: absolute;
+            left: 10%;
+            transform: translateX(-50%);
+            width: 100vw;
+            background-color: white;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+            opacity: 0;
+            visibility: hidden;
+            transition: var(--transition);
+            z-index: 1000;
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 0.5rem;
+            padding: 2rem;
+            border-top: 3px solid var(--strada-blue-light);
+            transform: translate(-50%, 10px);
+        }
+
+        .mega-menu-trigger:hover .mega-menu-content {
+            opacity: 1;
+            visibility: visible;
+            transform: translate(-50%, 0);
+        }
+
+        .mega-menu-column h3 {
+            color: var(--strada-blue);
+            font-size: 1.1rem;
+            margin-bottom: 1rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 1px solid #eee;
+        }
+
+        .mega-menu-column ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .mega-menu-column ul li a {
+            color: #555;
+            padding: 0.4rem 0;
+            display: block;
+            transition: var(--transition);
+            font-size: 0.9rem;
+        }
+
+        .mega-menu-column ul li a:hover {
+            color: var(--strada-blue-light);
+            padding-left: 0.5rem;
+        }
+
+        /* Navigation Right */
+        .nav-right {
+            display: flex;
+            align-items: center;
+            gap: 1.2rem;
+        }
+
+        .search-icon {
+            color: white;
+            font-size: 1.2rem;
+            transition: var(--transition);
+            cursor: pointer;
+            margin-right: auto;
+        }
+
+        .search-icon:hover {
+            color: var(--strada-gold);
+            transform: scale(1.1);
+        }
+
+        /* Hamburger Menu */
+.hamburger-menu {
+    display: none;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 30px;
+    height: 22px;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    padding: 0;
+    z-index: 1001;
+}
+
+.hamburger-menu .bar {
+    width: 100%;
+    height: 3px;
+    background-color: white;
+    transition: var(--transition);
+    border-radius: 2px;
+}
+
+.hamburger-menu.active .bar:nth-child(1) {
+    transform: translateY(9px) rotate(45deg);
+}
+
+.hamburger-menu.active .bar:nth-child(2) {
+    opacity: 0;
+}
+
+.hamburger-menu.active .bar:nth-child(3) {
+    transform: translateY(-9px) rotate(-45deg);
+}
+        
+
+  /* Enhanced Footer Styles */
+  .main-footer {
+  width: 100vw; /* Pastikan lebar layar penuh */
+  position: absolute;
+  margin: 0;
+  padding: 50px 0 20px;
+  background: linear-gradient(135deg, #0a2a5a, #1E3F7B);
+  color: white;
+  overflow-x: hidden;
+}
+
+.footer-content {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 40px;
+  padding: 0 20px;
+}
+
+.footer-wrapper {
+    max-width: 100%;
+    margin: 0;
+    padding: 0 20px;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.main-footer {
+    background: linear-gradient(135deg, #0a2a5a 0%, #1E3F7B 100%);
+    color: white;
+    padding: 50px 0 20px;
+    margin-top: 80px;
+}
+
+.main-footer::before {
+    content: '';
+    top: -10px;
+    left: 0;
+    width: 100%;
+    height: 20px;
+    background: url('wave-pattern.png') repeat-x;
+}
+
+.footer-content {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 40px;
+    margin-bottom: 40px;
+}
+
+.footer-column h3 {
+    color: #FFD700;
+    font-size: 1.3rem;
+    margin-bottom: 1.5rem;
+    position: relative;
+    padding-bottom: 10px;
+}
+
+.footer-column h3::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 50px;
+    height: 2px;
+    background: #FFD700;
+}
+
+.footer-links li {
+    margin-bottom: 12px;
+    position: relative;
+    padding-left: 15px;
+}
+
+.footer-links li::before {
+    content: '•';
+    color: #FFD700;
+    position: absolute;
+    left: 0;
+}
+
+.footer-links a {
+    color: rgba(255,255,255,0.8);
+    transition: all 0.3s ease;
+    display: inline-block;
+}
+
+.footer-links a:hover {
+    color: #FFD700;
+    transform: translateX(5px);
+}
+
+.contact-info p {
+    margin-bottom: 15px;
+    display: flex;
+    align-items: flex-start;
+    color: rgba(255,255,255,0.8);
+}
+
+.contact-info i {
+    color: #FFD700;
+    margin-right: 12px;
+    margin-top: 3px;
+}
+
+.social-links {
+    display: flex;
+    gap: 15px;
+    margin-top: 20px;
+}
+
+.social-links a {
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    background: rgba(255,255,255,0.1);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    transition: all 0.3s ease;
+}
+
+.social-links a:hover {
+    background: #FFD700;
+    color: #1E3F7B;
+    transform: translateY(-3px);
+}
+
+.map-container {
+    height: 180px;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    border: 2px solid rgba(255,255,255,0.1);
+}
+
+.footer-branding {
+    display: flex;
+    align-items: center;
+}
+
+.footer-copyright {
+    text-align: center;
+    flex-grow: 1;
+}
+
+.footer-hymne a {
+    display: flex;
+    align-items: center;
+    justify-content: center; 
+    gap: 8px;
+    transition: all 0.3s ease;
+}
+
+.footer-hymne a:hover {
+    color: white;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .footer-content {
+        grid-template-columns: 1fr;
+        gap: 30px;
+    }
+    
+    .footer-bottom {
+        flex-direction: column;
+        text-align: center;
+        gap: 15px;
+    }
+    
+    .footer-branding {
+        justify-content: center;
+        margin-bottom: 15px;
+    }
+}
+
+        /* --- Hero Section --- */
+.hero-section {
+    position: relative;
+    height: 100vh;
+    min-height: 600px;
+    max-height: 800px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #fff;
+    text-align: center;
+    overflow: hidden;
+}
+
+.hero-background {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 0;
+}
+
+.hero-background img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+}
+
+/* Overlay untuk teks agar lebih terbaca */
+.hero-section::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    z-index: 1;
+}
+
+.hero-content {
+    position: relative;
+    z-index: 2;
+    max-width: 800px;
+    padding: 0 20px;
+}
+
+.hero-content h1 {
+    font-size: 3.5rem;
+    margin-bottom: 0.5rem;
+    color: #fff;
+    text-shadow: 0 2px 4px rgba(0,0,0,0.3);
+    line-height: 1.2;
+}
+
+.hero-content h2 {
+    font-size: 1.8rem;
+    margin-bottom: 1rem;
+    color: #fff;
+    font-weight: 400;
+    text-shadow: 0 2px 4px rgba(0,0,0,0.3);
+}
+
+.hero-content p {
+    font-size: 1.2rem;
+    margin-bottom: 2rem;
+    color: #fff;
+    text-shadow: 0 1px 3px rgba(0,0,0,0.3);
+}
+
+.hero-cta {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    flex-wrap: wrap;
+}
+
+@media (max-width: 768px) {
+    .hero-content h1 {
+        font-size: 2.5rem;
+    }
+    
+    .hero-content h2 {
+        font-size: 1.5rem;
+    }
+    
+    .hero-content p {
+        font-size: 1rem;
+    }
+    
+    .hero-cta {
+        flex-direction: column;
+        align-items: center;
+    }
+    
+    .hero-cta .btn {
+        width: 100%;
+        max-width: 250px;
+    }
+}
+
+        .hero-cta .btn {
+            margin: 0 10px;
+        }
+        .hero-cta .btn-primary {
+            background-color: var(--strada-blue);
+            border-color: var(--strada-blue);
+            color: #fff;
+        }
+        .hero-cta .btn-primary:hover {
+            background-color: var(--strada-blue-light);
+            border-color: var(--strada-blue-light);
+        }
+        .hero-cta .btn-secondary {
+            border-color: #fff;
+            color: #fff;
+        }
+        .hero-cta .btn-secondary:hover {
+            background-color: rgba(255,255,255,0.2);
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 0.8rem 1.8rem;
+            border-radius: 2rem;
+            font-weight: 600;
+            text-align: center;
+            transition: var(--transition);
+            border: 2px solid transparent;
+            cursor: pointer;
+            font-size: 1rem;
+        }
+
+        .btn-primary {
+            background-color: white;
+            color: var(--strada-blue);
+        }
+
+        .btn-primary:hover {
+            background-color: var(--strada-blue-light);
+            color: white;
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+        }
+
+        .btn-secondary {
+            background-color: transparent;
+            color: white;
+            border-color: white;
+        }
+
+        .btn-secondary:hover {
+            background-color: rgba(255,255,255,0.2);
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+        }
+
+        /* --- Tabbed Content --- */
+        .tab-content-wrapper {
+            background-color: #fff;
+            padding: 2.5rem;
+            border-radius: 0.8rem;
+            box-shadow: 0 0 20px rgba(0,0,0,0.06);
+            margin-bottom: 2rem;
+        }
+
+        .tab-pane {
+            display: none;
+        }
+
+        .tab-pane.active {
+            display: block;
+        }
+
+        .content-image {
+            max-width: 300px;
+            margin: 1.5rem auto;
+            border-radius: 0.8rem;
+            display: block;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+        }
+
+        .subsection-title {
+            color: var(--strada-blue-light);
+            margin-top: 2rem;
+            margin-bottom: 1rem;
+            text-align: center;
+            font-size: 1.8rem;
+        }
+
+        /* --- Responsive Design --- */
+        @media (max-width: 992px) {
+            .hamburger-menu {
+                display: flex;
+            }
+            
+            .nav-list {
+                position: fixed;
+                top: var(--header-height);
+                left: 0;
+                width: 100%;
+                background-color: var(--strada-blue);
+                flex-direction: column;
+                padding: 1rem 0;
+                transform: translateX(-100%);
+                transition: transform 0.4s ease;
+                z-index: 999;
+                height: calc(100vh - var(--header-height));
+                overflow-y: auto;
+                box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+            }
+            
+            .nav-list.active {
+                transform: translateX(0);
+            }
+            
+            .nav-item {
+                width: 100%;
+            }
+            
+            .nav-item > a {
+                border-radius: 0;
+                padding: 1rem 1.5rem;
+                border-bottom: 1px solid rgba(255,255,255,0.1);
+            }
+            
+            .submenu, .mega-menu-content {
+                position: static;
+                width: auto;
+                box-shadow: none;
+                opacity: 1;
+                visibility: visible;
+                display: none;
+                background-color: rgba(0,0,0,0.1);
+                margin-top: 0;
+                transform: none !important;
+                border-radius: 0;
+                padding: 0;
+            }
+            
+            .nav-item:hover .submenu,
+            .mega-menu-trigger:hover .mega-menu-content {
+                display: block;
+            }
+            
+            .mega-menu-content {
+                grid-template-columns: 1fr;
+                gap: 1rem;
+                padding: 1rem;
+            }
+            
+            .hero-content h1 {
+                font-size: 2.5rem;
+            }
+            
+            .hero-content h2 {
+                font-size: 1.5rem;
+            }
+        }
+
+        @media (max-width: 768px) {
+            h1 { font-size: 2.2rem; }
+            h2 { font-size: 1.8rem; }
+            h2.section-title { font-size: 2rem; }
+            
+            .hero-section {
+                height: 70vh;
+            }
+            
+            .hero-content h1 {
+                font-size: 2.2rem;
+            }
+            
+            .hero-content p {
+                font-size: 1rem;
+            }
+            
+            .tab-content-wrapper {
+                padding: 1.5rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .header-top .container {
+                flex-direction: column;
+                gap: 0.5rem;
+            }
+            
+            .date-display {
+                margin-right: 0;
+            }
+            
+            .running-text {
+                width: 100%;
+            }
+            
+            .hero-content h1 {
+                font-size: 1.8rem;
+            }
+            
+            .hero-content h2 {
+                font-size: 1.3rem;
+            }
+            
+            .btn {
+                width: 100%;
+            }
+        }
+
+        /* --- Animation Enhancements --- */
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .animated {
+            animation: fadeIn 0.6s ease-out forwards;
+        }
+
+        .delay-1 {
+            animation-delay: 0.2s;
+        }
+
+        .delay-2 {
+            animation-delay: 0.4s;
+        }
+
+        .delay-3 {
+            animation-delay: 0.6s;
+        }
+
+        /* --- Back to Top Button --- */
+        .back-to-top {
+            position: fixed;
+            bottom: 2rem;
+            right: 2rem;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background: var(--strada-blue);
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2rem;
+            cursor: pointer;
+            opacity: 0;
+            visibility: hidden;
+            transition: var(--transition);
+            z-index: 999;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+        }
+
+        .back-to-top.visible {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .back-to-top:hover {
+            background: var(--strada-blue-light);
+            transform: translateY(-5px);
+        }
+
+        .fab-button {
+        position: fixed;
+        bottom: 1.5rem;
+        right: 1.5rem;
+        width: 3.5rem;
+        height: 3.5rem;
+        background-color: #1659c5; /* biru tailwind */
+        color: white;
+        border: none;
+        border-radius: 9999px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25);
+        z-index: 999;
+        transition: background-color 0.3s, transform 0.3s;
+        }
+
+        .fab-button:hover {
+        background-color: #2563eb; /* biru lebih gelap saat hover */
+        transform: scale(1.05);
+        }
+
+        .fab-button i {
+        font-size: 1.25rem;
+        }
+
+
+    /* Tab Styles */
+.tab-nav {
+    display: flex;
+    margin-bottom: 1.5rem;
+    border-bottom: 2px solid #eee;
+}
+
+.tab-btn {
+    padding: 0.8rem 1.5rem;
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-weight: 600;
+    color: #666;
+    position: relative;
+}
+
+.tab-btn.active {
+    color: var(--strada-blue);
+}
+
+.tab-btn.active::after {
+    content: '';
+    position: absolute;
+    bottom: -2px;
+    left: 0;
+    width: 100%;
+    height: 3px;
+    background: var(--strada-blue);
+}
+
+.tab-content {
+    display: none;
+    animation: fadeIn 0.5s ease;
+}
+
+.tab-content.active {
+    display: block;
+}
+
+/* News Grid Styles */
+.news-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+    margin-bottom: 2rem;
+}
+
+.news-card {
+    background: white;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+    transition: transform 0.3s;
+}
+
+.news-card:hover {
+    transform: translateY(-5px);
+}
+
+.news-card img {
+    width: 100%;
+    height: 180px;
+    object-fit: cover;
+}
+
+.news-meta {
+    display: flex;
+    justify-content: space-between;
+    padding: 0.8rem;
+    font-size: 0.9rem;
+    color: #666;
+}
+
+.news-card h3 {
+    padding: 0 1rem;
+    margin-bottom: 0.5rem;
+    color: var(--strada-blue);
+}
+
+.news-card p {
+    padding: 0 1rem 1rem;
+    color: #555;
+}
+
+.read-more {
+    display: block;
+    padding: 1rem;
+    text-align: right;
+    color: var(--strada-blue);
+    font-weight: 600;
+    text-decoration: none;
+}
+
+.lainlain-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr); /* Dua kolom */
+    gap: 2rem;
+    margin-bottom: 2rem;
+}
+
+@media (max-width: 900px) {
+    .lainlain-grid {
+        grid-template-columns: 1fr; /* Satu kolom di mobile */
+    }
+}
+/* Lain-lain Grid Styles */
+.lainlain-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+    margin-bottom: 2rem;
+}
+
+.lainlain-card {
+    background: white;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+    transition: transform 0.3s;
+}
+
+.lainlain-card:hover {
+    transform: translateY(-5px);
+}
+
+.lainlain-card img {
+    width: 100%;
+    height: 180px;
+    object-fit: cover;
+}
+
+.lainlain-meta {
+    display: flex;
+    justify-content: space-between;
+    padding: 0.8rem;
+    font-size: 0.9rem;
+    color: #666;
+}
+
+.lainlain-card h3 {
+    padding: 0 1rem;
+    margin-bottom: 0.5rem;
+    color: var(--strada-blue);
+}
+
+.lainlain-card p {
+    padding: 0 1rem 1rem;
+    color: #555;
+}
+
+.lainlain-more {
+    display: block;
+    padding: 1rem;
+    text-align: right;
+    color: var(--strada-blue);
+    font-weight: 600;
+    text-decoration: none;
+}
+
+/* Agenda Styles */
+.agenda-grid, .lainlain-grid {
+    display: grid;
+    gap: 2rem;
+}
+
+.agenda-card, .lainlain-card {
+    background: white;
+    border-radius: 8px;
+    padding: 1.5rem;
+    box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+}
+
+.agenda-header, .lainlain-header {
+    margin-bottom: 1rem;
+    padding-bottom: 1rem;
+    border-bottom: 1px solid #eee;
+}
+
+.agenda-meta, .lainlain-meta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+    font-size: 0.9rem;
+    color: #666;
+    margin: 0.5rem 0;
+}
+
+.view-count {
+    font-size: 0.9rem;
+    color: #666;
+}
+
+/* Add to your existing CSS */
+.agenda-table table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 1.5rem 0;
+}
+
+.agenda-table th {
+    background-color: var(--strada-blue);
+    color: white;
+    padding: 0.8rem;
+    text-align: left;
+}
+
+.agenda-table td {
+    padding: 0.8rem;
+    border-bottom: 1px solid #eee;
+}
+
+.agenda-table tr:hover {
+    background-color: #f5f9ff;
+}
+
+.btn-print {
+    background: var(--strada-blue-light);
+    color: white;
+    border: none;
+    padding: 0.5rem 1rem;
+    border-radius: 4px;
+    cursor: pointer;
+    margin-top: 0.5rem;
+    transition: all 0.3s;
+}
+
+.btn-print:hover {
+    background: var(--strada-blue);
+}
+
+/* Comment Section */
+.comment-section {
+    margin-top: 2rem;
+    padding-top: 1.5rem;
+    border-top: 1px solid #eee;
+}
+
+.comment-list {
+    margin-bottom: 2rem;
+}
+
+.comment {
+    margin-bottom: 1.5rem;
+    padding-bottom: 1.5rem;
+    border-bottom: 1px solid #f0f0f0;
+}
+
+.comment-author {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 0.5rem;
+}
+
+.comment-author strong {
+    color: var(--strada-blue);
+}
+
+.comment-content p {
+    margin: 0;
+    color: #555;
+}
+
+.comment-form {
+    margin-top: 2rem;
+}
+
+.form-group {
+    margin-bottom: 1rem;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 0.5rem;
+    font-weight: 600;
+}
+
+.form-group input,
+.form-group textarea {
+    width: 100%;
+    padding: 0.8rem;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    font-family: inherit;
+}
+
+.btn-submit {
+    background: var(--strada-blue);
+    color: white;
+    border: none;
+    padding: 0.8rem 1.5rem;
+    border-radius: 4px;
+    cursor: pointer;
+    font-weight: 600;
+    transition: background 0.3s;
+}
+
+.btn-submit:hover {
+    background: var(--strada-blue-light);
+}
+
+.view-all {
+    text-align: center;
+    margin-top: 2rem;
+}
+
+.btn-view-all {
+    display: inline-block;
+    padding: 0.8rem 1.5rem;
+    background: var(--strada-blue);
+    color: white;
+    border-radius: 4px;
+    text-decoration: none;
+    font-weight: 600;
+    transition: background 0.3s;
+}
+
+.btn-view-all:hover {
+    background: var(--strada-blue-light);
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+@media (max-width: 768px) {
+    .news-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .agenda-table {
+        font-size: 0.9rem;
+    }
+    
+    .agenda-table th, 
+    .agenda-table td {
+        padding: 0.5rem;
+    }
+}
+
+    /* Pengumuman Section */
+    .announcement-list {
+        display: grid;
+        gap: 1.5rem;
+        margin-bottom: 2rem;
+    }
+
+    .announcement-item {
+        background: white;
+        border-left: 4px solid var(--strada-blue);
+        padding: 1.5rem;
+        box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        transition: transform 0.3s;
+    }
+
+    .announcement-item.highlight {
+        border-left-color: var(--strada-gold);
+        background: #fff9e6;
+    }
+
+    .announcement-header {
+        display: flex;
+        justify-content: space-between;
+        margin-bottom: 0.5rem;
+        font-size: 0.9rem;
+        color: #666;
+    }
+
+    .announcement-category {
+        background: var(--strada-blue-light);
+        color: white;
+        padding: 0.2rem 0.8rem;
+        border-radius: 1rem;
+        font-size: 0.8rem;
+    }
+
+    .announcement-title {
+        color: var(--strada-blue);
+        margin-bottom: 0.5rem;
+    }
+
+    .announcement-content {
+        color: #555;
+        margin-bottom: 1rem;
+    }
+
+    .read-more {
+        color: var(--strada-blue);
+        font-weight: 600;
+        text-decoration: none;
+        display: inline-block;
+    }
+
+    /* PPDB Banner */
+    .ppdb-banner {
+            background: linear-gradient(135deg, var(--strada-blue) 0%, var(--strada-blue-light) 100%);
+            color: white;
+            padding: 2rem;
+            border-radius: 8px;
+            margin-top: 2rem;
+            text-align: center;
+        }
+
+    .ppdb-banner h3 {
+        color: white;
+        margin-bottom: 0.5rem;
+    }
+
+    .btn-ppdb {
+        display: inline-block;
+        background: var(--strada-gold);
+        color: var(--strada-blue);
+        padding: 0.8rem 2rem;
+        border-radius: 2rem;
+        font-weight: 600;
+        margin-top: 1rem;
+        text-decoration: none;
+        transition: all 0.3s;
+    }
+
+    .btn-ppdb:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+    }
+    
+    /* Style untuk Events Section */
+.events-section {
+  position: relative;
+}
+
+.events-carousel {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 30px;
+  margin-top: 40px;
+}
+
+.event-card {
+  background: white;
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+  transition: transform 0.3s;
+  position: relative;
+}
+
+.event-card:hover {
+  transform: translateY(-10px);
+}
+
+.event-badge {
+  position: absolute;
+  top: 15px;
+  right: 15px;
+  background: var(--strada-gold);
+  color: var(--strada-blue);
+  padding: 5px 10px;
+  border-radius: 20px;
+  font-weight: bold;
+  font-size: 0.8rem;
+  z-index: 2;
+}
+
+.event-card img {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+}
+
+.event-content {
+  padding: 20px;
+}
+
+.event-date {
+  color: var(--strada-blue);
+  margin: 10px 0;
+  font-size: 0.9rem;
+}
+
+.event-desc {
+  color: #555;
+  margin-bottom: 20px;
+  font-size: 0.95rem;
+}
+
+.event-detail-btn {
+  background: var(--strada-blue);
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background 0.3s;
+  width: 100%;
+  font-weight: 600;
+}
+
+.event-detail-btn:hover {
+  background: var(--strada-blue-light);
+}
+
+/* Modal Styles */
+.event-modal {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0,0,0,0.8);
+  z-index: 1000;
+  overflow-y: auto;
+}
+
+.modal-content {
+  background: white;
+  margin: 50px auto;
+  padding: 30px;
+  border-radius: 10px;
+  max-width: 800px;
+  position: relative;
+  animation: modalFadeIn 0.3s;
+}
+
+@keyframes modalFadeIn {
+  from { opacity: 0; transform: translateY(-50px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.close-modal {
+  position: absolute;
+  top: 15px;
+  right: 20px;
+  font-size: 28px;
+  cursor: pointer;
+  color: #aaa;
+}
+
+.close-modal:hover {
+  color: #333;
+}
+
+.event-details {
+  margin-top: 20px;
+}
+
+.event-details h4 {
+  color: var(--strada-blue);
+  margin: 15px 0 10px;
+}
+
+.contact-person {
+  background: #f5f5f5;
+  padding: 15px;
+  border-radius: 5px;
+  margin: 15px 0;
+}
+
+.contact-person i {
+  color: var(--strada-gold);
+  margin-right: 8px;
+}
+
+.register-btn {
+  display: inline-block;
+  background: var(--strada-gold);
+  color: var(--strada-blue);
+  padding: 12px 25px;
+  border-radius: 5px;
+  text-decoration: none;
+  font-weight: bold;
+  margin-top: 15px;
+  transition: all 0.3s;
+}
+
+.register-btn:hover {
+  background: #e6c300;
+  transform: translateY(-2px);
+}
+
+.note {
+  font-style: italic;
+  color: #666;
+  margin-top: 20px;
+}
+.highlight-card {
+    background: white;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+    transition: transform 0.3s ease;
+    display: flex;
+    flex-direction: column;
+}
+
+.highlight-card:hover {
+    transform: translateY(-10px);
+}
+
+.highlight-image {
+    aspect-ratio: 1 / 1; /* ⬅️ bikin kotak */
+    overflow: hidden;
+}
+
+.highlight-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.5s ease;
+}
+
+.highlight-card:hover .highlight-image img {
+    transform: scale(1.05);
+}
+
+.highlight-content {
+    padding: 20px;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 8px;
+}
+
+.highlight-content h3 {
+    color: var(--strada-blue);
+    margin-bottom: 5px;
+}
+
+.position {
+    color: var(--strada-gold);
+    font-weight: 600;
+    margin-bottom: 5px;
+}
+
+blockquote {
+    font-style: italic;
+    color: #555;
+    padding: 0 20px;
+    margin: 0;
+}
+
+blockquote::before,
+blockquote::after {
+    content: '"';
+    font-size: 1.5em;
+    color: var(--strada-gold);
+}
+
+.motto-card {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(135deg, var(--strada-blue) 0%, var(--strada-blue-light) 100%);
+    color: white;
+}
+
+.motto-card h3,
+.motto-card p,
+.motto-card blockquote {
+    color: white;
+}
+
+.motto-icon {
+    font-size: 2rem;
+    color: var(--strada-gold);
+    margin-bottom: 15px;
+}
+
+@media (max-width: 768px) {
+    .highlight-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+.position {
+    color: var(--strada-gold);
+    font-weight: 600;
+    margin-bottom: 15px;
+}
+
+blockquote::before, blockquote::after {
+    content: '"';
+    font-size: 1.5em;
+    color: var(--strada-gold);
+}
+
+@media (max-width: 768px) {
+    .highlight-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+.highlight-swiper {
+  padding-top: 40px;
+  padding-bottom: 40px;
+}
+
+.swiper-slide {
+  height: auto;
+}
+
+.swiper-button-next::after,
+.swiper-button-prev::after {
+  content: '›';
+  font-family: 'Arial', sans-serif;
+  font-size: 32px;
+  font-weight: bold;
+  color: var(--strada-blue);
+  line-height: 0;
+}
+
+.swiper-button-prev::after {
+  content: '‹';
+}
+
+/* Tambahan efek hover interaktif */
+.hover-quote .quote-box {
+  opacity: 0;
+  max-height: 0;
+  overflow: hidden;
+  transition: all 0.4s ease;
+  font-style: italic;
+  color: #555;
+  margin-top: 10px;
+}
+
+.hover-quote:hover .quote-box {
+  opacity: 1;
+  max-height: 100px;
+}
+
+
+.view-all-staff {
+    text-align: center;
+    margin-top: 40px;
+}
+
+.view-all-btn {
+    display: inline-flex;
+    align-items: center;
+    padding: 12px 25px;
+    background: var(--strada-blue);
+    color: white;
+    border-radius: 30px;
+    font-weight: 600;
+    transition: all 0.3s ease;
+}
+
+.view-all-btn:hover {
+    background: var(--strada-blue-light);
+    transform: translateY(-3px);
+    box-shadow: 0 5px 15px rgba(30, 63, 123, 0.2);
+}
+
+.view-all-btn i {
+    margin-left: 8px;
+    transition: transform 0.3s ease;
+}
+
+.view-all-btn:hover i {
+    transform: translateX(5px);
+}
+    </style>
+
+<head>
+    <!-- Swiper CSS -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+<!-- Swiper JS -->
+<script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+
+<!-- Header Top with Date and News Ticker -->
+    <div class="header-top">
+        <div class="container">
+            <div class="date-display">
+                <span id="current-date"></span>
+            </div>
+            <div class="running-text">
+                <ul id="akademinews" class="news-tickers">
+                    <li>Selamat datang di website SMA Strada Bhakti Wiyata. Informasi terbaru di SMA Strada Bhakti Wiyata dapat dilihat di bagian <strong>pengumuman</strong>.</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+   <!-- Main Header with Navigation -->
+    <header class="main-header">
+        <nav class="main-nav">
+            <div class="container">
+                <ul class="nav-list">
+                    <li class="nav-item has-submenu">
+                        <a href="profil.html">Profil <i class="fas fa-caret-down"></i></a>
+                        <ul class="submenu">
+                            <li><a href="profil.html#sambutan-kepala-sekolah-content">Sambutan Kepala Sekolah</a></li>
+                            <li><a href="profil.html#sejarah-content">Sejarah</a></li>
+                            <li><a href="profil.html#visi-misi-content">Visi & Misi</a></li>
+                            <li><a href="profil.html#nilai-dasar-content">Nilai Dasar</a></li>
+                            <li><a href="profil.html#motto-content">Motto</a></li>
+                            <li><a href="profil.html#sarana-prasarana-content">Sarana & Prasarana</a></li>
+                            <li><a href="profil.html#struktur-organisasi-content">Struktur Organisasi</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item"><a href="prestasi.html">Prestasi</a></li>
+                    <li class="nav-item"><a href="program-sekolah.html">Program Sekolah</a></li>
+                    <li class="nav-item"><a href="galeri.html">Galeri</a></li>
+                    <li class="nav-item"><a href="pendaftaran.html">Pendaftaran</a></li>
+                    <li class="nav-item"><a href="kontak.html">Kontak</a></li>
+                    <li class="nav-item"><a href="sekolah.html">Sekolah</a></li>
+                    <li class="nav-item has-submenu mega-menu-trigger">
+                        <a href="#"> Web Sekolah <i class="fas fa-caret-down"></i></a>
+                        <div class="mega-menu-content">
+                            <div class="mega-menu-column">
+                                <h3>TK Strada</h3>
+                                <ul>
+                                    <li><a href="#">Bhakti Nusa</a></li>
+                                    <li><a href="#">Bhakti Utama</a></li>
+                                    <li><a href="#">Bhakti Wiyata</a></li>
+                                    <li><a href="#">Bina Sejahtera</a></li>
+                                    <li><a href="#">Budi Luhur</a></li>
+                                </ul>
+                            </div>
+                            <div class="mega-menu-column">
+                                <h3>SD Strada</h3>
+                                <ul>
+                                    <li><a href="#">Bhakti Nusa</a></li>
+                                    <li><a href="#">Bhakti Utama</a></li>
+                                    <li><a href="#">Bhakti Wiyata I</a></li>
+                                    <li><a href="#">Bhakti Wiyata II</a></li>
+                                    <li><a href="#">Budi Luhur I</a></li>
+                                </ul>
+                            </div>
+                            <div class="mega-menu-column">
+                                <h3>SMP Strada</h3>
+                                <ul>
+                                    <li><a href="#">Bhakti Mulia</a></li>
+                                    <li><a href="#">Bhakti Nusa</a></li>
+                                    <li><a href="#">Bhakti Utama</a></li>
+                                    <li><a href="#">Bhakti Wiyata</a></li>
+                                    <li><a href="#">Budi Luhur</a></li>
+                                </ul>
+                            </div>
+                            <div class="mega-menu-column">
+                                <h3>SMA Strada</h3>
+                                <ul>
+                                    <li><a href="index.html" class="active">Bhakti Wiyata</a></li>
+                                    <li><a href="#">Santo Thomas Aquino</a></li>
+                               </ul>
+                            </div>
+                            <div class="mega-menu-column">
+                                <h3>SMK Strada</h3>
+                                <ul>
+                                    <li><a href="#">Budi Luhur</a></li>
+                                    <li><a href="#">Daan Mogot</a></li>
+                                    <li><a href="#">SMK Strada I</a></li>
+                                    <li><a href="#">SMK Strada II</a></li>
+                                    <li><a href="#">SMK Strada III</a></li>
+                                </ul>
+                            </div>
+                            <div class="mega-menu-column">
+                                <h3>Kantor</h3>
+                                <ul>
+                                    <li><a href="#">Perkumpulan Strada</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </li>
+                </ul>                
+
+                <div class="nav-right">
+                    <a href="#" class="search-icon" aria-label="Cari"><i class="fas fa-search"></i></a>
+                    <button class="hamburger-menu" aria-label="Menu">
+                        <span class="bar"></span>
+                        <span class="bar"></span>
+                        <span class="bar"></span>
+                    </button>
+
+                <div class="logo">
+                     <img src="asset/Logo.jpg" alt="Logo SMA Strada Bhakti Wiyata">
+                </div>
+                    </div>
+                </div>
+            </div>
+        </nav>
+    </header>
+</head>
+<body>
+ <div class="content-wrapper">
+    <!-- Hero Section -->
+<section class="hero-section">
+    <div class="hero-background">
+        <img src="asset/background.jpeg" alt="Background Image" />
+    </div>
+    <div class="hero-content container">
+        <h2>Selamat Datang di</h2>
+        <h1>SMA Strada Bhakti Wiyata</h1>
+        <p>Bermutu, Berkarakter, Berprestasi</p>
+        <div class="hero-cta">
+            <a href="#pendaftaran.html" class="btn btn-primary">Daftar Sekarang</a>
+            <a href="#profil-sekolah.html" class="btn btn-secondary">Pelajari Lebih Lanjut</a>
+        </div>
+    </div>
+</section>
+    
+    
+<section id="berita-agenda" class="section-padded">
+    <div class="container">
+        <h2 class="section-title">Informasi Terkini</h2>
+        
+        <!-- Tab Navigasi -->
+        <div class="tab-nav">
+            <button class="tab-btn active" onclick="openTab('berita')">Berita</button>
+            <button class="tab-btn" onclick="openTab('agenda')">Agenda</button>
+            <button class="tab-btn" onclick="openTab('lain-lain')">Lain-Lain</button>
+        </div>
+
+        <!-- Konten Berita -->
+        <div id="berita" class="tab-content active">
+            <div class="news-grid">
+                <!-- Item Berita 1 -->
+                <article class="news-card">
+                    <img src="https://live.staticflickr.com/65535/53672799428_6f15a96c57_c.jpg" alt="Live-in">
+                    <div class="news-meta">
+                        <span class="news-date">23 April 2024</span>
+                        <span class="news-category">Kegiatan</span>
+                    </div>
+                    <h3>Live in di KPTT Salatiga: Keterampilan dan Kepedulian dalam Pertanian Berkelanjutan</h3>
+                    <p>Beberapa perwakilan sekolah SMA/SMK Strada dari Bekasi, Jakarta, dan Tanggerang dalam mengikuti kegiatan Live In di KPPT Salatiga.....</p>
+                    <a href="berita-detail.html?id=1" class="read-more">Baca Selengkapnya →</a>
+                </article>
+
+                <!-- Item Berita 2 -->
+                <article class="news-card">
+                    <img src="https://live.staticflickr.com/65535/53673056004_4018bc37e0_c.jpg" alt="Study Tour">
+                    <div class="news-meta">
+                        <span class="news-date">23 April 2024</span>
+                        <span class="news-category">Kegiatan</span>
+                    </div>
+                    <h3>Siswa SMA Strada Bhakti Wiyata Menyelami Sejarah dan Keindahan Alam dalam Study Tour ke Kota Bogor</h3>
+                    <p>Hari Jumat menjadi momen berharga bagi siswa SMA Strada Bhakti Wiyata saat mereka melaksanakan Study Tour ke Kota Bogor.....</p>
+                    <a href="berita-detail.html?id=2" class="read-more">Baca Selengkapnya →</a>
+                </article>
+            </div>
+            <div class="view-all">
+                <a href="semua-berita.html" class="btn-view-all">Lihat Semua Berita →</a>
+            </div>
+        </div>
+    
+        <!-- Konten Agenda -->
+        <div id="agenda" class="tab-content">
+            <div class="agenda-grid">
+                <!-- Agenda 1 -->
+                <article class="agenda-card">
+                    <div class="agenda-header">
+                        <h3>Agenda Bulan Juni 2025</h3>
+                        <div class="agenda-meta">
+                            <span>by admin517@gmail.com</span>
+                            <span> Jun 4, 2025</span>
+                            <span>Agenda</span>
+                            <span>2 comments</span>
+                        </div>
+                        <div class="view-count">Dilihat: 135</div>
+                         <button class="btn-print"><i class="fas fa-print"></i> Cetak Agenda</button>
+                    </div>
+                    <div class="agenda-content">
+                        <p>Hallo BeWinners,</p>
+                        <p>Selamat menyambut tahun ajaran baru 2025 / 2026. Tahun ajaran baru, semangat baru. Yuk kita intip kegiatan kita di Bulan Juni ini ya</p>
+                        
+                        <div class="agenda-table">
+                            <table>
+                                <thead>
+                                    <tr>
+                                        <th>WAKTU</th>
+                                        <th>NAMA KEGIATAN</th>
+                                        <th>PESERTA</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                     <td>1 Juni 2025</td>
+                                    <td>Hari Lahir Pancasila</td>
+                                    <td>Guru & Seluruh Siswa-Siswi kelas X, XI</td>
+                                </tr>
+                                    <td>2–11 Juni 2025</td>
+                                    <td>Asesmen Sumatif Akhir Tahun</td>
+                                    <td>Seluruh Siswa-Siswi kelas X, XI</td>
+                                </tr>
+                                <tr>
+                                    <td>7–9 Juni 2025</td>
+                                    <td>Libur Hari Raya Idul Adha</td>
+                                    <td>Guru & Seluruh Siswa-Siswi kelas X, XI</td>
+                                </tr>
+                                <tr>
+                                    <td>13 Juni 2025</td>
+                                    <td>Wisuda Kelas XII</td>
+                                    <td>Seluruh Bapak/Ibu Guru, Karyawan, dan Siswa-Siswi kelas XII</td>
+                                </tr>
+                                <tr>
+                                    <td>18 Juni 2025</td>
+                                    <td>Rapat Kenaikan Kelas</td>
+                                    <td>Guru & Seluruh Siswa-Siswi kelas X, XI</td>
+                                </tr>
+                                <tr>
+                                    <td>21 Juni 2025</td>
+                                    <td>Pembagian Rapor Kenaikan Kelas</td>
+                                    <td>Guru & Seluruh Siswa-Siswi kelas X, XI</td>
+                                </tr>
+                                <tr>
+                                    <td>23–30 Juni 2025</td>
+                                    <td>Libur Akhir Tahun Ajaran 2024/2025</td>
+                                    <td>Guru & Seluruh Siswa-Siswi kelas X, XI</td>
+                                </tr>
+                            </tbody>
+                            </table>
+                        </div>
+                        
+                        <p>Semoga di Bulan Juni ini agenda kita berjalan dengan lancar ya. Tetap Semangat!</p>
+                    </div>
+                    
+                    <!-- Comment Section -->
+                    <div class="comment-section">
+                        <h4>2 Komentar</h4>
+                        <div class="comment-list">
+                            <div class="comment">
+                                <div class="comment-author">
+                                    <strong>Joshua Raja</strong>
+                                    <span>Jun 20, 2025</span>
+                                </div>
+                                <div class="comment-content">
+                                    <p>Informasi yang bermanfaat, terima kasih admin!</p>
+                                </div>
+                            </div>
+                            <div class="comment">
+                                <div class="comment-author">
+                                    <strong>Ursula Christina</strong>
+                                    <span>Jun 19, 2025</span>
+                                </div>
+                                <div class="comment-content">
+                                    <p>Wisuda juga akhirnya</p>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <form class="comment-form">
+                            <h4>Tinggalkan Komentar</h4>
+                            <div class="form-group">
+                                <label for="name">Nama</label>
+                                <input type="text" id="name" name="name" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="email">Email</label>
+                                <input type="email" id="email" name="email" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="comment">Komentar</label>
+                                <textarea id="comment" name="comment" rows="4" required></textarea>
+                            </div>
+                            <button type="submit" class="btn-submit">Kirim Komentar</button>
+                        </form>
+                    </div>
+                    
+                    <a href="agenda-detail.html?id=1" class="read-more">Lihat Detail →</a>
+                </article>
+                
+                <!-- Agenda 2 -->
+                <article class="agenda-card">
+                    <div class="agenda-header">
+                        <h3>Agenda Bulan Juli 2025</h3>
+                        <div class="agenda-meta">
+                            <span>by admin517@gmail.com</span>
+                            <span>Mei 1, 2025</span>
+                            <span>Agenda</span>
+                            <span>0 comments</span>
+                        </div>
+                        <div class="view-count">Dilihat: 100</div>
+                    </div>
+                    <div class="agenda-content">
+                        <p>Agenda penting untuk bulan Juli 2025 akan segera diumumkan! Stay tuned terus BeWinners!</p>
+                        <a href="agenda-detail.html?id=2" class="read-more">Lihat Detail →</a>
+                    </div>
+                </article>
+            </div>
+            <div class="view-all">
+                <a href="semua-agenda.html" class="btn-view-all">Lihat Semua Agenda →</a>
+            </div>
+        </div>
+
+        <!-- Konten Lain-Lain -->
+<div id="lain-lain" class="tab-content">
+    <div class="lainlain-grid">
+        <!-- Item Lain-lain 1 -->
+                <article class="lain-lain-card">
+                    <img src="https://bhaktiwiyata.smastrada.sch.id/wp-content/uploads/sites/5/2025/03/AGEDNDA-DLL-1500-%C3%97-750-px-1-1080x500.png" alt="Seminar">
+                    <div class="news-meta">
+                        <span class="news-date">7 Maret 2025</span>
+                        <span class="news-category">Kegiatan</span>
+                    </div>
+                     <h3>Seminar Adi Wicara "Eloknya Bahasa Indonesiaku"</h3>
+                    <p>Seminar ini menghadirkan narasumber dari Universitas Atma Jaya dan membahas pentingnya pelestarian bahasa Indonesia...</p>
+                    <a href="lainlain-detail.html?id=1" class="read-more">Lihat Detail →</a>
+                </article>
+
+                <!-- Item Lain-lain 2 -->
+                <article class="lain-lain-card">
+                    <img src="https://bhaktiwiyata.smastrada.sch.id/wp-content/uploads/sites/5/2025/01/Copy-of-UNTUK-IG-3-FEED-WEB-1500-%C3%97-750-px-3-1-1080x500.png" alt="Retret">
+                    <div class="news-meta">
+                        <span class="news-date">15 Februari 2025</span>
+                        <span class="news-category">Kegiatan</span>
+                    </div>
+                    <h3>Retret Kelas XII Gel. 1</h3>
+                    <p>SMA Strada Bhakti Wiyata baru-baru ini mengadakan kegiatan retret gelombang pertama yang diikuti oleh siswa-siswi kelas 12.....</p>
+                    <a href="lainlain-detail.html?id=2" class="read-more">Lihat Detail →</a>
+                </article>
+            </div>
+    <div class="view-all">
+        <a href="semua-lainlain.html" class="btn-view-all">Lihat Semua Lain-Lain →</a>
+    </div>
+</div>
+
+<section class="events-section" style="background-color: var(--bg-light-blue); padding: 60px 0;">
+  <div class="container">
+    <h2 class="section-title">Kegiatan & Event Mendatang</h2>
+    
+    
+    <!-- Carousel Container -->
+    <div class="events-carousel">
+      <!-- Event 1 - Lomba -->
+      <div class="event-card">
+        <div class="event-badge">Lomba</div>
+        <img src="https://assets-a2.kompasiana.com/items/album/2025/06/18/20130430-debat-bahasa-inggris-tingat-sma-se-samarinda-9414-68522089ed641556a428b612.jpg?t=o&v=780" alt="Poster Lomba">
+        <div class="event-content">
+          <h3>Lomba Debat Bahasa Inggris 2025</h3>
+          <p class="event-date"><i class="fas fa-calendar-alt"></i> 15 Agustus 2025</p>
+          <p class="event-desc">Lomba debat antar sekolah se-Jabodetabek dengan tema "Global Citizenship"...</p>
+          <button class="event-detail-btn">Detail & Pendaftaran</button>
+        </div>
+        
+        <!-- Modal untuk Lomba -->
+        <div class="event-modal">
+          <div class="modal-content">
+            <span class="close-modal">&times;</span>
+            <h3>Lomba Debat Bahasa Inggris 2025</h3>
+            <p><strong>Tanggal:</strong> 15 Agustus 2025</p>
+            <p><strong>Tempat:</strong> Aula SMA Strada Bhakti Wiyata</p>
+            <div class="event-details">
+              <h4>Persyaratan:</h4>
+              <ul>
+                <li>Tim terdiri dari 3 siswa</li>
+                <li>Membawa surat keterangan dari sekolah</li>
+                <li>Biaya pendaftaran Rp 150.000 per tim</li>
+              </ul>
+              
+              <h4>Contact Person:</h4>
+              <div class="contact-person">
+                <p><i class="fas fa-user"></i> Bu Ani (0812-3456-7890)</p>
+                <p><i class="fas fa-user"></i> Pak Budi (0813-4567-8901)</p>
+              </div>
+              
+              <a href="https://forms.gle/examplelink" class="register-btn" target="_blank">
+                Daftar via Google Form
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <!-- Event 2 - Seminar -->
+      <div class="event-card">
+        <div class="event-badge">Seminar</div>
+        <img src="https://haisawit.co.id/images/blogs/1729329369.jpg" alt="Poster Seminar">
+        <div class="event-content">
+          <h3>Seminar Karier Teknologi</h3>
+          <p class="event-date"><i class="fas fa-calendar-alt"></i> 25 September 2025</p>
+          <p class="event-desc">Belajar langsung dari praktisi industri teknologi tentang peluang karier masa depan...</p>
+          <button class="event-detail-btn">Detail Acara</button>
+        </div>
+        
+        <!-- Modal untuk Seminar -->
+        <div class="event-modal">
+          <div class="modal-content">
+            <span class="close-modal">&times;</span>
+            <h3>Seminar Karier Teknologi</h3>
+            <p><strong>Tanggal:</strong> 25 September 2025 | 09.00 - 12.00 WIB</p>
+            <p><strong>Tempat:</strong> Ruang Multimedia SMA Strada Bhakti Wiyata</p>
+            <div class="event-details">
+              <h4>Pembicara:</h4>
+              <ul>
+                <li>Dr. Andi Wijaya (CTO TechCompany)</li>
+                <li>Sarah Tan (Data Scientist)</li>
+              </ul>
+              
+              <h4>Materi:</h4>
+              <ol>
+                <li>Trend teknologi 2025-2030</li>
+                <li>Keterampilan yang dibutuhkan industri</li>
+                <li>Sharing pengalaman kerja di bidang IT</li>
+              </ol>
+              
+              <p class="note">*Acara gratis untuk siswa SMA Strada</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <!-- Event 3 - Acara -->
+      <div class="event-card">
+        <div class="event-badge">Acara</div>
+        <img src="https://static.promediateknologi.id/crop/0x0:0x0/0x0/webp/photo/p2/67/2024/06/06/20240606_202722-1564457492.jpg" alt="Poster Acara">
+        <div class="event-content">
+          <h3>Pentas Seni Tahunan</h3>
+          <p class="event-date"><i class="fas fa-calendar-alt"></i> 10 November 2025</p>
+          <p class="event-desc">Pagelaran seni dan budaya menampilkan bakat siswa SMA Strada Bhakti Wiyata...</p>
+          <button class="event-detail-btn">Detail Acara</button>
+        </div>
+        
+        <!-- Modal untuk Acara -->
+        <div class="event-modal">
+          <div class="modal-content">
+            <span class="close-modal">&times;</span>
+            <h3>Pentas Seni Tahunan 2025</h3>
+            <p><strong>Tanggal:</strong> 10 November 2025 | 18.00 - 22.00 WIB</p>
+            <p><strong>Tempat:</strong> Lapangan SMA Strada Bhakti Wiyata</p>
+            <div class="event-details">
+              <h4>Penampilan:</h4>
+              <ul>
+                <li>Band Siswa</li>
+                <li>Tari Tradisional</li>
+                <li>Teater Musikal</li>
+                <li>Fashion Show</li>
+              </ul>
+              
+              <h4>Tiket:</h4>
+              <p>Rp 25.000 (siswa) | Rp 50.000 (umum)</p>
+              <p>Tersedia di sekretariat OSIS setiap jam istirahat</p>
+              
+              <h4>Contact Person:</h4>
+              <p><i class="fas fa-user"></i> Ketua Panitia (0815-6789-0123)</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="highlight-section">
+    <div class="container">
+        <h2 class="section-title">Komunitas Pendidikan Kami</h2>
+        
+        <div class="swiper highlight-swiper">
+            <div class="swiper-wrapper">
+                <div class="swiper-slide highlight-card">
+                <div class="highlight-image">
+                    <img src="asset/kepala-sekolah.jpeg" alt="kepala sekolah">
+                </div>
+                <div class="highlight-content hover-quote">
+                    <h3>Prima</h3>
+                    <p class="position">Kepala Sekolah</p>
+                    <div class="quote-box">
+                     <blockquote>Pendidikan adalah seni membentuk manusia yang utuh, bukan hanya pintar tapi juga berkarakter.</blockquote>
+                    </div>
+                </div>
+                </div>
+
+                <!-- Guru Matematika -->
+                <div class="swiper-slide highlight-card">
+                <div class="highlight-image">
+                    <img src="asset/sisca-mtk.jpg" alt="Guru Matematika">
+                </div>
+                <div class="highlight-content hover-quote">
+                    <h3>Fransisca Romana Andriyati, S.Pd.</h3>
+                    <p class="position">Guru Matematika & Wali Kelas 12-3</p>
+                    <div class="quote-box">
+                    <blockquote>Matematika bukan soal angka, tapi tentang cara berpikir logis.</blockquote>
+                </div>
+            </div>
+        </div>
+                <!-- Guru Informatika -->
+                <div class="swiper-slide highlight-card">
+                <div class="highlight-image">
+                    <img src="asset/esther-informatika.jpg" alt="Guru Informatika">
+                </div>
+                <div class="highlight-content hover-quote">
+                    <h3>Esther Roui Boursepe, S.Kom.</h3>
+                    <p class="position">Guru Informatika & Koordinator Web Sekolah</p>
+                    <div class="quote-box">
+                    <blockquote>Teknologi hanyalah alat, hati yang membuatnya bermanfaat.</blockquote>
+                </div>
+                </div>
+        </div>
+
+                <!-- Guru Bahasa Inggris -->
+                <div class="swiper-slide highlight-card">
+                <div class="highlight-image">
+                    <img src="asset/mr-adhe.jpg" alt="Guru Bahasa Inggris">
+                </div>
+                <div class="highlight-content hover-quote">
+                    <h3>Adhe John, S.Pd.</h3>
+                    <p class="position">Guru Bahasa Inggris & Koordinator Literasi</p>
+                    <div class="quote-box">
+                    <blockquote>Bahasa Inggris bukan hanya pelajaran, tapi jembatan ke dunia.</blockquote>
+                </div>
+                </div>
+            </div>
+
+                <!-- Staff Tata Usaha -->
+                <div class="swiper-slide highlight-card">
+                <div class="highlight-image">
+                    <img src="asset/indra-tu.jpg" alt="Staff TU">
+                </div>
+                <div class="highlight-content hover-quote">
+                    <h3>Y. Indra Widodo</h3>
+                    <p class="position">Tata Usaha Administrasi</p>
+                    <div class="quote-box">
+                    <blockquote>Kerapihan data adalah kunci kelancaran sekolah.</blockquote>
+                </div>
+                </div>
+            </div>
+
+                <!-- Motto Sekolah -->
+                 <div class="swiper-slide highlight-card">
+                    <div class="highlight-content">
+                        <div class="motto-icon">
+                            <i class="fas fa-quote-left"></i>
+                        </div>
+                        <h3>Motto Kami</h3>
+                        <blockquote>"Non Scholae, Sed Vitae Discimus"</blockquote>
+                        <p>Kita belajar bukan untuk sekolah, tapi untuk hidup</p>
+                    </div>
+                </div>
+            </div>
+                <!-- 🔽 Tambahkan panah navigasi -->
+  <div class="swiper-button-next"></div>
+  <div class="swiper-button-prev"></div>
+
+  <!-- Pagination opsional -->
+  <div class="swiper-pagination"></div>
+</div>
+        </div>
+        <div class="view-all-staff">
+            <a href="profil.html#struktur-organisasi-content" class="view-all-btn">
+                Lihat Semua Staff <i class="fas fa-arrow-right"></i>
+            </a>
+        </div>
+</section>
+
+<!-- Pengumuman Section -->
+<section id="pengumuman" class="section-padded">
+    <div class="container">
+        <h2 class="section-title">Pengumuman</h2>
+        
+        <div class="announcement-list">
+            <!-- Pengumuman Item 1 -->
+            <div class="announcement-item">
+                <div class="announcement-header">
+                    <span class="announcement-date">Sunday, 25 May 2025</span>
+                    <span class="announcement-category">SPMB</span>
+                </div>
+                <h3 class="announcement-title">SPMB SMA Strada 2025</h3>
+                <p class="announcement-content">Berikut dokumen yang bisa dijadikan referensi untuk SPMB 2025 SMA Strada Bhakti Wiyata...</p>
+                <a href="#" class="read-more">Unduh Dokumen →</a>
+            </div>
+
+            <!-- Pengumuman Item 2 -->
+            <div class="announcement-item highlight">
+                <div class="announcement-header">
+                    <span class="announcement-date">Monday, 5 May 2025</span>
+                    <span class="announcement-category">Kelulusan</span>
+                </div>
+                <h3 class="announcement-title">Pengumuman Kelulusan 2025</h3>
+                <p class="announcement-content">Selamat atas kelulusan kelas XII tahun 2025 SMA Strada Bhakti Wiyata...</p>
+                <a href="#" class="read-more">Lihat Daftar Lulus →</a>
+            </div>
+
+            <!-- Pengumuman Item 3 -->
+            <div class="announcement-item">
+                <div class="announcement-header">
+                    <span class="announcement-date">Thursday, 9 January 2025</span>
+                    <span class="announcement-category">Beasiswa</span>
+                </div>
+                <h3 class="announcement-title">Pengumuman Pemeringkatan Eligible SHBP 2025</h3>
+                <p class="announcement-content">Pelaksanaan SHBP 2025 yang diselenggarakan oleh BPP dimulai dengan pengisian...</p>
+                <a href="#" class="read-more">Selengkapnya →</a>
+            </div>
+        </div>
+
+        <!-- PPDB Section -->
+        <div class="ppdb-banner">
+            <h3>Pelayanan PPDB SMA Strada Bhakti Wiyata 2025</h3>
+            <p>Tahun ajaran 2025/2026, SMA Strada Bhakti Wiyata membuka pendaftaran siswa baru dengan kuota 200 siswa.</p>
+            <a href="#ppdb" class="btn-ppdb">Info Pendaftaran</a>
+        </div>
+    </div>
+</div>
+</body>
+</section>
+</main> 
+
+<div>
+<footer class="main-footer">
+  <div class="footer-wrapper">
+        <div class="footer-content">
+            <!-- Column 1: About & Logo -->
+            <div class="footer-column">
+                <img src="asset/Logo.jpg" alt="Strada Logo" class="footer-logo" style="height: 60px; margin-bottom: 20px;">
+                <p style="margin-bottom: 20px; line-height: 1.6; color: rgba(255,255,255,0.8); text-align: justify;">
+                    SMA Strada Bhakti Wiyata adalah bagian dari jaringan pendidikan Strada yang berkomitmen untuk membentuk generasi unggul, peduli, dan berjiwa melayani.
+                </p>
+                <div class="social-links">
+                    <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                    <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
+                    <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+                </div>
+            </div>
+
+            <!-- Column 2: Contact Info -->
+            <div class="footer-column">
+                <h3>Hubungi Kami</h3>
+                <div class="contact-info">
+                    <p><i class="fas fa-map-marker-alt"></i> Jl. Bintara Raya No.38, Kranji, Bekasi Barat</p>
+                    <p><i class="fas fa-phone"></i> (021)-89455578</p>
+                    <p><i class="fas fa-envelope"></i> smastradabhaktiwiyata@gmail.com</p>
+                    <p><i class="fas fa-clock"></i> Senin-Jumat: 07.00 - 16.00 WIB</p>
+                </div>
+            </div>
+
+            <!-- Column 3: Map & Newsletter -->
+            <div class="footer-column">
+                <h3>Lokasi Kami</h3>
+                <div class="map-container">
+                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3966.123456789012!2d106.987654321!3d-6.123456789!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zNsKwMDcnMjQuNCJTIDEwNsKwNTknMTUuNiJF!5e0!3m2!1sen!2sid!4v1234567890123!5m2!1sen!2sid" allowfullscreen="" loading="lazy"></iframe>
+                </div>
+            </div>
+
+        <!-- Column 4: Footer statistic -->
+        <div class="footer-column">
+            <h3>Statistik</h3>
+            <ul style="list-style: none; padding: 0; color: rgba(255,255,255,0.8); font-size: 0.95rem;">
+                <li style="margin-bottom: 10px;">
+                <i class="fas fa-chart-line" style="color:#FFD700; width: 20px;"></i>
+                <strong>Total:</strong> <span id="stat-total">-</span> / <span id="stat-total-views">-</span>
+                </li>
+                <li style="margin-bottom: 10px;">
+                <i class="fas fa-calendar-day" style="color:#FFD700; width: 20px;"></i>
+                <strong>Hari Ini:</strong> <span id="stat-today">-</span> / <span id="stat-today-views">-</span>
+                </li>
+                <li style="margin-bottom: 10px;">
+                <i class="fas fa-calendar-week" style="color:#FFD700; width: 20px;"></i>
+                <strong>Minggu Ini:</strong> <span id="stat-week">-</span> / <span id="stat-week-views">-</span>
+                </li>
+                <li style="margin-bottom: 10px;">
+                <i class="fas fa-calendar-alt" style="color:#FFD700; width: 20px;"></i>
+                <strong>Bulan Ini:</strong> <span id="stat-month">-</span> / <span id="stat-month-views">-</span>
+                </li>
+            </ul>
+            </div>
+        </div>
+       </div>
+
+            <div class="footer-copyright">
+                <p>&copy; 2025 SMA Strada Bhakti Wiyata. All Rights Reserved.</p>
+                <p style="text-align:center; font-size: 0.8em; margin-top: 5px; color: rgba(255,255,255,0.6);">
+                </p>
+            </div>
+            
+           <div class="footer-hymne">
+                <a href="https://youtu.be/sD9UOIZrO5g?feature=shared" target="_blank" style="color: #FFD700; text-decoration: none; align-items: center;">
+                    <i class="fas fa-music"></i> Dengarkan Hymne Strada
+                </a>
+            </div>
+        </div>
+    </div>
+</footer>
+<button class="back-to-top" id="backToTopBtn" aria-label="Kembali ke atas">
+    <i class="fas fa-arrow-up"></i>
+</button>
+</div>
+</div>
+</html>
+
+
+    <script>
+document.addEventListener('DOMContentLoaded', function() {
+    // Statistik dummy (hapus jika sudah ada backend)
+    const stats = {
+        total: [3377, 100299],
+        today: [15, 32],
+        week: [193, 2841],
+        month: [548, 11234]
+    };
+    if(document.getElementById("stat-total")) {
+        document.getElementById("stat-total").textContent = stats.total[0];
+        document.getElementById("stat-total-views").textContent = stats.total[1];
+        document.getElementById("stat-today").textContent = stats.today[0];
+        document.getElementById("stat-today-views").textContent = stats.today[1];
+        document.getElementById("stat-week").textContent = stats.week[0];
+        document.getElementById("stat-week-views").textContent = stats.week[1];
+        document.getElementById("stat-month").textContent = stats.month[0];
+        document.getElementById("stat-month-views").textContent = stats.month[1];
+    }
+
+    // Set current date
+    const now = new Date();
+    const options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
+    if(document.getElementById('current-date')) {
+        document.getElementById('current-date').textContent = now.toLocaleDateString('id-ID', options);
+    }
+
+    // Hamburger menu toggle
+    const hamburger = document.querySelector('.hamburger-menu');
+    const navList = document.querySelector('.nav-list');
+    if(hamburger && navList) {
+        hamburger.addEventListener('click', function() {
+            this.classList.toggle('active');
+            navList.classList.toggle('active');
+        });
+        document.querySelectorAll('.nav-list a').forEach(link => {
+            link.addEventListener('click', () => {
+                if (window.innerWidth <= 992) {
+                    hamburger.classList.remove('active');
+                    navList.classList.remove('active');
+                }
+            });
+        });
+    }
+
+    // --- TAB SWITCHING LOGIC ---
+    const tabBtns = document.querySelectorAll('.tab-btn');
+    const tabContents = document.querySelectorAll('.tab-content');
+    tabBtns.forEach(btn => {
+        btn.addEventListener('click', function(e) {
+            e.preventDefault();
+            // Remove active from all
+            tabBtns.forEach(b => b.classList.remove('active'));
+            tabContents.forEach(c => c.classList.remove('active'));
+            // Add active to clicked
+            this.classList.add('active');
+            // Dapatkan id tab dari tombol
+            let tabName = this.getAttribute('onclick') 
+                ? this.getAttribute('onclick').match(/openTab\('(.+)'\)/)[1]
+                : this.dataset.tab;
+            document.getElementById(tabName).classList.add('active');
+        });
+    });
+    // Set default active tab (first)
+    if(tabBtns.length) tabBtns[0].click();
+
+    // Event listeners for event modals
+    const detailBtns = document.querySelectorAll('.event-detail-btn');
+    const modals = document.querySelectorAll('.event-modal');
+    const closeBtns = document.querySelectorAll('.close-modal');
+    detailBtns.forEach((btn, index) => {
+        btn.addEventListener('click', () => {
+            modals[index].style.display = 'block';
+            document.body.style.overflow = 'hidden';
+        });
+    });
+    closeBtns.forEach((btn, index) => {
+        btn.addEventListener('click', () => {
+            modals[index].style.display = 'none';
+            document.body.style.overflow = 'auto';
+        });
+    });
+    window.addEventListener('click', (e) => {
+        modals.forEach(modal => {
+            if (e.target === modal) {
+                modal.style.display = 'none';
+                document.body.style.overflow = 'auto';
+            }
+        });
+    });
+});
+
+// Back to Top Button
+    const backToTopBtn = document.getElementById('backToTopBtn');
+    window.addEventListener('scroll', function() {
+        if (window.scrollY > 300) {
+            backToTopBtn.classList.add('visible');
+        } else {
+            backToTopBtn.classList.remove('visible');
+        }
+    });
+    backToTopBtn.addEventListener('click', function() {
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+    });
+
+  const swiper = new Swiper(".highlight-swiper", {
+    slidesPerView: 1,
+    spaceBetween: 20,
+    pagination: {
+      el: ".swiper-pagination",
+      clickable: true,
+    },
+    navigation: {
+      nextEl: ".swiper-button-next",
+      prevEl: ".swiper-button-prev",
+    },
+    breakpoints: {
+      768: {
+        slidesPerView: 2,
+      },
+      1024: {
+        slidesPerView: 3,
+      }
+    }
+  });
+</script>

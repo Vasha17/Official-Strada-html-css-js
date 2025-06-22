@@ -1,0 +1,1606 @@
+/* style.css */
+
+/* --- Variabel CSS untuk Warna Utama --- */
+:root {
+    --strada-blue: #1E3F7B; /* Biru Tua Strada */
+    --strada-blue-light: #2A5495; /* Sedikit lebih terang untuk hover/aksen */
+    --strada-gold: #FFD700; /* Opsional, untuk aksen atau highlight */
+    --text-dark: #333;
+    --text-light: #f4f4f4;
+    --bg-light-gray: #f8f8f8;
+    --bg-light-blue: #eef5fb; /* Latar belakang bagian terang */
+    --border-color: #ddd;
+}
+
+/* --- Header Top (Date & Running Text) --- */
+.header-top {
+    background-color: var(--strada-blue);
+    color: white;
+    padding: 8px 0;
+    font-size: 0.9em;
+    border-bottom: 1px solid rgba(255,255,255,0.1);
+}
+
+.header-top .container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+.date-display {
+    margin-right: 20px;
+}
+
+.running-text {
+    flex-grow: 1;
+    overflow: hidden;
+    position: relative;
+    height: 20px;
+}
+
+.news-tickers {
+    position: absolute;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    animation: scrollText 15s linear infinite;
+}
+
+.news-tickers li {
+    white-space: nowrap;
+}
+
+@keyframes scrollText {
+    from { transform: translateX(100%); }
+    to { transform: translateX(-100%); }
+}
+
+/* --- Main Navigation (Curved Tabs) --- */
+.main-nav {
+    background-color: var(--strada-blue);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.2);
+}
+
+.main-nav .container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 20px;
+    height: 70px;
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+}
+
+.logo img {
+    height: 50px;
+    margin-right: 10px;
+}
+
+.logo h1 {
+    font-size: 1.3em;
+    margin: 0;
+    color:white
+}
+
+.nav-list {
+    display: flex;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+.nav-item {
+    position: relative;
+    margin: 0 5px;
+}
+
+.nav-item > a {
+    color: white;
+    text-decoration: none;
+    font-weight: 600;
+    padding: 8px 15px;
+    border-radius: 20px;
+    display: block;
+    transition: all 0.3s ease;
+}
+
+.nav-item > a:hover {
+    background-color: rgba(255,255,255,0.2);
+}
+
+.nav-item.active > a {
+    background-color: white;
+    color: var(--strada-blue);
+}
+
+/* Submenu Styling */
+.submenu {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    background-color: white;
+    min-width: 200px;
+    border-radius: 5px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.3s ease;
+    z-index: 1000;
+}
+
+.nav-item:hover .submenu {
+    opacity: 1;
+    visibility: visible;
+}
+
+.submenu li a {
+    color: var(--text-dark);
+    padding: 10px 15px;
+    display: block;
+    transition: background-color 0.3s ease;
+}
+
+.submenu li a:hover {
+    background-color: var(--bg-light-blue);
+    color: var(--strada-blue);
+}
+
+/* Mega Menu */
+.mega-menu-content {
+    position: absolute;
+    left: 0;
+    width: 100vw;
+    background-color: white;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+    padding: 20px;
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.3s ease;
+    z-index: 1000;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 20px;
+}
+
+.mega-menu-trigger:hover .mega-menu-content {
+    opacity: 1;
+    visibility: visible;
+}
+
+.mega-menu-column h3 {
+    color: var(--strada-blue);
+    font-size: 1.1em;
+    margin-bottom: 10px;
+    padding-bottom: 5px;
+    border-bottom: 1px solid #eee;
+}
+
+.mega-menu-column ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.mega-menu-column ul li a {
+    color: #555;
+    padding: 5px 0;
+    display: block;
+    transition: color 0.3s ease;
+}
+
+.mega-menu-column ul li a:hover {
+    color: var(--strada-blue-light);
+}
+
+/* Existing Hamburger Menu Styles */
+.hamburger-menu {
+    display: none; /* Ubah ke flex jika mobile */
+    flex-direction: column;
+    justify-content: space-between;
+    width: 30px;
+    height: 25px;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    padding: 0;
+    z-index: 1001;
+}
+
+.hamburger-menu .bar {
+    width: 100%;
+    height: 3px;
+    background-color: #1E3F7B; /* Warna biru tua Strada */
+    transition: all 0.3s ease;
+}
+
+/* Basic styling for nav-list */
+.main-nav .nav-list {
+    
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex; 
+    justify-content: space-around; 
+    align-items: center; 
+}
+
+.main-nav .nav-list a {
+    color: white; 
+    text-decoration: none;
+}
+
+
+.hamburger-menu.active .bar:nth-child(1) {
+    transform: translateY(11px) rotate(45deg);
+}
+
+.hamburger-menu.active .bar:nth-child(2) {
+    opacity: 0;
+}
+
+.hamburger-menu.active .bar:nth-child(3) {
+    transform: translateY(-11px) rotate(-45deg);
+}
+
+/* Nav Right */
+.nav-right {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.search-icon {
+    color: white;
+    font-size: 1.2em;
+    transition: color 0.3s ease;
+}
+
+.search-icon:hover {
+    color: var(--strada-gold);
+}
+
+.logo-strada-nav img {
+    height: 40px;
+    filter: brightness(0) invert(1);
+}
+
+/* --- Layout fix width --- */
+body {
+    max-width: 1200px;
+    margin: 0 auto;
+    background: #fff;
+    min-height: 100vh;
+    overflow-x: hidden;
+}
+
+/* Header full width, logo kanan, nav kiri, kecil */
+.main-header {
+    width: 100vw;
+    left: 50%;
+    right: 50%;
+    margin-left: -50vw;
+    margin-right: -50vw;
+    background: var(--strada-blue);
+    border-bottom-left-radius: 40px 80px;
+    border-bottom-right-radius: 40px 80px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.08);
+    position: relative;
+}
+.nav-flex.nav-full {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    padding: 0 2vw;
+    height: 60px;
+}
+.nav-list {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 0.95em;
+}
+.nav-list .nav-item a {
+    color: #fff;
+    font-size: 0.95em;
+    font-weight: 500;
+    padding: 8px 14px;
+    border-radius: 20px 20px 0 0;
+    transition: background 0.2s, color 0.2s;
+}
+.nav-list .nav-item a.active,
+.nav-list .nav-item a:focus,
+.nav-list .nav-item a:hover {
+    background: #fff;
+    color: var(--strada-blue);
+}
+.logo-strada-nav {
+    margin-left: auto;
+    margin-right: 0;
+    display: flex;
+    align-items: center;
+}
+.logo-strada-nav img {
+    height: 44px;
+    width: 44px;
+    object-fit: contain;
+    filter: brightness(0) invert(1);
+}
+.hamburger-menu {
+    display: none;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 28px;
+    height: 22px;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    margin-left: 18px;
+}
+.hamburger-menu .bar {
+    width: 100%;
+    height: 3px;
+    background-color: #fff;
+    border-radius: 2px;
+    transition: all 0.3s;
+}
+
+.nav-item > a:hover,
+.nav-item.active > a {
+    background: #fff;
+    color: var(--strada-blue);
+    box-shadow: 0 4px 16px rgba(30,63,123,0.08);
+}
+
+.nav-item > a {
+    border-bottom: 4px solid transparent;
+}
+
+.nav-item.active > a,
+.nav-item > a:focus,
+.nav-item > a:active {
+    border-bottom: 4px solid var(--strada-gold);
+    border-radius: 32px 32px 0 0 / 32px 32px 0 0;
+}
+
+.nav-right {
+    margin-left: auto;
+    display: flex;
+    align-items: center;
+    gap: 18px;
+}
+
+/* --- Mega Menu Full Width --- */
+.mega-menu-content {
+    left: 0;
+    right: 0;
+    width: 100vw;
+    min-width: 100vw;
+    max-width: 100vw;
+    border-radius: 0 0 32px 32px / 0 0 32px 32px;
+    margin-left: calc(-50vw + 50%);
+    margin-right: 0;
+    transform: none;
+    box-shadow: 0 8px 32px rgba(30,63,123,0.10);
+    border-top: 2px solid var(--strada-blue-light);
+    padding: 28px 8vw 28px 2vw;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 32px;
+    position: absolute;
+    top: 100%;
+    background: #fff;
+    z-index: 1000;
+}
+
+.mega-menu-trigger:hover .mega-menu-content,
+.mega-menu-trigger:focus-within .mega-menu-content {
+    opacity: 1;
+    visibility: visible;
+    display: grid;
+}
+
+/* --- Responsive --- */
+@media (max-width: 768px) {
+    .hamburger-menu {
+        display: flex;
+    }
+    .nav-list {
+        display: none;
+        position: absolute;
+        top: 60px;
+        left: 0;
+        width: 100vw;
+        background: var(--strada-blue);
+        flex-direction: column;
+        z-index: 1001;
+    }
+    .nav-list.active {
+        display: flex;
+    }
+    .nav-item {
+        width: 100%;
+        text-align: center;
+    }
+    .nav-item a {
+        padding: 14px 0;
+        border-bottom: 1px solid #234;
+        font-size: 1em;
+    }
+    .nav-item:last-child a {
+        border-bottom: none;
+    }
+}
+
+/* --- Responsive Hamburger Menu --- */
+@media (max-width: 768px) {
+    .hamburger-menu {
+        display: flex !important;
+    }
+    .nav-list {
+        display: none !important;
+        position: absolute;
+        top: 60px;
+        left: 0;
+        width: 100vw;
+        background: var(--strada-blue);
+        flex-direction: column;
+        z-index: 1001;
+    }
+    .nav-list.active {
+        display: flex !important;
+    }
+    .nav-item {
+        width: 100%;
+        text-align: center;
+    }
+    .nav-item a {
+        padding: 14px 0;
+        border-bottom: 1px solid #234;
+        font-size: 1em;
+    }
+    .nav-item:last-child a {
+        border-bottom: none;
+    }
+}
+
+/* Di atas 500px, hamburger disembunyikan, nav-list tampil flex */
+@media (min-width: 500px) {
+    .hamburger-menu {
+        display: none !important;
+    }
+    .nav-list {
+        display: flex !important;
+        position: static;
+        flex-direction: row;
+        width: auto;
+        background: transparent;
+    }
+}
+
+@media (max-width: 600px) {
+    .nav-flex {
+        flex-direction: column;
+        height: auto;
+        padding: 0 1vw;
+    }
+    .logo-strada-nav {
+        margin-bottom: 10px;
+    }
+    .nav-list {
+        flex-direction: column;
+        width: 100%;
+        max-width: 100vw;
+        min-width: 0;
+    }
+    .mega-menu-content {
+        grid-template-columns: 1fr;
+        padding: 10px 0;
+    }
+}
+
+/* --- Hide all except #prestasi when needed --- */
+body.prestasi-only main > section:not(#prestasi) {
+    display: none !important;
+}
+body.prestasi-only main > section#prestasi {
+    display: block !important;
+}
+
+/* --- Global Reset & Basic Styles --- */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Open Sans', sans-serif;
+    line-height: 1.6;
+    color: var(--text-dark);
+    background-color: #fff;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+}
+
+a {
+    color: var(--strada-blue);
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+a:hover {
+    color: var(--strada-blue-light);
+}
+
+ul {
+    list-style: none;
+}
+
+/* --- Typography --- */
+h1, h2, h3, h4, h5, h6 {
+    font-family: 'Montserrat', sans-serif;
+    color: var(--strada-blue);
+    margin-bottom: 0.8em;
+}
+
+h1 { font-size: 2.8em; }
+h2 { font-size: 2.2em; }
+h3 { font-size: 1.8em; }
+
+/* Style untuk tab content */
+.tab-content-wrapper {
+    background-color: #fff;
+    padding: 30px;
+    border-radius: 8px;
+    box-shadow: 0 0 15px rgba(0,0,0,0.05);
+    margin-bottom: 30px;
+}
+
+.tab-pane {
+    display: none;
+}
+
+.tab-pane.active {
+    display: block;
+}
+
+.content-image {
+    width: auto;
+    max-width: 300px;
+    margin: 20px auto;
+    border-radius: 8px;
+    display: block;
+}
+
+.sambutan-paragraf {
+    margin-top: 20px;
+}
+
+.subsection-title {
+    color: var(--strada-blue-light);
+    margin-top: 1.5em;
+    margin-bottom: 0.5em;
+    text-align: center;
+}
+
+/* Style untuk sarana prasarana */
+.section-padded {
+    padding: 80px 0;
+}
+
+.bg-light-blue {
+    background-color: var(--bg-light-blue);
+}
+
+.section-title {
+    text-align: center;
+    margin-bottom: 2em;
+    font-size: 2.5em;
+    position: relative;
+    padding-bottom: 0.5em;
+}
+
+.section-title::after {
+    content: '';
+    display: block;
+    width: 60px;
+    height: 3px;
+    background-color: var(--strada-blue);
+    margin: 0.5em auto 0;
+}
+
+.facilities-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 30px;
+}
+
+.facility-item {
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+    overflow: hidden;
+    text-align: center;
+    padding-bottom: 20px;
+    transition: transform 0.3s ease;
+}
+
+.facility-item:hover {
+    transform: translateY(-5px);
+}
+
+.facility-item img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    margin-bottom: 15px;
+}
+
+.facility-item h3 {
+    font-size: 1.3em;
+    margin-bottom: 5px;
+    padding: 0 15px;
+}
+
+.facility-item p {
+    font-size: 0.95em;
+    color: #666;
+    padding: 0 15px;
+}
+
+.text-center {
+    text-align: center;
+}
+
+.mt-4 {
+    margin-top: 40px;
+}
+
+/* --- Buttons --- */
+.btn {
+    display: inline-block;
+    padding: 12px 25px;
+    border-radius: 5px;
+    font-weight: 600;
+    text-align: center;
+    transition: all 0.3s ease;
+    border: 2px solid transparent;
+    cursor: pointer;
+}
+
+.btn-primary {
+    background-color: var(--strada-blue);
+    color: #fff;
+}
+
+.btn-primary:hover {
+    background-color: var(--strada-blue-light);
+    color: #fff;
+}
+
+.btn-secondary {
+    background-color: transparent;
+    color: var(--strada-blue);
+    border-color: var(--strada-blue);
+}
+
+.btn-secondary:hover {
+    background-color: var(--strada-blue);
+    color: #fff;
+}
+
+/* --- Info Banner --- */
+.info-banner {
+    background-color: #FFC107; /* Warna kuning untuk perhatian */
+    color: var(--text-dark);
+    padding: 10px 0;
+    text-align: center;
+    position: relative;
+    z-index: 999;
+}
+
+.info-banner .container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 15px;
+}
+
+.info-banner p {
+    margin: 0;
+    font-weight: 600;
+}
+
+.info-banner a {
+    color: var(--strada-blue);
+    font-weight: 700;
+    text-decoration: underline;
+}
+.info-banner a:hover {
+    color: var(--strada-blue-light);
+}
+
+.info-banner .close-banner {
+    background: none;
+    border: none;
+    color: var(--text-dark);
+    font-size: 1.2em;
+    cursor: pointer;
+    position: absolute;
+    right: 20px;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+/* --- Hero Section --- */
+.hero-section {
+    position: relative;
+    height: 600px; /* Sesuaikan tinggi sesuai kebutuhan */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #fff;
+    text-align: center;
+    overflow: hidden;
+}
+
+.video-background {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+}
+
+.video-background video {
+    min-width: 100%;
+    min-height: 100%;
+    width: auto;
+    height: auto;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    object-fit: cover;
+}
+
+/* Overlay untuk teks agar lebih terbaca */
+.hero-section::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5); /* Overlay gelap */
+    z-index: 1;
+}
+
+.hero-content {
+    position: relative;
+    z-index: 2;
+    max-width: 800px;
+}
+
+.hero-content h1 {
+    font-size: 3.5em;
+    margin-bottom: 0.2em;
+    color: #fff;
+}
+.hero-content h2 {
+    font-size: 1.8em;
+    margin-bottom: 0.5em;
+    color: #fff;
+    font-weight: 500;
+}
+.hero-content p {
+    font-size: 1.2em;
+    margin-bottom: 1.5em;
+    color: #fff;
+}
+
+.hero-cta .btn {
+    margin: 0 10px;
+}
+.hero-cta .btn-primary {
+    background-color: var(--strada-blue);
+    border-color: var(--strada-blue);
+    color: #fff;
+}
+.hero-cta .btn-primary:hover {
+    background-color: var(--strada-blue-light);
+    border-color: var(--strada-blue-light);
+}
+.hero-cta .btn-secondary {
+    border-color: #fff;
+    color: #fff;
+}
+.hero-cta .btn-secondary:hover {
+    background-color: rgba(255,255,255,0.2);
+}
+
+/* --- Section Styling Umum --- */
+.section-padded {
+    padding: 80px 0;
+}
+
+.bg-light-blue {
+    background-color: var(--bg-light-blue);
+}
+
+/* --- Profil Sekolah (dengan Curved Tabs) --- */
+.internal-nav-tabs {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 40px;
+    gap: 15px;
+    flex-wrap: wrap;
+}
+
+.nav-tab {
+    background-color: var(--bg-light-gray);
+    color: var(--strada-blue);
+    padding: 12px 30px;
+    border-radius: 25px; /* Memberikan efek lengkung */
+    font-weight: 600;
+    transition: all 0.3s ease;
+    border: 1px solid var(--border-color);
+}
+
+.nav-tab:hover {
+    background-color: var(--strada-blue-light);
+    color: #000;
+    border-color: var(--strada-blue-light);
+}
+
+.nav-tab.active {
+    background-color: var(--strada-blue);
+    color: #fff;
+    border-color: var(--strada-blue);
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+}
+
+.tab-content-wrapper {
+    background-color: #fff;
+    padding: 30px;
+    border-radius: 8px;
+    box-shadow: 0 0 15px rgba(0,0,0,0.05);
+}
+
+.tab-pane {
+    display: none; /* Default hidden */
+}
+
+.tab-pane.active {
+    display: block; /* Show active tab */
+}
+
+.content-image {
+    width: 100%;
+    max-width: 600px;
+    margin: 20px auto;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+}
+
+.pastoral-gallery {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 15px;
+    margin-top: 20px;
+}
+.pastoral-gallery img {
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+/* --- Prestasi Section --- */
+.prestasi-filter {
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+.prestasi-filter .filter-btn, .prestasi-filter select {
+    padding: 8px 18px;
+    margin: 0 5px;
+    border: 1px solid var(--strada-blue);
+    border-radius: 20px;
+    background-color: #fff;
+    color: var(--strada-blue);
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.prestasi-filter .filter-btn:hover,
+.prestasi-filter select:hover {
+    background-color: var(--strada-blue-light);
+    color: #fff;
+}
+
+.prestasi-filter .filter-btn.active {
+    background-color: var(--strada-blue);
+    color: #fff;
+}
+
+.prestasi-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 30px;
+}
+
+.prestasi-item {
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+    overflow: hidden;
+    text-align: center;
+    padding-bottom: 20px;
+    position: relative;
+    transition: transform 0.3s ease;
+}
+
+.prestasi-item:hover {
+    transform: translateY(-5px);
+}
+
+.prestasi-item img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    margin-bottom: 15px;
+}
+
+.prestasi-item h3 {
+    font-size: 1.2em;
+    margin-bottom: 5px;
+    padding: 0 15px;
+}
+
+.prestasi-item p {
+    font-size: 0.95em;
+    color: #666;
+    padding: 0 15px;
+}
+
+.prestasi-badge {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    background-color: var(--strada-blue);
+    color: #fff;
+    padding: 5px 10px;
+    border-radius: 5px;
+    font-size: 0.8em;
+    font-weight: 700;
+}
+
+.prestasi-badge.bermutu { background-color: #4CAF50; } /* Hijau */
+.prestasi-badge.berkarakter { background-color: #FF9800; } /* Orange */
+.prestasi-badge.berprestasi { background-color: #2196F3; } /* Biru */
+
+/* Kelas untuk menyembunyikan item saat difilter (digunakan oleh JavaScript filter internal) */
+.prestasi-item.hidden {
+    display: none;
+}
+
+/* Animasi sederhana untuk item yang muncul */
+@keyframes fadeInPrestasiItem {
+    from { opacity: 0; transform: translateY(10px) scale(0.98); }
+    to { opacity: 1; transform: translateY(0) scale(1); }
+}
+.prestasi-item {
+    animation: fadeInPrestasiItem 0.4s ease-out forwards;
+}
+
+
+/* --- Testimoni Section --- */
+.testimoni-section {
+    margin-top: 60px;
+    text-align: center;
+}
+
+.testimoni-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 30px;
+    margin-top: 30px;
+}
+
+.testimoni-item {
+    background-color: var(--bg-light-blue);
+    padding: 30px;
+    border-radius: 8px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+}
+
+.testimoni-item img {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin: 0 auto 15px;
+    border: 3px solid var(--strada-blue);
+}
+
+.testimoni-item p {
+    font-style: italic;
+    margin-bottom: 15px;
+    color: #555;
+}
+
+.testimoni-item span {
+    font-weight: 600;
+    color: var(--strada-blue);
+}
+
+/* --- Berita & Pengumuman --- */
+.news-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 30px;
+}
+
+.news-item {
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+    overflow: hidden;
+    transition: transform 0.3s ease;
+}
+
+.news-item:hover {
+    transform: translateY(-5px);
+}
+
+.news-item img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+}
+
+.news-item h3 {
+    font-size: 1.3em;
+    margin: 15px 15px 5px;
+    color: var(--strada-blue-light);
+}
+
+.news-item .news-date {
+    font-size: 0.9em;
+    color: #888;
+    margin: 0 15px 10px;
+}
+
+.news-item p {
+    padding: 0 15px 15px;
+    font-size: 0.95em;
+}
+
+.news-item .read-more {
+    display: block;
+    padding: 10px 15px;
+    background-color: var(--strada-blue);
+    color: #fff;
+    text-align: center;
+    font-weight: 600;
+    transition: background-color 0.3s ease;
+}
+.news-item .read-more:hover {
+    background-color: var(--strada-blue-light);
+}
+
+/* --- Galeri --- */
+.gallery-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 15px;
+}
+
+.gallery-item {
+    overflow: hidden;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
+
+.gallery-item img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    transition: transform 0.3s ease;
+}
+
+.gallery-item:hover img {
+    transform: scale(1.05);
+}
+
+.text-center {
+    text-align: center;
+}
+.mt-4 {
+    margin-top: 40px;
+}
+
+/* --- Sarana & Prasarana --- */
+/* (Duplicate block removed to prevent CSS conflicts) */
+
+/* --- Kalender Event --- */
+.event-calendar {
+    text-align: center;
+}
+
+.event-calendar iframe {
+    max-width: 100%;
+    border-radius: 8px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+    margin-bottom: 20px;
+}
+
+.event-note {
+    font-style: italic;
+    color: #666;
+    margin-bottom: 20px;
+}
+
+/* --- Kontak --- */
+.contact-flex {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 30px;
+    justify-content: center;
+    align-items: flex-start;
+}
+
+.contact-info-block {
+    flex: 1;
+    min-width: 300px;
+    background-color: #fff;
+    padding: 30px;
+    border-radius: 8px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+}
+
+.contact-info-block h3 {
+    color: var(--strada-blue);
+    margin-bottom: 20px;
+}
+
+.contact-info-block p {
+    margin-bottom: 10px;
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+}
+.contact-info-block p i {
+    color: var(--strada-blue);
+    font-size: 1.2em;
+    padding-top: 3px;
+}
+
+.contact-map {
+    flex: 2;
+    min-width: 400px;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+}
+
+.contact-map iframe {
+    width: 100%;
+    height: 450px;
+    border: 0;
+}
+
+.social-links {
+    margin-top: 20px;
+    display: flex;
+    gap: 15px;
+}
+
+.social-links a {
+    font-size: 1.5em;
+    color: var(--strada-blue);
+    transition: color 0.3s ease;
+}
+
+.social-links a:hover {
+    color: var(--strada-blue-light);
+}
+
+/* --- Kotak Saran Form --- */
+.saran-form {
+    background-color: #fff;
+    padding: 30px;
+    border-radius: 8px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+    max-width: 700px;
+    margin: 0 auto;
+}
+
+.form-group {
+    margin-bottom: 20px;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: 600;
+    color: var(--strada-blue);
+}
+
+.form-group input[type="text"],
+.form-group input[type="email"],
+.form-group textarea {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid var(--border-color);
+    border-radius: 5px;
+    font-size: 1em;
+    font-family: 'Open Sans', sans-serif;
+}
+
+.form-group textarea {
+    resize: vertical;
+    min-height: 120px;
+}
+
+.radio-group {
+    display: flex;
+    gap: 20px;
+    align-items: center;
+}
+
+.radio-group input[type="radio"] {
+    margin-right: 5px;
+}
+
+/* --- Footer --- */
+.main-footer {
+    background-color: var(--strada-blue);
+    color: var(--text-light);
+    padding: 50px 0 20px;
+}
+
+.footer-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 30px;
+    padding-bottom: 40px;
+    border-bottom: 1px solid rgba(255,255,255,0.2);
+}
+
+.footer-col h3 {
+    color: #fff;
+    font-size: 1.3em;
+    margin-bottom: 20px;
+}
+
+.footer-col p {
+    font-size: 0.9em;
+    line-height: 1.8;
+}
+
+.footer-col ul li a {
+    color: var(--text-light);
+    font-size: 0.9em;
+    padding: 5px 0;
+    display: block;
+}
+
+.footer-col ul li a:hover {
+    color: var(--strada-gold); /* Aksen emas untuk hover di footer */
+}
+
+.footer-logo {
+    height: 60px;
+    margin-bottom: 15px;
+    filter: brightness(0) invert(1); /* Membuat logo putih jika aslinya berwarna */
+}
+
+.branding-logo {
+    max-width: 150px;
+    margin-bottom: 10px;
+    padding: 5px;
+    border-radius: 5px;
+}
+
+.newsletter-qr {
+    text-align: center;
+    margin-top: 20px;
+}
+.newsletter-qr p {
+    margin-bottom: 10px;
+    font-size: 0.9em;
+}
+.newsletter-qr .qr-code {
+    max-width: 120px;
+    height: auto;
+    background-color: #fff;
+    padding: 5px;
+    border-radius: 5px;
+    display: inline-block;
+}
+
+.footer-bottom {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-top: 20px;
+    flex-wrap: wrap;
+    gap: 15px;
+}
+
+.footer-bottom p {
+    font-size: 0.85em;
+    color: rgba(255,255,255,0.7);
+    margin: 0;
+}
+
+.footer-social-hymne {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+.footer-social-hymne .social-links a {
+    color: #fff;
+    font-size: 1.3em;
+}
+.footer-social-hymne .social-links a:hover {
+    color: var(--strada-gold);
+}
+
+.hymne-link a {
+    color: #fff;
+    font-size: 0.9em;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+.hymne-link a:hover {
+    color: var(--strada-gold);
+}
+.hymne-link a i {
+    font-size: 1.1em;
+}
+
+
+/* --- Responsiveness (Media Queries) --- */
+@media (max-width: 768px) {
+    .nav-list {
+        display: none; /* Sembunyikan nav-list di mobile/tablet */
+        flex-direction: column;
+        width: 100%;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        background-color: #fff;
+        box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        padding: 20px 0;
+        border-top: 3px solid var(--strada-blue);
+    }
+    .nav-list.active {
+        display: flex; /* Tampilkan saat aktif */
+    }
+    .main-nav .container {
+        justify-content: space-between;
+    }
+    .hamburger-menu {
+        display: flex; /* Tampilkan hamburger menu */
+    }
+    .nav-item {
+        width: 100%;
+        text-align: center;
+    }
+    .nav-item a {
+        padding: 12px 0;
+        border-bottom: 1px solid #eee;
+    }
+    .nav-item:last-child a {
+        border-bottom: none;
+    }
+
+    .submenu, .mega-menu-content {
+        position: static;
+        width: auto;
+        transform: none;
+        box-shadow: none;
+        border: none;
+        padding: 0;
+        background-color: #f0f0f0;
+        margin-top: 10px;
+        border-radius: 0;
+    }
+    .submenu li a, .mega-menu-column ul li a {
+        padding: 8px 15px;
+        text-align: center;
+    }
+    .mega-menu-content {
+        flex-direction: column;
+        gap: 15px;
+    }
+    .mega-menu-column {
+        width: 100%;
+    }
+
+    .hero-content h1 {
+        font-size: 2.5em;
+    }
+    .hero-content h2 {
+        font-size: 1.5em;
+    }
+
+    .info-banner .container {
+        flex-direction: column;
+        gap: 10px;
+        padding: 10px 40px; /* Ruang untuk tombol close */
+    }
+    .info-banner .close-banner {
+        right: 10px;
+    }
+
+    .contact-flex {
+        flex-direction: column;
+        align-items: center;
+    }
+    .contact-info-block, .contact-map {
+        min-width: unset;
+        width: 100%;
+    }
+
+    .footer-bottom {
+        flex-direction: column;
+        text-align: center;
+    }
+    .footer-social-hymne {
+        justify-content: center;
+        width: 100%;
+    }
+}
+
+@media (max-width: 768px) {
+    h1 { font-size: 2.2em; }
+    h2 { font-size: 1.8em; }
+    .section-title { font-size: 2em; }
+    .hero-section {
+        height: 450px;
+    }
+    .hero-content h1 {
+        font-size: 2em;
+    }
+    .hero-content p {
+        font-size: 1em;
+    }
+    .hero-cta {
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+    }
+    .hero-cta .btn {
+        margin: 0;
+    }
+
+    .internal-nav-tabs {
+        flex-direction: column;
+        align-items: center;
+    }
+    .nav-tab {
+        width: 80%;
+    }
+}
+
+@media (max-width: 480px) {
+    .container {
+        padding: 0 15px;
+    }
+    .main-header .logo h1 {
+        font-size: 1.2em;
+    }
+    .main-header .logo img {
+        height: 40px;
+    }
+    .header-top .contact-info {
+        display: none;
+    }
+    .hero-section {
+        height: 350px;
+    }
+    .hero-content h1 {
+        font-size: 1.8em;
+    }
+        .hero-content p {
+            font-size: 0.9em;
+        }
+    }
+
+    /* Footer rapi */
+.main-footer {
+    background: var(--strada-blue);
+    color: #fff;
+    padding: 40px 0 10px;
+}
+.footer-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 32px;
+    justify-content: space-between;
+    margin-bottom: 18px;
+}
+.footer-col {
+    flex: 1 1 220px;
+    min-width: 200px;
+    margin-bottom: 18px;
+}
+.footer-col h3 {
+    font-size: 1.1em;
+    margin-bottom: 12px;
+    color: #fff;
+}
+.footer-col p, .footer-col span {
+    font-size: 0.95em;
+    color: #e0e0e0;
+}
+.footer-col .branding-logo {
+    max-width: 120px;
+    margin-bottom: 10px;
+}
+.footer-col .newsletter-qr {
+    margin-top: 10px;
+}
+.footer-col .newsletter-qr .qr-code {
+    width: 80px;
+    background: #fff;
+    border-radius: 5px;
+    padding: 2px;
+}
+.footer-col .social-links {
+    display: flex;
+    gap: 12px;
+    margin-bottom: 8px;
+}
+.footer-col .social-links a {
+    color: #fff;
+    font-size: 1.3em;
+    transition: color 0.2s;
+}
+.footer-col .social-links a:hover {
+    color: var(--strada-gold);
+}
+.footer-col .hymne-link a {
+    color: #fff;
+    font-size: 0.95em;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+.footer-col .hymne-link a:hover {
+    color: var(--strada-gold);
+}
+.footer-bottom {
+    border-top: 1px solid rgba(255,255,255,0.15);
+    padding-top: 12px;
+    text-align: center;
+    font-size: 0.95em;
+    color: #e0e0e0;
+}
+

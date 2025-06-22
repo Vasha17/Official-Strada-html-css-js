@@ -1,0 +1,3239 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jaringan Sekolah Strada</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* --- Global Variables & Reset --- */
+        :root {
+            --strada-blue: #1E3F7B;
+            --strada-blue-light: #2A5495;
+            --strada-gold: #FFD700;
+            --text-dark: #333;
+            --text-light: #f4f4f4;
+            --bg-light-gray: #f8f8f8;
+            --bg-light-blue: #eef5fb;
+            --border-color: #ddd;
+            --header-height: 70px;
+            --transition: all 0.3s ease;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html, body {
+            height: 100%;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+
+        main {
+            flex: 1;
+        }
+
+        body {
+            font-family: 'Open Sans', sans-serif;
+            line-height: 1.6;
+            color: var(--text-dark);
+            background: linear-gradient(to bottom, #f0f8ff, #fff);
+            overflow-x: hidden;
+            margin: 0; /* Tambahkan ini */
+            padding: 0; /* Tambahkan ini */
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+
+        img, video {
+            max-width: 100%;
+            height: auto; /* Penting untuk menjaga rasio aspek */
+            display: block; /* Hindari spasi di bawah gambar */
+        }
+        html {
+            scroll-behavior: smooth;
+            scroll-padding-top: var(--header-height);
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        section {
+            padding: 80px 0;
+        }
+
+        h1, h2, h3, h4, h5, h6 {
+            font-family: 'Montserrat', sans-serif;
+            color: var(--strada-blue);
+            margin-bottom: 1.2rem;
+        }
+
+        h2.section-title {
+            text-align: center;
+            position: relative;
+            padding-bottom: 1rem;
+            font-size: 2.5rem;
+        }
+
+        h2.section-title::after {
+            content: '';
+            display: block;
+            width: 60px;
+            height: 4px;
+            background-color: var(--strada-blue);
+            margin: 0.8rem auto 0;
+        }
+
+        /* --- Header Top (Date & Running Text) --- */
+        .header-top {
+            background-color: #FFD700;
+            color: black;
+            padding: 0.5rem 0;
+            font-size: 0.9rem;
+            border-bottom: 1px solid rgba(255,255,255,0.1);
+        }
+
+        .header-top .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+
+        .date-display {
+            margin-right: 1.5rem;
+            white-space: nowrap;
+            font-weight: bold;
+        }
+
+        .running-text {
+            flex-grow: 1;
+            overflow: hidden;
+            position: relative;
+            height: 1.5rem;
+        }
+
+        .news-tickers {
+            position: absolute;
+            width: 100%;
+            margin: 0;
+            padding: 0;
+            list-style: none;
+            animation: scrollText 20s linear infinite;
+        }
+
+        .news-tickers li {
+            white-space: nowrap;
+        }
+
+        @keyframes scrollText {
+            from { transform: translateX(100%); }
+            to { transform: translateX(-100%); }
+        }
+
+        /* --- Main Navigation --- */
+        .main-header {
+            background-color: #064ea2;
+            position: sticky;
+            top: 0px;
+            z-index: 1000;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+            height: var(--header-height);
+        }
+
+        .main-nav {
+            height: 100%;
+        }
+
+        .main-nav .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            height: 100%;
+            position: relative;
+            gap: 1rem;
+            padding-right: auto; 
+            padding: 0 20px;
+        }
+
+       .logo {
+            position: static;
+            margin-left: auto; /* Push logo to the right */
+            padding: 0;
+            height: 50px;
+            display: flex;
+            align-items: auto;
+        }
+
+
+        .logo-img {
+            max-width: 100px;
+            height: auto;
+            height: 50px;
+            filter: brightness(0) invert(1);
+        }
+
+        /* Responsive Mobile */
+        @media (max-width: 992px) {
+        .submenu {
+            background-color: white !important;
+        }
+
+        .submenu a {
+            color: #1E3F7B !important;  /* biru tua agar kontras dengan putih */
+            padding: 10px 15px;
+            display: block;
+        }
+
+        .submenu a:hover {
+            background-color: #f0f0f0;
+            color: #000;
+        }
+
+         .mega-menu-content {
+            background: #fff !important;
+            box-shadow: none;
+            border-radius: 0;
+            padding: 1rem;
+            grid-template-columns: 1fr;
+        }
+
+        .mega-menu-column h3 {
+            color: var(--strada-blue) !important; /* Judul kolom biru */
+            background: #fff !important;
+            font-weight: bold;
+            font-size: 1.1rem;
+            margin-bottom: 0.5rem;
+            border-bottom: 1px solid #eee;
+            padding: 0.5rem 0 0.2rem 0;
+        }
+
+        .mega-menu-column ul li a {
+            color: #222 !important; /* Nama sekolah/cabang hitam */
+            background: #fff !important;
+            font-size: 0.97em;
+            padding: 0.4rem 0;
+            transition: color 0.2s, background 0.2s;
+        }
+
+        .mega-menu-column ul li a:hover {
+            color: var(--strada-blue) !important;
+            background: #f3f8ff !important;
+        }
+    }
+
+        .nav-right {
+            display: flex;
+            align-items: center;
+            gap: 1.2rem;
+            width: auto; /* Ubah dari 100% ke auto */
+            order: 2; /* Pastikan nav-right di sebelah kanan */
+        }
+
+        .logo {
+            position: flex;
+            left: 90%;
+            margin-left: auto;
+            padding-right: 0;
+        }
+
+        .logo-img {
+            max-width: 80px;
+            height: auto;
+        }
+
+        .hamburger-menu {
+            order: 1; /* Pastikan hamburger tetap di kiri */
+            margin-right: auto;
+        }
+
+        .search-icon {
+            order: 3; /* Search icon di sebelah nav-right */
+        }
+
+        .nav-list {
+            display: flex;
+            margin: 0;
+            padding: 0;
+            list-style: none;
+        }
+
+        .nav-item {
+            position: relative;
+        }
+
+        .nav-item > a {
+            color: white;
+            text-decoration: none;
+            font-weight: 600;
+            padding: 0.5rem 1.2rem;
+            border-radius: 2rem;
+            display: block;
+            transition: var(--transition);
+            font-size: 0.95rem;
+            display: flex;
+            align-items: center;
+        }
+
+        .nav-item > a:hover {
+            background-color: rgba(255,255,255,0.15);
+        }
+
+        .nav-item.active > a {
+            background-color: white;
+            color: var(--strada-blue);
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+        }
+
+        .nav-item > a i {
+            margin-left: 0.5rem;
+            font-size: 0.8rem;
+        }
+
+        /* Submenu Styling */
+        .submenu {
+            position: absolute;
+            top: 100%;
+            left: 0;
+            background-color: white;
+            min-width: 220px;
+            border-radius: 0.5rem;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.15);
+            opacity: 0;
+            visibility: hidden;
+            transition: var(--transition);
+            z-index: 1000;
+            transform: translateY(10px);
+            padding: 0.5rem 0;
+            list-style: none; /* Ensure no bullets */
+            padding-left: 0; /* Remove indentation */
+        }
+
+        .nav-item:hover .submenu {
+            opacity: 1;
+            visibility: visible;
+            transform: translateY(0);
+        }
+
+        .submenu li a {
+            color: var(--text-dark);
+            padding: 0.8rem 1.5rem;
+            display: block;
+            transition: var(--transition);
+            font-size: 0.9rem;
+            padding-left: 1.5rem;
+        }
+
+        .submenu li a:hover {
+            background-color: var(--bg-light-blue);
+            color: var(--strada-blue);
+        }
+
+        .profil-content ul {
+            list-style-type: none; /* Remove bullets */
+            padding-left: 0; /* Remove default padding */
+        }
+
+        .profil-content li {
+            margin-bottom: 0.5rem;
+            padding-left: 0; /* Remove any padding */
+        }
+
+        /* Mega Menu */
+        .mega-menu-content {
+            position: absolute;
+            left: 10%;
+            transform: translateX(-50%);
+            width: 100vw;
+            background-color: white;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+            opacity: 0;
+            visibility: hidden;
+            transition: var(--transition);
+            z-index: 1000;
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 0.5rem;
+            padding: 2rem;
+            border-top: 3px solid var(--strada-blue-light);
+            transform: translate(-50%, 10px);
+        }
+
+        .mega-menu-trigger:hover .mega-menu-content {
+            opacity: 1;
+            visibility: visible;
+            transform: translate(-50%, 0);
+        }
+
+        .mega-menu-column h3 {
+            color: var(--strada-blue);
+            font-size: 1.1rem;
+            margin-bottom: 1rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 1px solid #eee;
+        }
+
+        .mega-menu-column ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .mega-menu-column ul li a {
+            color: #555;
+            padding: 0.4rem 0;
+            display: block;
+            transition: var(--transition);
+            font-size: 0.9rem;
+        }
+
+        .mega-menu-column ul li a:hover {
+            color: var(--strada-blue-light);
+            padding-left: 0.5rem;
+        }
+
+        /* Navigation Right */
+        .nav-right {
+            display: flex;
+            align-items: center;
+            gap: 1.2rem;
+        }
+
+        .search-icon {
+            color: white;
+            font-size: 1.2rem;
+            transition: var(--transition);
+            cursor: pointer;
+            margin-right: auto;
+        }
+
+        .search-icon:hover {
+            color: var(--strada-gold);
+            transform: scale(1.1);
+        }
+
+        /* Hamburger Menu */
+        .hamburger-menu {
+            display: none;
+            flex-direction: column;
+            justify-content: space-between;
+            width: 30px;
+            height: 22px;
+            background: transparent;
+            border: none;
+            cursor: pointer;
+            padding: 0;
+            z-index: 1001;
+        }
+
+        .hamburger-menu .bar {
+            width: 100%;
+            height: 3px;
+            background-color: white;
+            transition: var(--transition);
+            border-radius: 2px;
+        }
+
+        .hamburger-menu.active .bar:nth-child(1) {
+            transform: translateY(9px) rotate(45deg);
+        }
+
+        .hamburger-menu.active .bar:nth-child(2) {
+            opacity: 0;
+        }
+
+        .hamburger-menu.active .bar:nth-child(3) {
+            transform: translateY(-9px) rotate(-45deg);
+        }
+        
+
+  /* Enhanced Footer Styles */
+  .main-footer {
+  width: 100vw; /* Pastikan lebar layar penuh */
+  margin: 0;
+  padding: 50px 0 20px;
+  background: linear-gradient(135deg, #0a2a5a, #1E3F7B);
+  color: white;
+  overflow-x: hidden;
+}
+
+.footer-content {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 40px;
+  padding: 0 20px;
+}
+
+.footer-wrapper {
+    max-width: 100%;
+    margin: 0;
+    padding: 0 20px;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.main-footer {
+    background: linear-gradient(135deg, #0a2a5a 0%, #1E3F7B 100%);
+    color: white;
+    padding: 50px 0 20px;
+    margin-top: 80px;
+}
+
+.main-footer::before {
+    content: '';
+    top: -10px;
+    left: 0;
+    width: 100%;
+    height: 20px;
+    background: url('wave-pattern.png') repeat-x;
+}
+
+.footer-content {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 40px;
+    margin-bottom: 40px;
+}
+
+.footer-column h3 {
+    color: #FFD700;
+    font-size: 1.3rem;
+    margin-bottom: 1.5rem;
+    position: relative;
+    padding-bottom: 10px;
+}
+
+.footer-column h3::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 50px;
+    height: 2px;
+    background: #FFD700;
+}
+
+.footer-links li {
+    margin-bottom: 12px;
+    position: relative;
+    padding-left: 15px;
+}
+
+.footer-links li::before {
+    content: '•';
+    color: #FFD700;
+    position: absolute;
+    left: 0;
+}
+
+.footer-links a {
+    color: rgba(255,255,255,0.8);
+    transition: all 0.3s ease;
+    display: inline-block;
+}
+
+.footer-links a:hover {
+    color: #FFD700;
+    transform: translateX(5px);
+}
+
+.contact-info p {
+    margin-bottom: 15px;
+    display: flex;
+    align-items: flex-start;
+    color: rgba(255,255,255,0.8);
+}
+
+.contact-info i {
+    color: #FFD700;
+    margin-right: 12px;
+    margin-top: 3px;
+}
+
+.social-links {
+    display: flex;
+    gap: 15px;
+    margin-top: 20px;
+}
+
+.social-links a {
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    background: rgba(255,255,255,0.1);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    transition: all 0.3s ease;
+}
+
+.social-links a:hover {
+    background: #FFD700;
+    color: #1E3F7B;
+    transform: translateY(-3px);
+}
+
+.map-container {
+    height: 180px;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    border: 2px solid rgba(255,255,255,0.1);
+}
+
+.footer-branding {
+    display: flex;
+    align-items: center;
+}
+
+.footer-copyright {
+    text-align: center;
+    flex-grow: 1;
+}
+
+.footer-hymne a {
+    display: flex;
+    align-items: center;
+    justify-content: center; 
+    gap: 8px;
+    transition: all 0.3s ease;
+}
+
+.footer-hymne a:hover {
+    color: white;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .footer-content {
+        grid-template-columns: 1fr;
+        gap: 30px;
+    }
+    
+    .footer-bottom {
+        flex-direction: column;
+        text-align: center;
+        gap: 15px;
+    }
+    
+    .footer-branding {
+        justify-content: center;
+        margin-bottom: 15px;
+    }
+}
+
+
+        /* --- Responsive Design --- */
+        @media (max-width: 992px) {
+            .hamburger-menu {
+                display: flex;
+            }
+            
+            .nav-list {
+                position: fixed;
+                top: var(--header-height);
+                left: 0;
+                width: 100%;
+                background-color: var(--strada-blue);
+                flex-direction: column;
+                padding: 1rem 0;
+                transform: translateX(-100%);
+                transition: transform 0.4s ease;
+                z-index: 999;
+                height: calc(100vh - var(--header-height));
+                overflow-y: auto;
+                box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+            }
+            
+            .nav-list.active {
+                transform: translateX(0);
+            }
+            
+            .nav-item {
+                width: 100%;
+            }
+            
+            .nav-item > a {
+                border-radius: 0;
+                padding: 1rem 1.5rem;
+                border-bottom: 1px solid rgba(255,255,255,0.1);
+            }
+            
+            .submenu, .mega-menu-content {
+                position: static;
+                width: auto;
+                box-shadow: none;
+                opacity: 1;
+                visibility: visible;
+                display: none;
+                background-color: rgba(0,0,0,0.1);
+                margin-top: 0;
+                transform: none !important;
+                border-radius: 0;
+                padding: 0;
+            }
+            
+            .nav-item:hover .submenu,
+            .mega-menu-trigger:hover .mega-menu-content {
+                display: block;
+            }
+            
+            .mega-menu-content {
+                grid-template-columns: 1fr;
+                gap: 1rem;
+                padding: 1rem;
+            }
+            
+            .hero-content h1 {
+                font-size: 2.5rem;
+            }
+            
+            .hero-content h2 {
+                font-size: 1.5rem;
+            }
+        }
+
+        @media (max-width: 768px) {
+            h1 { font-size: 2.2rem; }
+            h2 { font-size: 1.8rem; }
+            h2.section-title { font-size: 2rem; }
+            
+            .hero-section {
+                height: 70vh;
+            }
+            
+            .hero-content h1 {
+                font-size: 2.2rem;
+            }
+            
+            .hero-content p {
+                font-size: 1rem;
+            }
+            
+            .tab-content-wrapper {
+                padding: 1.5rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .header-top .container {
+                flex-direction: column;
+                gap: 0.5rem;
+            }
+            
+            .date-display {
+                margin-right: 0;
+            }
+            
+            .running-text {
+                width: 100%;
+            }
+            
+            .hero-content h1 {
+                font-size: 1.8rem;
+            }
+            
+            .hero-content h2 {
+                font-size: 1.3rem;
+            }
+            
+            .btn {
+                width: 100%;
+            }
+        }
+
+        /* --- Back to Top Button --- */
+        .back-to-top {
+            position: fixed;
+            bottom: 2rem;
+            right: 2rem;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background: var(--strada-blue);
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2rem;
+            cursor: pointer;
+            opacity: 0;
+            visibility: hidden;
+            transition: var(--transition);
+            z-index: 999;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+        }
+
+        .back-to-top.visible {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .back-to-top:hover {
+            background: var(--strada-blue-light);
+            transform: translateY(-5px);
+        }
+
+        .fab-button {
+        position: fixed;
+        bottom: 1.5rem;
+        right: 1.5rem;
+        width: 3.5rem;
+        height: 3.5rem;
+        background-color: #1659c5; /* biru tailwind */
+        color: white;
+        border: none;
+        border-radius: 9999px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25);
+        z-index: 999;
+        transition: background-color 0.3s, transform 0.3s;
+        }
+
+        .fab-button:hover {
+        background-color: #2563eb; /* biru lebih gelap saat hover */
+        transform: scale(1.05);
+        }
+
+        .fab-button i {
+        font-size: 1.25rem;
+        }
+
+
+ /* Header Styles */
+        .program-header {
+            background: linear-gradient(135deg, var(--strada-blue), var(--strada-blue-light));
+            color: white;
+            padding: 80px 0 40px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+            margin-bottom: 40px;
+        }
+
+        .program-header::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxMDAlIiBoZWlnaHQ9IjEwMCUiPjxkZWZzPjxwYXR0ZXJuIGlkPSJwYXR0ZXJuIiB3aWR0aD0iNDAiIGhlaWdodD0iNDAiIHBhdHRlcm5Vbml0cz0idXNlclNwYWNlT25Vc2UiIHBhdHRlcm5UcmFuc2Zvcm09InJvdGF0ZSg0NSkiPjxyZWN0IHdpZHRoPSIyMCIgaGVpZ2h0PSIyMCIgZmlsbD0icmdiYSgyNTUsMjU1LDI1NSwwLjA1KSIvPjwvcGF0dGVybj48L2RlZnM+PHJlY3Qgd2lkdGg9IjEwMCUiIGhlaWdodD0iMTAwJSIgZmlsbD0idXJsKCNwYXR0ZXJuKSIvPjwvc3ZnPg==');
+            opacity: 0.3;
+        }
+
+        .program-header h1 {
+            font-size: 2.8rem;
+            margin-bottom: 15px;
+            position: relative;
+            z-index: 1;
+            text-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            color: #fff !important; /* Ubah warna teks menjadi putih */
+        }
+
+        .program-header p {
+            font-size: 1.2rem;
+            max-width: 800px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 1;
+            opacity: 0.9;
+        }
+
+        h1 {
+            font-size: 2.5rem;
+            margin-bottom: 15px;
+        }
+
+        .lead {
+            font-size: 1.2rem;
+            max-width: 800px;
+            margin: 0 auto;
+            opacity: 0.9;
+        }
+
+        .school-nav {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 30px;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+
+        .school-nav-btn {
+            padding: 10px 20px;
+            background: white;
+            color: var(--strada-blue);
+            border: 2px solid var(--strada-blue);
+            border-radius: 30px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .school-nav-btn.active, .school-nav-btn:hover {
+            background: var(--strada-blue);
+            color: white;
+        }
+
+        .school-levels {
+            display: none;
+        }
+
+        .school-levels.active {
+            display: block;
+        }
+
+        .region-tabs {
+            display: flex;
+            margin-bottom: 20px;
+            border-bottom: 2px solid var(--border-color);
+        }
+
+        .region-tab {
+            padding: 10px 20px;
+            cursor: pointer;
+            font-weight: 600;
+            border-bottom: 3px solid transparent;
+            transition: all 0.3s ease;
+        }
+
+        .region-tab.active {
+            color: var(--strada-blue);
+            border-bottom-color: var(--strada-blue);
+        }
+
+        .schools-container {
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            padding: 20px;
+            margin-bottom: 30px;
+        }
+
+        .school-region {
+            display: none;
+        }
+
+        .school-region.active {
+            display: block;
+        }
+
+        .school-card {
+            border-bottom: 1px solid var(--border-color);
+            padding: 20px 0;
+        }
+
+        .school-card:last-child {
+            border-bottom: none;
+        }
+
+        .school-name {
+            color: var(--strada-blue);
+            font-size: 1.2rem;
+            margin-bottom: 10px;
+        }
+
+        .school-meta {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 15px;
+            margin-bottom: 10px;
+            font-size: 0.9rem;
+        }
+
+        .school-meta span {
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+
+        .school-meta i {
+            color: var(--strada-blue);
+        }
+
+        .school-details {
+            margin-top: 15px;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 15px;
+        }
+
+        .detail-item {
+            flex: 1 1 200px;
+        }
+
+        .detail-label {
+            font-weight: 600;
+            color: var(--strada-blue);
+            margin-bottom: 5px;
+        }
+
+        .summary-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 30px 0;
+            background: white;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            border-radius: 8px;
+            overflow: hidden;
+        }
+
+        .summary-table th, .summary-table td {
+            padding: 12px 15px;
+            text-align: center;
+            border: 1px solid var(--border-color);
+        }
+
+        .summary-table th {
+            background-color: var(--strada-blue);
+            color: white;
+        }
+
+        .summary-table tr:nth-child(even) {
+            background-color: #f2f2f2;
+        }
+
+        .summary-table tr:hover {
+            background-color: #e9f5ff;
+        }
+
+        .highlight {
+            font-weight: bold;
+            color: var(--strada-blue);
+        }
+
+        @media (max-width: 768px) {
+            .school-details {
+                flex-direction: column;
+                gap: 10px;
+            }
+
+            .detail-item {
+                flex: 1 1 100%;
+            }
+
+            h1 {
+                font-size: 2rem;
+            }
+        }
+    </style>
+</head>
+
+<body>
+<!-- Header Top with Date and News Ticker -->
+    <div class="header-top">
+        <div class="container">
+            <div class="date-display">
+                <span id="current-date"></span>
+            </div>
+            <div class="running-text">
+                <ul id="akademinews" class="news-tickers">
+                    <li>Selamat datang di website SMA Strada Bhakti Wiyata. Informasi terbaru di SMA Strada Bhakti Wiyata dapat dilihat di bagian <strong>pengumuman</strong>.</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+   <!-- Main Header with Navigation -->
+    <header class="main-header">
+        <nav class="main-nav">
+            <div class="container">
+                <ul class="nav-list">
+                    <li class="nav-item has-submenu">
+                        <a href="profil.html">Profil <i class="fas fa-caret-down"></i></a>
+                        <ul class="submenu">
+                            <li><a href="#sambutan-kepala-sekolah-content">Sambutan Kepala Sekolah</a></li>
+                            <li><a href="#sejarah-content">Sejarah</a></li>
+                            <li><a href="#visi-misi-content">Visi & Misi</a></li>
+                            <li><a href="#nilai-dasar-content">Nilai Dasar</a></li>
+                            <li><a href="#motto-content">Motto</a></li>
+                            <li><a href="#sarana-prasarana-content">Sarana & Prasarana</a></li>
+                            <li><a href="#struktur-organisasi-content">Struktur Organisasi</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item"><a href="prestasi.html">Prestasi</a></li>
+                    <li class="nav-item"><a href="program-sekolah.html">Program Sekolah</a></li>
+                    <li class="nav-item"><a href="galeri.html">Galeri</a></li>
+                    <li class="nav-item"><a href="pendaftaran.html">Pendaftaran</a></li>
+                    <li class="nav-item"><a href="kontak.html">Kontak</a></li>
+                    <li class="nav-item"><a href="sekolah.html">Sekolah</a></li>
+                    <li class="nav-item has-submenu mega-menu-trigger">
+                        <a href="#"> Web Sekolah <i class="fas fa-caret-down"></i></a>
+                        <div class="mega-menu-content">
+                            <div class="mega-menu-column">
+                                <h3>TK Strada</h3>
+                                <ul>
+                                    <li><a href="#">Bhakti Nusa</a></li>
+                                    <li><a href="#">Bhakti Utama</a></li>
+                                    <li><a href="#">Bhakti Wiyata</a></li>
+                                    <li><a href="#">Bina Sejahtera</a></li>
+                                    <li><a href="#">Budi Luhur</a></li>
+                                </ul>
+                            </div>
+                            <div class="mega-menu-column">
+                                <h3>SD Strada</h3>
+                                <ul>
+                                    <li><a href="#">Bhakti Nusa</a></li>
+                                    <li><a href="#">Bhakti Utama</a></li>
+                                    <li><a href="#">Bhakti Wiyata I</a></li>
+                                    <li><a href="#">Bhakti Wiyata II</a></li>
+                                    <li><a href="#">Budi Luhur I</a></li>
+                                </ul>
+                            </div>
+                            <div class="mega-menu-column">
+                                <h3>SMP Strada</h3>
+                                <ul>
+                                    <li><a href="#">Bhakti Mulia</a></li>
+                                    <li><a href="#">Bhakti Nusa</a></li>
+                                    <li><a href="#">Bhakti Utama</a></li>
+                                    <li><a href="#">Bhakti Wiyata</a></li>
+                                    <li><a href="#">Budi Luhur</a></li>
+                                </ul>
+                            </div>
+                            <div class="mega-menu-column">
+                                <h3>SMA Strada</h3>
+                                <ul>
+                                    <li><a href="index.html" class="active">Bhakti Wiyata</a></li>
+                                    <li><a href="#">Santo Thomas Aquino</a></li>
+                               </ul>
+                            </div>
+                            <div class="mega-menu-column">
+                                <h3>SMK Strada</h3>
+                                <ul>
+                                    <li><a href="#">Budi Luhur</a></li>
+                                    <li><a href="#">Daan Mogot</a></li>
+                                    <li><a href="#">SMK Strada I</a></li>
+                                    <li><a href="#">SMK Strada II</a></li>
+                                    <li><a href="#">SMK Strada III</a></li>
+                                </ul>
+                            </div>
+                            <div class="mega-menu-column">
+                                <h3>Kantor</h3>
+                                <ul>
+                                    <li><a href="#">Perkumpulan Strada</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </li>
+                </ul>                
+
+                <div class="nav-right">
+                    <a href="#" class="search-icon" aria-label="Cari"><i class="fas fa-search"></i></a>
+                    <button class="hamburger-menu" aria-label="Menu">
+                        <span class="bar"></span>
+                        <span class="bar"></span>
+                        <span class="bar"></span>
+                    </button>
+
+                <div class="logo">
+                     <img src="asset/Logo.jpg" alt="Logo SMA Strada Bhakti Wiyata">
+                </div>
+                    </div>
+                </div>
+            </div>
+        </nav>
+    </header>
+ <div class="content-wrapper">
+    <!-- Hero Section -->
+
+    
+    <!-- Header -->
+    <div class="program-header">
+        <div class="container">
+           <h1>Jaringan Sekolah Strada</h1>
+            <p class="lead">Daftar lengkap sekolah-sekolah dibawah naungan Perkumpulan Strada</p>
+        </div>
+    </div>
+
+    <div class="container">
+        <div class="school-nav">
+            <button class="school-nav-btn active" data-level="tk">TK</button>
+            <button class="school-nav-btn" data-level="sd">SD</button>
+            <button class="school-nav-btn" data-level="smp">SMP</button>
+            <button class="school-nav-btn" data-level="sma">SMA</button>
+            <button class="school-nav-btn" data-level="smk">SMK</button>
+        </div>
+
+        <div class="school-summary">
+            <table class="summary-table">
+                <thead>
+                    <tr>
+                        <th>Wilayah</th>
+                        <th>TK</th>
+                        <th>SD</th>
+                        <th>SMP</th>
+                        <th>SMA</th>
+                        <th>SMK</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Jakpusbarsel</td>
+                        <td>5</td>
+                        <td>5</td>
+                        <td>5</td>
+                        <td>0</td>
+                        <td>2</td>
+                    </tr>
+                    <tr>
+                        <td>Jakuttim</td>
+                        <td>3</td>
+                        <td>8</td>
+                        <td>4</td>
+                        <td>0</td>
+                        <td>1</td>
+                    </tr>
+                    <tr>
+                        <td>Tangerang</td>
+                        <td>7</td>
+                        <td>8</td>
+                        <td>6</td>
+                        <td>1</td>
+                        <td>1</td>
+                    </tr>
+                    <tr>
+                        <td>Bekasi</td>
+                        <td>5</td>
+                        <td>7</td>
+                        <td>4</td>
+                        <td>1</td>
+                        <td>1</td>
+                    </tr>
+                    <tr class="highlight">
+                        <td>Jumlah</td>
+                        <td>20</td>
+                        <td>28</td>
+                        <td>19</td>
+                        <td>2</td>
+                        <td>5</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <div class="school-levels active" id="tk">
+            <div class="region-tabs">
+                <div class="region-tab active" data-region="jakpusbarsel">Jakpusbarsel</div>
+                <div class="region-tab" data-region="jakuttim">Jakuttim</div>
+                <div class="region-tab" data-region="tangerang">Tangerang</div>
+                <div class="region-tab" data-region="bekasi">Bekasi</div>
+            </div>
+
+            <div class="schools-container">
+                <div class="school-region active" data-region="jakpusbarsel">
+                    <div class="school-card">
+                        <h3 class="school-name">TK Strada John Berchmans</h3>
+                        <div class="school-meta">
+                            <span><i class="fas fa-calendar-alt"></i> Berdiri: 1 Agustus 1965</span>
+                            <span><i class="fas fa-map-marker-alt"></i> Jakarta Pusat</span>
+                        </div>
+                        <div class="school-details">
+                            <div class="detail-item">
+                                <div class="detail-label">Alamat</div>
+                                <div>Jl. Gunung Sahari Raya No.88, Jakarta Pusat 10610</div>
+                            </div>
+                            <div class="detail-item">
+                                <div class="detail-label">Kontak</div>
+                                <div><i class="fas fa-phone"></i> (021)-420.5109</div>
+                                <div><i class="fas fa-envelope"></i> tkstradajb@gmail.com</div>
+                            </div>
+                            <div class="detail-item">
+                                <div class="detail-label">Kepala Sekolah</div>
+                                <div>Maria Goreti Nining Kristiartari</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="school-card">
+                        <h3 class="school-name">TK Strada Bina Sejahtera</h3>
+                        <div class="school-meta">
+                            <span><i class="fas fa-calendar-alt"></i> Berdiri: 5 Juli 1966</span>
+                            <span><i class="fas fa-map-marker-alt"></i> Jakarta Pusat</span>
+                        </div>
+                        <div class="school-details">
+                            <div class="detail-item">
+                                <div class="detail-label">Alamat</div>
+                                <div>Jl. Petamburan V No.67, Tanah Abang, Jakarta Pusat 10260</div>
+                            </div>
+                            <div class="detail-item">
+                                <div class="detail-label">Kontak</div>
+                                <div><i class="fas fa-phone"></i> (021)-536.68586</div>
+                                <div><i class="fas fa-envelope"></i> tkstradabs@gmail.com</div>
+                            </div>
+                            <div class="detail-item">
+                                <div class="detail-label">Kepala Sekolah</div>
+                                <div>Widarti Emiliana</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="school-card">
+                        <h3 class="school-name">TK Strada Dewi Sartika II</h3>
+                        <div class="school-meta">
+                            <span><i class="fas fa-calendar-alt"></i> Berdiri: 1 Januari 1975</span>
+                            <span><i class="fas fa-map-marker-alt"></i> Jakarta Barat</span>
+                        </div>
+                        <div class="school-details">
+                            <div class="detail-item">
+                                <div class="detail-label">Alamat</div>
+                                <div>Jl. Fajar Baru Selatan No64, Cengkareng, Jakarta Barat 11730</div>
+                            </div>
+                            <div class="detail-item">
+                                <div class="detail-label">Kontak</div>
+                                <div><i class="fas fa-phone"></i> (021) 543 80563</div>
+                                <div><i class="fas fa-envelope"></i> tkstradads2@gmail.com</div>
+                            </div>
+                            <div class="detail-item">
+                                <div class="detail-label">Kepala Sekolah</div>
+                                <div>Fransisa Saran Eman Pakerti</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="school-card">
+                        <h3 class="school-name">TK Strada Bhakti Utama</h3>
+                        <div class="school-meta">
+                            <span><i class="fas fa-calendar-alt"></i> Berdiri: 1 Juli 1982</span>
+                            <span><i class="fas fa-map-marker-alt"></i> Jakarta Selatan</span>
+                        </div>
+                        <div class="school-details">
+                            <div class="detail-item">
+                                <div class="detail-label">Alamat</div>
+                                <div>Jl. Bromo Pesanggrahan, Jakarta Selatan 12320</div>
+                            </div>
+                            <div class="detail-item">
+                                <div class="detail-label">Kontak</div>
+                                <div><i class="fas fa-phone"></i> (021)-735.6622</div>
+                                <div><i class="fas fa-envelope"></i> tkstradabu@gmail.com</div>
+                            </div>
+                            <div class="detail-item">
+                                <div class="detail-label">Kepala Sekolah</div>
+                                <div>Lucia Sedya Pamungkas</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="school-card">
+                        <h3 class="school-name">TK Strada Indriyasana</h3>
+                        <div class="school-meta">
+                            <span><i class="fas fa-calendar-alt"></i> Berdiri: 1 Januari 1971</span>
+                            <span><i class="fas fa-map-marker-alt"></i> Jakarta Selatan</span>
+                        </div>
+                        <div class="school-details">
+                            <div class="detail-item">
+                                <div class="detail-label">Alamat</div>
+                                <div>Jl. Raya Pejaten No.34, Pasar Minggu, Jakarta Selatan 12540</div>
+                            </div>
+                            <div class="detail-item">
+                                <div class="detail-label">Kontak</div>
+                                <div><i class="fas fa-phone"></i> (021)-780.5465</div>
+                                <div><i class="fas fa-envelope"></i> tkstradaindri@gmail.com</div>
+                            </div>
+                            <div class="detail-item">
+                                <div class="detail-label">Kepala Sekolah</div>
+                                <div>Anna Subekti Saptasiwi</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="school-region" data-region="jakuttim">
+                    <div class="school-card">
+                        <h3 class="school-name">TK Strada Santa Theresia</h3>
+                        <div class="school-meta">
+                            <span><i class="fas fa-calendar-alt"></i> Berdiri: 1 Januari 1970</span>
+                            <span><i class="fas fa-map-marker-alt"></i> Jakarta Timur</span>
+                        </div>
+                        <div class="school-details">
+                            <div class="detail-item">
+                                <div class="detail-label">Alamat</div>
+                                <div>Jl. Dukuh Timur No.3, Cilincing, Jakarta Timur 14130</div>
+                            </div>
+                            <div class="detail-item">
+                                <div class="detail-label">Kontak</div>
+                                <div><i class="fas fa-phone"></i> (021)-441.4536</div>
+                                <div><i class="fas fa-envelope"></i> tkstradathere@gmail.com</div>
+                            </div>
+                            <div class="detail-item">
+                                <div class="detail-label">Kepala Sekolah</div>
+                                <div>Birgita Wastu Warsiki</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="school-card">
+                        <h3 class="school-name">TK Strada Santa Anna</h3>
+                        <div class="school-meta">
+                            <span><i class="fas fa-calendar-alt"></i> Berdiri: 1 Juli 1988</span>
+                            <span><i class="fas fa-map-marker-alt"></i> Jakarta Timur</span>
+                        </div>
+                        <div class="school-details">
+                            <div class="detail-item">
+                                <div class="detail-label">Alamat</div>
+                                <div>Jl. Laut Arafuru Kav. AL, Duren Sawit, Jakarta Timur 13440</div>
+                            </div>
+                            <div class="detail-item">
+                                <div class="detail-label">Kontak</div>
+                                <div><i class="fas fa-phone"></i> (021)-863.1064</div>
+                                <div><i class="fas fa-envelope"></i> tkstradaanna@gmail.com</div>
+                            </div>
+                            <div class="detail-item">
+                                <div class="detail-label">Kepala Sekolah</div>
+                                <div>Theresia Tri Turni</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="school-card">
+                        <h3 class="school-name">TK Strada Santa Clara</h3>
+                        <div class="school-meta">
+                            <span><i class="fas fa-calendar-alt"></i> Berdiri: 1 Juli 1991</span>
+                            <span><i class="fas fa-map-marker-alt"></i> Jakarta Utara</span>
+                        </div>
+                        <div class="school-details">
+                            <div class="detail-item">
+                                <div class="detail-label">Alamat</div>
+                                <div>Jl. Bayangkara No 38, Tugu Utara, Koja, Jakarta Utara 14260</div>
+                            </div>
+                            <div class="detail-item">
+                                <div class="detail-label">Kontak</div>
+                                <div><i class="fas fa-phone"></i> (021)-435.7209</div>
+                                <div><i class="fas fa-envelope"></i> tkstradaclara@gmail.com</div>
+                            </div>
+                            <div class="detail-item">
+                                <div class="detail-label">Kepala Sekolah</div>
+                                <div>Anastasia Samsiyati</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="school-region" data-region="tangerang">
+                    <div class="school-card">
+                        <h3 class="school-name">TK Strada Santa Maria I</h3>
+                        <div class="school-meta">
+                            <span><i class="fas fa-calendar-alt"></i> Berdiri: 1 Agustus 1962</span>
+                            <span><i class="fas fa-map-marker-alt"></i> Tangerang</span>
+                        </div>
+                        <div class="school-details">
+                            <div class="detail-item">
+                                <div class="detail-label">Alamat</div>
+                                <div>Jl. Daan Mogot No.44 RT 02/08, Sukarasa, Tangerang 15111</div>
+                            </div>
+                            <div class="detail-item">
+                                <div class="detail-label">Kontak</div>
+                                <div><i class="fas fa-phone"></i> (021)-558.6029</div>
+                                <div><i class="fas fa-envelope"></i> tkstradasanmar1@gmail.com</div>
+                            </div>
+                            <div class="detail-item">
+                                <div class="detail-label">Kepala Sekolah</div>
+                                <div>Prsa Damar Triyatmiyarsi</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="school-card">
+                        <h3 class="school-name">TK Strada Santa Maria II</h3>
+                        <div class="school-meta">
+                            <span><i class="fas fa-calendar-alt"></i> Berdiri: 18 September 1962</span>
+                            <span><i class="fas fa-map-marker-alt"></i> Tangerang</span>
+                        </div>
+                        <div class="school-details">
+                            <div class="detail-item">
+                                <div class="detail-label">Alamat</div>
+                                <div>Jl. KS. Tubun No.1 RT 01/03, Pasar Baru, Tangerang 15112</div>
+                            </div>
+                            <div class="detail-item">
+                                <div class="detail-label">Kontak</div>
+                                <div><i class="fas fa-phone"></i> (021)-551.4346</div>
+                                <div><i class="fas fa-envelope"></i> tkstradasanmar2@gmail.com</div>
+                            </div>
+                            <div class="detail-item">
+                                <div class="detail-label">Kepala Sekolah</div>
+                                <div>Brigita Widartinah</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="school-card">
+                        <h3 class="school-name">TK Strada Dewi Sartika I</h3>
+                        <div class="school-meta">
+                            <span><i class="fas fa-calendar-alt"></i> Berdiri: 1 Januari 1975</span>
+                            <span><i class="fas fa-map-marker-alt"></i> Tangerang</span>
+                        </div>
+                        <div class="school-details">
+                            <div class="detail-item">
+                                <div class="detail-label">Alamat</div>
+                                <div>Tegalsari Raya Kavling RT 06/11, Sukasari, Tangerang 15118</div>
+                            </div>
+                            <div class="detail-item">
+                                <div class="detail-label">Kontak</div>
+                                <div><i class="fas fa-phone"></i> (021)-558.1982</div>
+                                <div><i class="fas fa-envelope"></i> tkstradads1@gmail.com</div>
+                            </div>
+                            <div class="detail-item">
+                                <div class="detail-label">Kepala Sekolah</div>
+                                <div>Valentina Sartini</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="school-card">
+                        <h3 class="school-name">TK Strada Dewi Sartika III</h3>
+                        <div class="school-meta">
+                            <span><i class="fas fa-calendar-alt"></i> Berdiri: 1 Juli 1981</span>
+                            <span><i class="fas fa-map-marker-alt"></i> Tangerang</span>
+                        </div>
+                        <div class="school-details">
+                            <div class="detail-item">
+                                <div class="detail-label">Alamat</div>
+                                <div>Jl. Cisabi RT 01/02, Karawaci Baru, Perumnas I, Tangerang 15116</div>
+                            </div>
+                            <div class="detail-item">
+                                <div class="detail-label">Kontak</div>
+                                <div><i class="fas fa-phone"></i> (021)-558.3376</div>
+                                <div><i class="fas fa-envelope"></i> tkstradads3@gmail.com</div>
+                            </div>
+                            <div class="detail-item">
+                                <div class="detail-label">Kepala Sekolah</div>
+                                <div>Maria Margareta Tri Sudaryati</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="school-card">
+                        <h3 class="school-name">TK Strada Mgr. Sugiyopranoto, SJ</h3>
+                        <div class="school-meta">
+                            <span><i class="fas fa-calendar-alt"></i> Berdiri: 1 Juli 1987</span>
+                            <span><i class="fas fa-map-marker-alt"></i> Tangerang</span>
+                        </div>
+                        <div class="school-details">
+                            <div class="detail-item">
+                                <div class="detail-label">Alamat</div>
+                                <div>Jl. Tanjung Pasir No. 2 RT 01/01, Pangkalan Teluk Naga, Tangerang 15510</div>
+                            </div>
+                            <div class="detail-item">
+                                <div class="detail-label">Kontak</div>
+                                <div><i class="fas fa-phone"></i> (021)-559.31027</div>
+                                <div><i class="fas fa-envelope"></i> tkstradasugiyo@gmail.com</div>
+                            </div>
+                            <div class="detail-item">
+                                <div class="detail-label">Kepala Sekolah</div>
+                                <div>Veronika Mulyaningsih</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="school-card">
+                        <h3 class="school-name">TK Strada Bhakti Nusa</h3>
+                        <div class="school-meta">
+                            <span><i class="fas fa-calendar-alt"></i> Berdiri: 1 Juli 1988</span>
+                            <span><i class="fas fa-map-marker-alt"></i> Tangerang</span>
+                        </div>
+                        <div class="school-details">
+                            <div class="detail-item">
+                                <div class="detail-label">Alamat</div>
+                                <div>Vila Melati Mas Blok F RT 27/09, Jelupang, Serpong, Tangerang 15310</div>
+                            </div>
+                            <div class="detail-item">
+                                <div class="detail-label">Kontak</div>
+                                <div><i class="fas fa-phone"></i> (021)-537.0932</div>
+                                <div><i class="fas fa-envelope"></i> tkstradabn@gmail.com</div>
+                            </div>
+                            <div class="detail-item">
+                                <div class="detail-label">Kepala Sekolah</div>
+                                <div>Angela Winarsih</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="school-card">
+                        <h3 class="school-name">TK Strada Yos Sudarso</h3>
+                        <div class="school-meta">
+                            <span><i class="fas fa-calendar-alt"></i> Berdiri: 1 Juli 2022</span>
+                            <span><i class="fas fa-map-marker-alt"></i> Tangerang</span>
+                        </div>
+                        <div class="school-details">
+                            <div class="detail-item">
+                                <div class="detail-label">Alamat</div>
+                                <div>Jl. Empang RT 01/07, Curug Wetan, Curug, Tangerang 15810</div>
+                            </div>
+                            <div class="detail-item">
+                                <div class="detail-label">Kontak</div>
+                                <div><i class="fas fa-phone"></i> (021)-598 1005</div>
+                                <div><i class="fas fa-envelope"></i> tkstradayossudarso@gmail.com</div>
+                            </div>
+                            <div class="detail-item">
+                                <div class="detail-label">Kepala Sekolah</div>
+                                <div>Emawati Dwi Winarsih</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="school-region" data-region="bekasi">
+                    <div class="school-card">
+                        <h3 class="school-name">TK Strada Budi Luhur</h3>
+                        <div class="school-meta">
+                            <span><i class="fas fa-calendar-alt"></i> Berdiri: 1 Juli 1979</span>
+                            <span><i class="fas fa-map-marker-alt"></i> Bekasi</span>
+                        </div>
+                        <div class="school-details">
+                            <div class="detail-item">
+                                <div class="detail-label">Alamat</div>
+                                <div>Jl. Ir. H.Juanda 164, Margahayu, Bekasi Timur, Bekasi 17113, Jabar</div>
+                            </div>
+                            <div class="detail-item">
+                                <div class="detail-label">Kontak</div>
+                                <div><i class="fas fa-phone"></i> (021)-882.3343</div>
+                                <div><i class="fas fa-envelope"></i> tkstradabl@gmail.com</div>
+                            </div>
+                            <div class="detail-item">
+                                <div class="detail-label">Kepala Sekolah</div>
+                                <div>Crescentiana Tri Wiluyanti</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="school-card">
+                        <h3 class="school-name">TK Strada Bhakti Wiyata</h3>
+                        <div class="school-meta">
+                            <span><i class="fas fa-calendar-alt"></i> Berdiri: 1 Juli 1982</span>
+                            <span><i class="fas fa-map-marker-alt"></i> Bekasi</span>
+                        </div>
+                        <div class="school-details">
+                            <div class="detail-item">
+                                <div class="detail-label">Alamat</div>
+                                <div>Jl. Bintara Raya No.38, Kranji, Bekasi Barat, Bekasi 17135</div>
+                            </div>
+                            <div class="detail-item">
+                                <div class="detail-label">Kontak</div>
+                                <div><i class="fas fa-phone"></i> (021)-889.2754</div>
+                                <div><i class="fas fa-envelope"></i> tkstradabw@gmail.com</div>
+                            </div>
+                            <div class="detail-item">
+                                <div class="detail-label">Kepala Sekolah</div>
+                                <div>Gabriella Mudjiati</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="school-card">
+                        <h3 class="school-name">TK Strada Nawar</h3>
+                        <div class="school-meta">
+                            <span><i class="fas fa-calendar-alt"></i> Berdiri: 1 Juli 1988</span>
+                            <span><i class="fas fa-map-marker-alt"></i> Bekasi</span>
+                        </div>
+                        <div class="school-details">
+                            <div class="detail-item">
+                                <div class="detail-label">Alamat</div>
+                                <div>Jl. Raya Hankam No.85, Kel.Jatiranggon, Jatisampurna, Bekasi 17432</div>
+                            </div>
+                            <div class="detail-item">
+                                <div class="detail-label">Kontak</div>
+                                <div><i class="fas fa-phone"></i> (021)-844.0964</div>
+                                <div><i class="fas fa-envelope"></i> tkstradanawar@gmail.com</div>
+                            </div>
+                            <div class="detail-item">
+                                <div class="detail-label">Kepala Sekolah</div>
+                                <div>Lucia Risty Noviyanti</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="school-card">
+                        <h3 class="school-name">TK Strada Kampung Sawah</h3>
+                        <div class="school-meta">
+                            <span><i class="fas fa-calendar-alt"></i> Berdiri: 1 Januari 1975</span>
+                            <span><i class="fas fa-map-marker-alt"></i> Bekasi</span>
+                        </div>
+                        <div class="school-details">
+                            <div class="detail-item">
+                                <div class="detail-label">Alamat</div>
+                                <div>Jl. Raya Kampung Sawah No.67, RT 06/04, Jatimelati, Pondok Melati, Bekasi 17415</div>
+                            </div>
+                            <div class="detail-item">
+                                <div class="detail-label">Kontak</div>
+                                <div><i class="fas fa-phone"></i> (021)-845.0268</div>
+                                <div><i class="fas fa-envelope"></i> tkstradakampus@gmail.com</div>
+                            </div>
+                            <div class="detail-item">
+                                <div class="detail-label">Kepala Sekolah</div>
+                                <div>Maria Goretti Octavia Pepe</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="school-card">
+                        <h3 class="school-name">TK Strada Cakung</h3>
+                        <div class="school-meta">
+                            <span><i class="fas fa-calendar-alt"></i> Berdiri: 1 Juli 2018</span>
+                            <span><i class="fas fa-map-marker-alt"></i> Bekasi</span>
+                        </div>
+                        <div class="school-details">
+                            <div class="detail-item">
+                                <div class="detail-label">Alamat</div>
+                                <div>Jl. Wibawa Mukti II No IA Cakung, Payangan, Jatisari, Bekasi 17426</div>
+                            </div>
+                            <div class="detail-item">
+                                <div class="detail-label">Kontak</div>
+                                <div><i class="fas fa-phone"></i> (021)-28676650</div>
+                                <div><i class="fas fa-envelope"></i> tkstradacakung@gmail.com</div>
+                            </div>
+                            <div class="detail-item">
+                                <div class="detail-label">Kepala Sekolah</div>
+                                <div>Alusia Apritha Krisna Novyanti</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="school-levels" id="sd">
+            <div class="region-tabs">
+                <div class="region-tab active" data-region="jakpusbarsel">Jakpusbarsel</div>
+                <div class="region-tab" data-region="jakuttim">Jakuttim</div>
+                <div class="region-tab" data-region="tangerang">Tangerang</div>
+                <div class="region-tab" data-region="bekasi">Bekasi</div>
+            </div>
+
+            <div class="schools-container">
+                <div class="school-region active" data-region="jakpusbarsel">
+                    <div class="school-card">
+                        <h3 class="school-name">SD Strada Van Lith I</h3>
+                        <div class="school-meta">
+                            <span><i class="fas fa-calendar-alt"></i> Berdiri: 24 Mei 1924</span>
+                            <span><i class="fas fa-map-marker-alt"></i> Jakarta Pusat</span>
+                        </div>
+                        <div class="school-details">
+                            <div class="detail-item">
+                                <div class="detail-label">Alamat</div>
+                                <div>Jl. Gunung Sahari Raya No.88, Jakarta Pusat 10610</div>
+                            </div>
+                            <div class="detail-item">
+                                <div class="detail-label">Kontak</div>
+                                <div><i class="fas fa-phone"></i> (021)-420.5122</div>
+                                <div><i class="fas fa-envelope"></i> sdstradavanlith1@gmail.com</div>
+                            </div>
+                            <div class="detail-item">
+                                <div class="detail-label">Kepala Sekolah</div>
+                                <div>Florentina Andri Hendarwatmanti</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="school-card">
+                        <h3 class="school-name">SD Strada Pejompongan</h3>
+                        <div class="school-meta">
+                            <span><i class="fas fa-calendar-alt"></i> Berdiri: 1 Januari 1976</span>
+                            <span><i class="fas fa-map-marker-alt"></i> Jakarta Pusat</span>
+                        </div>
+                        <div class="school-details">
+                            <div class="detail-item">
+                                <div class="detail-label">Alamat</div>
+                                <div>Jl. Petamburan V No.67,Tanah Abang, Jakarta Pusat 10260</div>
+                            </div>
+                            <div class="detail-item">
+                                <div class="detail-label">Kontak</div>
+                                <div><i class="fas fa-phone"></i> (021)-536.50618</div>
+                                <div><i class="fas fa-envelope"></i> sdstradapjp@gmail.com</div>
+                            </div>
+                            <div class="detail-item">
+                                <div class="detail-label">Kepala Sekolah</div>
+                                <div>Lesni Katerina</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="school-card">
+                        <h3 class="school-name">SD Strada Bina Mulia I</h3>
+                        <div class="school-meta">
+                            <span><i class="fas fa-calendar-alt"></i> Berdiri: 1 Januari 1974</span>
+                            <span><i class="fas fa-map-marker-alt"></i> Jakarta Barat</span>
+                        </div>
+                        <div class="school-details">
+                            <div class="detail-item">
+                                <div class="detail-label">Alamat</div>
+                                <div>Jl. Fajar Baru Selatan No64, Cengkareng, Jakarta Barat 11730</div>
+                            </div>
+                            <div class="detail-item">
+                                <div class="detail-label">Kontak</div>
+                                <div><i class="fas fa-phone"></i> (021)-619.6268</div>
+                                <div><i class="fas fa-envelope"></i> sdstradabm1@gmail.com</div>
+                            </div>
+                            <div class="detail-item">
+                                <div class="detail-label">Kepala Sekolah</div>
+                                <div>Theresela Danik Yuni Karlawati</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="school-card">
+                        <h3 class="school-name">SD Strada Bhakti Utama</h3>
+                        <div class="school-meta">
+                            <span><i class="fas fa-calendar-alt"></i> Berdiri: 1 Juli 1981</span>
+                            <span><i class="fas fa-map-marker-alt"></i> Jakarta Selatan</span>
+                        </div>
+                        <div class="school-details">
+                            <div class="detail-item">
+                                <div class="detail-label">Alamat</div>
+                                <div>Jl. Bromo Pesanggrahan, Jakarta Selatan 12320</div>
+                            </div>
+                            <div class="detail-item">
+                                <div class="detail-label">Kontak</div>
+                                <div><i class="fas fa-phone"></i> (021)-735.1156</div>
+                                <div><i class="fas fa-envelope"></i> sdstradabu@gmail.com</div>
+                            </div>
+                            <div class="detail-item">
+                                <div class="detail-label">Kepala Sekolah</div>
+                                <div>Angela Nining Yulianingsih</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="school-card">
+                        <h3 class="school-name">SD Strada Wiyatasana</h3>
+                        <div class="school-meta">
+                            <span><i class="fas fa-calendar-alt"></i> Berdiri: 1 Januari 1972</span>
+                            <span><i class="fas fa-map-marker-alt"></i> Jakarta Selatan</span>
+                        </div>
+                        <div class="school-details">
+                            <div class="detail-item">
+                                <div class="detail-label">Alamat</div>
+                                <div>Jl. Raya Pejaten No.34, Pasar Minggu, Jakarta Selatan 12540</div>
+                            </div>
+                            <div class="detail-item">
+                                <div class="detail-label">Kontak</div>
+                                <div><i class="fas fa-phone"></i> (021)-780.2739</div>
+                                <div><i class="fas fa-envelope"></i> sdstradawiyata@gmail.com</div>
+                            </div>
+                            <div class="detail-item">
+                                <div class="detail-label">Kepala Sekolah</div>
+                                <div>C. Titik Daryani</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="school-region" data-region="jakuttim">
+                    <div class="school-card">
+                        <h3 class="school-name">SD Strada Tunas Keluarga Mulia I</h3>
+                        <div class="school-meta">
+                            <span><i class="fas fa-calendar-alt"></i> Berdiri: 1 Agustus 1962</span>
+                            <span><i class="fas fa-map-marker-alt"></i> Jakarta Utara</span>
+                        </div>
+                        <div class="school-details">
+                            <div class="detail-item">
+                                <div class="detail-label">Alamat</div>
+                                <div>Jl. Khatulistiwa No 06, Cilincing, Jakarta Utara 14130</div>
+                            </div>
+                            <div class="detail-item">
+                                <div class="detail-label">Kontak</div>
+                                <div><i class="fas fa-phone"></i> (021)-440.7092</div>
+                                <div><i class="fas fa-envelope"></i> sdstradatkm1@gmail.com</div>
+                            </div>
+                            <div class="detail-item">
+                                <div class="detail-label">Kepala Sekolah</div>
+                                <div>M.M. Dyah Kristiningsih</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="school-card">
+                        <h3 class="school-name">SD Strada Tunas Keluarga Mulia II</h3>
+                        <div class="school-meta">
+                            <span><i class="fas fa-calendar-alt"></i> Berdiri: 1 Juli 1980</span>
+                            <span><i class="fas fa-map-marker-alt"></i> Jakarta Utara</span>
+                        </div>
+                        <div class="school-details">
+                            <div class="detail-item">
+                                <div class="detail-label">Alamat</div>
+                                <div>Jl. Raya Cakung Cilincing No.11, Semper Timur, Jakarta Utara 14130</div>
+                            </div>
+                            <div class="detail-item">
+                                <div class="detail-label">Kontak</div>
+                                <div><i class="fas fa-phone"></i> (021)-441.6136</div>
+                                <div><i class="fas fa-envelope"></i> sdstradatkm2@gmail.com</div>
+                            </div>
+                            <div class="detail-item">
+                                <div class="detail-label">Kepala Sekolah</div>
+                                <div>Fransiscus Deo Putra Saiming</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="school-card">
+                        <h3 class="school-name">SD Strada Santo Fransiskus Xaverius</h3>
+                        <div class="school-meta">
+                            <span><i class="fas fa-calendar-alt"></i> Berdiri: 1 Agustus 1952</span>
+                            <span><i class="fas fa-map-marker-alt"></i> Jakarta Utara</span>
+                        </div>
+                        <div class="school-details">
+                            <div class="detail-item">
+                                <div class="detail-label">Alamat</div>
+                                <div>Jl. Deli 20, Koja, Jakarta Utara 14220</div>
+                            </div>
+                            <div class="detail-item">
+                                <div class="detail-label">Kontak</div>
+                                <div><i class="fas fa-phone"></i> (021)-437.3174</div>
+                                <div><i class="fas fa-envelope"></i> sdstradafx@gmail.com</div>
+                            </div>
+                            <div class="detail-item">
+                                <div class="detail-label">Kepala Sekolah</div>
+                                <div>Fredericus Hari Yulianto</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="school-card">
+                        <h3 class="school-name">SD Strada Santo Ignatius</h3>
+                        <div class="school-meta">
+                            <span><i class="fas fa-calendar-alt"></i> Berdiri: 1 Agustus 1963</span>
+                            <span><i class="fas fa-map-marker-alt"></i> Jakarta Utara</span>
+                        </div>
+                        <div class="school-details">
+                            <div class="detail-item">
+                                <div class="detail-label">Alamat</div>
+                                <div>Jl. Bayangkara No 38, Tugu Utara, Koja, Jakarta Utara 14260</div>
+                            </div>
+                            <div class="detail-item">
+                                <div class="detail-label">Kontak</div>
+                                <div><i class="fas fa-phone"></i> (021)-435.0509</div>
+                                <div><i class="fas fa-envelope"></i> sdstradaignatius@gmail.com</div>
+                            </div>
+                            <div class="detail-item">
+                                <div class="detail-label">Kepala Sekolah</div>
+                                <div>Saptoyo</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="school-card">
+                        <h3 class="school-name">SD Strada Santo Petrus</h3>
+                        <div class="school-meta">
+                            <span><i class="fas fa-calendar-alt"></i> Berdiri: 1 Agustus 1963</span>
+                            <span><i class="fas fa-map-marker-alt"></i> Jakarta Utara</span>
+                        </div>
+                        <div class="school-details">
+                            <div class="detail-item">
+                                <div class="detail-label">Alamat</div>
+                                <div>Jl. Gadang No 81, Tanjung Priok, Jakarta Utara 14330</div>
+                            </div>
+                            <div class="detail-item">
+                                <div class="detail-label">Kontak</div>
+                                <div><i class="fas fa-phone"></i> (021)-437.3174</div>
+                                <div><i class="fas fa-envelope"></i> sdstradapetrus@gmail.com</div>
+                            </div>
+                            <div class="detail-item">
+                                <div class="detail-label">Kepala Sekolah</div>
+                                <div>Petrus Tavip Yuwono</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="school-card">
+                        <h3 class="school-name">SD Strada Santo Paulus</h3>
+                        <div class="school-meta">
+                            <span><i class="fas fa-calendar-alt"></i> Berdiri: 1 Agustus 1958</span>
+                            <span><i class="fas fa-map-marker-alt"></i> Jakarta Utara</span>
+                        </div>
+                        <div class="school-details">
+                            <div class="detail-item">
+                                <div class="detail-label">Alamat</div>
+                                <div>Jl. Gadang No 81, Tanjung Priok, Jakarta Utara 14330</div>
+                            </div>
+                            <div class="detail-item">
+                                <div class="detail-label">Kontak</div>
+                                <div><i class="fas fa-phone"></i> (021)-437.3175</div>
+                                <div><i class="fas fa-envelope"></i> sdstradapaulus@gmail.com</div>
+                            </div>
+                            <div class="detail-item">
+                                <div class="detail-label">Kepala Sekolah</div>
+                                <div>Stephanus Rico Hendriyanto</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="school-card">
+                        <h3 class="school-name">SD Strada Dipamarga</h3>
+                        <div class="school-meta">
+                            <span><i class="fas fa-calendar-alt"></i> Berdiri: 1 Januari 1974</span>
+                            <span><i class="fas fa-map-marker-alt"></i> Jakarta Timur</span>
+                        </div>
+                        <div class="school-details">
+                            <div class="detail-item">
+                                <div class="detail-label">Alamat</div>
+                                <div>Jl. Dermaga No.22, Klender, Jakarta Timur 13470</div>
+                            </div>
+                            <div class="detail-item">
+                                <div class="detail-label">Kontak</div>
+                                <div><i class="fas fa-phone"></i> (021)-860.5621</div>
+                                <div><i class="fas fa-envelope"></i> sdstradadipa@gmail.com</div>
+                            </div>
+                            <div class="detail-item">
+                                <div class="detail-label">Kepala Sekolah</div>
+                                <div>Tri Utami</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="school-card">
+                        <h3 class="school-name">SD Strada Van Lith II</h3>
+                        <div class="school-meta">
+                            <span><i class="fas fa-calendar-alt"></i> Berdiri: 24 Mei 1924</span>
+                            <span><i class="fas fa-map-marker-alt"></i> Jakarta Timur</span>
+                        </div>
+                        <div class="school-details">
+                            <div class="detail-item">
+                                <div class="detail-label">Alamat</div>
+                                <div>Jl. Laut Arafuru Kav. AL, Duren Sawit, Jakarta Timur 13440</div>
+                            </div>
+                            <div class="detail-item">
+                                <div class="detail-label">Kontak</div>
+                                <div><i class="fas fa-phone"></i> (021)-862.5922</div>
+                                <div><i class="fas fa-envelope"></i> sdstradavanlith2@gmail.com</div>
+                            </div>
+                            <div class="detail-item">
+                                <div class="detail-label">Kepala Sekolah</div>
+                                <div>Lucianus Misdiyono</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="school-region" data-region="tangerang">
+                    <div class="school-card">
+                        <h3 class="school-name">SD Strada Santa Maria</h3>
+                        <div class="school-meta">
+                            <span><i class="fas fa-calendar-alt"></i> Berdiri: 1 Agustus 1957</span>
+                            <span><i class="fas fa-map-marker-alt"></i> Tangerang</span>
+                        </div>
+                        <div class="school-details">
+                            <div class="detail-item">
+                                <div class="detail-label">Alamat</div>
+                                <div>Jl. Daan Mogot No.44 RT 02/08, Sukarasa, Tangerang 15111</div>
+                            </div>
+                            <div class="detail-item">
+                                <div class="detail-label">Kontak</div>
+                                <div><i class="fas fa-phone"></i> (021)-552.3495</div>
+                                <div><i class="fas fa-envelope"></i> sdstradasanmar@gmail.com</div>
+                            </div>
+                            <div class="detail-item">
+                                <div class="detail-label">Kepala Sekolah</div>
+                                <div>Chicilia Suratun</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="school-card">
+                        <h3 class="school-name">SD Strada Santo Fransiskus</h3>
+                        <div class="school-meta">
+                            <span><i class="fas fa-calendar-alt"></i> Berdiri: 1 Agustus 1957</span>
+                            <span><i class="fas fa-map-marker-alt"></i> Tangerang</span>
+                        </div>
+                        <div class="school-details">
+                            <div class="detail-item">
+                                <div class="detail-label">Alamat</div>
+                                <div>Jl. Daan Mogot No.44 RT 02/08, Sukarasa, Tangerang 15111</div>
+                            </div>
+                            <div class="detail-item">
+                                <div class="detail-label">Kontak</div>
+                                <div><i class="fas fa-phone"></i> (021)-552.4922</div>
+                                <div><i class="fas fa-envelope"></i> sdstradafrans@gmail.com</div>
+                            </div>
+                            <div class="detail-item">
+                                <div class="detail-label">Kepala Sekolah</div>
+                                <div>Cicilia Kartini</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="school-card">
+                        <h3 class="school-name">SD Strada Santo Aloysius I</h3>
+                        <div class="school-meta">
+                            <span><i class="fas fa-calendar-alt"></i> Berdiri: 1 Agustus 1957</span>
+                            <span><i class="fas fa-map-marker-alt"></i> Tangerang</span>
+                        </div>
+                        <div class="school-details">
+                            <div class="detail-item">
+                                <div class="detail-label">Alamat</div>
+                                <div>Jl. KS. Tubun No.1 RT 01/03, Pasar Baru, Tangerang 15112</div>
+                            </div>
+                            <div class="detail-item">
+                                <div class="detail-label">Kontak</div>
+                                <div><i class="fas fa-phone"></i> (021)-551.2715</div>
+                                <div><i class="fas fa-envelope"></i> sdstradaaloysius1@gmail.com</div>
+                            </div>
+                            <div class="detail-item">
+                                <div class="detail-label">Kepala Sekolah</div>
+                                <div>Antonius Tri Mulyana</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="school-card">
+                        <h3 class="school-name">SD Strada Mgr. Sugiyopranoto, SJ</h3>
+                        <div class="school-meta">
+                            <span><i class="fas fa-calendar-alt"></i> Berdiri: 1 Agustus 1964</span>
+                            <span><i class="fas fa-map-marker-alt"></i> Tangerang</span>
+                        </div>
+                        <div class="school-details">
+                            <div class="detail-item">
+                                <div class="detail-label">Alamat</div>
+                                <div>Jl. Tanjung Pasir No. 2 RT 01/01, Pangkalan Teluk Naga, Tangerang 15510</div>
+                            </div>
+                            <div class="detail-item">
+                                <div class="detail-label">Kontak</div>
+                                <div><i class="fas fa-phone"></i> (021)-559.32553</div>
+                                <div><i class="fas fa-envelope"></i> sdstradasugiyo@gmail.com</div>
+                            </div>
+                            <div class="detail-item">
+                                <div class="detail-label">Kepala Sekolah</div>
+                                <div>F.X. Legino Budiarto</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="school-card">
+                        <h3 class="school-name">SD Strada Yos Sudarso</h3>
+                        <div class="school-meta">
+                            <span><i class="fas fa-calendar-alt"></i> Berdiri: 10 November 1966</span>
+                            <span><i class="fas fa-map-marker-alt"></i> Tangerang</span>
+                        </div>
+                        <div class="school-details">
+                            <div class="detail-item">
+                                <div class="detail-label">Alamat</div>
+                                <div>Jl. Empang RT 01/07, Curug Wetan, Curug, Tangerang 15810</div>
+                            </div>
+                            <div class="detail-item">
+                                <div class="detail-label">Kontak</div>
+                                <div><i class="fas fa-phone"></i> (021)-598.1005</div>
+                                <div><i class="fas fa-envelope"></i> sdstradayoss@gmail.com</div>
+                            </div>
+                            <div class="detail-item">
+                                <div class="detail-label">Kepala Sekolah</div>
+                                <div>Florentinus Arief Gunawan</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="school-card">
+                        <h3 class="school-name">SD Strada Slamet Riyadi I</h3>
+                        <div class="school-meta">
+                            <span><i class="fas fa-calendar-alt"></i> Berdiri: 1 Juli 1982</span>
+                            <span><i class="fas fa-map-marker-alt"></i> Tangerang</span>
+                        </div>
+                        <div class="school-details">
+                            <div class="detail-item">
+                                <div class="detail-label">Alamat</div>
+                                <div>Jl. Prambanan Raya RT 001/012, Cibodas, Perumnas II, Tangerang 15116</div>
+                            </div>
+                            <div class="detail-item">
+                                <div class="detail-label">Kontak</div>
+                                <div><i class="fas fa-phone"></i> (021)-553.5765</div>
+                                <div><i class="fas fa-envelope"></i> sdstradasr1@gmail.com</div>
+                            </div>
+                            <div class="detail-item">
+                                <div class="detail-label">Kepala Sekolah</div>
+                                <div>Theresia Yuni Eko Sri Haryanti</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="school-card">
+                        <h3 class="school-name">SD Strada Slamet Riyadi II</h3>
+                        <div class="school-meta">
+                            <span><i class="fas fa-calendar-alt"></i> Berdiri: 1 Juli 1990</span>
+                            <span><i class="fas fa-map-marker-alt"></i> Tangerang</span>
+                        </div>
+                        <div class="school-details">
+                            <div class="detail-item">
+                                <div class="detail-label">Alamat</div>
+                                <div>Jl. Prambanan Raya RT 001/012, Cibodas, Perumnas II, Tangerang 15116</div>
+                            </div>
+                            <div class="detail-item">
+                                <div class="detail-label">Kontak</div>
+                                <div><i class="fas fa-phone"></i> (021)-591.9329</div>
+                                <div><i class="fas fa-envelope"></i> sdstradasr2@gmail.com</div>
+                            </div>
+                            <div class="detail-item">
+                                <div class="detail-label">Kepala Sekolah</div>
+                                <div>F.X Heri Triyanto</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="school-card">
+                        <h3 class="school-name">SD Strada Bhakti Nusa</h3>
+                        <div class="school-meta">
+                            <span><i class="fas fa-calendar-alt"></i> Berdiri: 1 Juli 1991</span>
+                            <span><i class="fas fa-map-marker-alt"></i> Tangerang</span>
+                        </div>
+                        <div class="school-details">
+                            <div class="detail-item">
+                                <div class="detail-label">Alamat</div>
+                                <div>Vila Melati Mas Blok F RT 27/09, Jelupang, Serpong, Tangerang 15310</div>
+                            </div>
+                            <div class="detail-item">
+                                <div class="detail-label">Kontak</div>
+                                <div><i class="fas fa-phone"></i> (021)-531.51962</div>
+                                <div><i class="fas fa-envelope"></i> sdstradabn@gmail.com</div>
+                            </div>
+                            <div class="detail-item">
+                                <div class="detail-label">Kepala Sekolah</div>
+                                <div>Robertus Ngatiman</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="school-region" data-region="bekasi">
+                    <div class="school-card">
+                        <h3 class="school-name">SD Strada Budi Luhur I</h3>
+                        <div class="school-meta">
+                            <span><i class="fas fa-calendar-alt"></i> Berdiri: 1 Januari 1967</span>
+                            <span><i class="fas fa-map-marker-alt"></i> Bekasi</span>
+                        </div>
+                        <div class="school-details">
+                            <div class="detail-item">
+                                <div class="detail-label">Alamat</div>
+                                <div>Jl.Ir. H.Juanda 164, Margahayu, Bekasi Timur, Bekasi 17113, Jabar</div>
+                            </div>
+                            <div class="detail-item">
+                                <div class="detail-label">Kontak</div>
+                                <div><i class="fas fa-phone"></i> (021)-882.3340</div>
+                                <div><i class="fas fa-envelope"></i> sdstradabl1@gmail.com</div>
+                            </div>
+                            <div class="detail-item">
+                                <div class="detail-label">Kepala Sekolah</div>
+                                <div>B.M. Endah Sri Wahyuni</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="school-card">
+                        <h3 class="school-name">SD Strada Budi Luhur II</h3>
+                        <div class="school-meta">
+                            <span><i class="fas fa-calendar-alt"></i> Berdiri: 1 Juli 1990</span>
+                            <span><i class="fas fa-map-marker-alt"></i> Bekasi</span>
+                        </div>
+                        <div class="school-details">
+                            <div class="detail-item">
+                                <div class="detail-label">Alamat</div>
+                                <div>Jl.Ir. H.Juanda 164, Margahayu, Bekasi Timur, Bekasi 17113, Jabar</div>
+                            </div>
+                            <div class="detail-item">
+                                <div class="detail-label">Kontak</div>
+                                <div><i class="fas fa-phone"></i> (021)-882.3341</div>
+                                <div><i class="fas fa-envelope"></i> sdstradabl2@gmail.com</div>
+                            </div>
+                            <div class="detail-item">
+                                <div class="detail-label">Kepala Sekolah</div>
+                                <div>Vincentiana Sumarni</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="school-card">
+                        <h3 class="school-name">SD Strada Bhakti Wiyata I</h3>
+                        <div class="school-meta">
+                            <span><i class="fas fa-calendar-alt"></i> Berdiri: 1 Juli 1983</span>
+                            <span><i class="fas fa-map-marker-alt"></i> Bekasi</span>
+                        </div>
+                        <div class="school-details">
+                            <div class="detail-item">
+                                <div class="detail-label">Alamat</div>
+                                <div>Jl. Bintara Raya No.38, Kranji, Bekasi Barat, Bekasi 17135</div>
+                            </div>
+                            <div class="detail-item">
+                                <div class="detail-label">Kontak</div>
+                                <div><i class="fas fa-phone"></i> (021)-844.6437</div>
+                                <div><i class="fas fa-envelope"></i> sdstradabhaktiwiyata1@gmail.com</div>
+                            </div>
+                            <div class="detail-item">
+                                <div class="detail-label">Kepala Sekolah</div>
+                                <div>Emiliana Eni Ruswati</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="school-card">
+                        <h3 class="school-name">SD Strada Bhakti Wiyata II</h3>
+                        <div class="school-meta">
+                            <span><i class="fas fa-calendar-alt"></i> Berdiri: 1 Juli 1990</span>
+                            <span><i class="fas fa-map-marker-alt"></i> Bekasi</span>
+                        </div>
+                        <div class="school-details">
+                            <div class="detail-item">
+                                <div class="detail-label">Alamat</div>
+                                <div>Jl. Bintara Raya No.38, Kranji, Bekasi Barat, Bekasi 17135</div>
+                            </div>
+                            <div class="detail-item">
+                                <div class="detail-label">Kontak</div>
+                                <div><i class="fas fa-phone"></i> (021)-889.3430</div>
+                                <div><i class="fas fa-envelope"></i> sdstradabhaktiwiyata2@gmail.com</div>
+                            </div>
+                            <div class="detail-item">
+                                <div class="detail-label">Kepala Sekolah</div>
+                                <div>Damianus Darju</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="school-card">
+                        <h3 class="school-name">SD Strada Nawar</h3>
+                        <div class="school-meta">
+                            <span><i class="fas fa-calendar-alt"></i> Berdiri: 1 Agustus 1965</span>
+                            <span><i class="fas fa-map-marker-alt"></i> Bekasi</span>
+                        </div>
+                        <div class="school-details">
+                            <div class="detail-item">
+                                <div class="detail-label">Alamat</div>
+                                <div>Jl. Raya Hankam No. 85 Jatiranggon, Jatisampurna- Bekasi 17432</div>
+                            </div>
+                            <div class="detail-item">
+                                <div class="detail-label">Kontak</div>
+                                <div><i class="fas fa-phone"></i> (021)-844.0091</div>
+                                <div><i class="fas fa-envelope"></i> sdstradanwr@gmail.com</div>
+                            </div>
+                            <div class="detail-item">
+                                <div class="detail-label">Kepala Sekolah</div>
+                                <div>Fransiscus Xaverius Kristanto</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="school-card">
+                        <h3 class="school-name">SD Strada Kampung Sawah</h3>
+                        <div class="school-meta">
+                            <span><i class="fas fa-calendar-alt"></i> Berdiri: 1 Agustus 1924</span>
+                            <span><i class="fas fa-map-marker-alt"></i> Bekasi</span>
+                        </div>
+                        <div class="school-details">
+                            <div class="detail-item">
+                                <div class="detail-label">Alamat</div>
+                                <div>Jl. Raya Kampung Sawah No.67, RT 06/04, Jatimelati, Pondok Melati, Bekasi 17415</div>
+                            </div>
+                            <div class="detail-item">
+                                <div class="detail-label">Kontak</div>
+                                <div><i class="fas fa-phone"></i> (021)-845.0087</div>
+                                <div><i class="fas fa-envelope"></i> sdstradakampus@gmail.com</div>
+                            </div>
+                            <div class="detail-item">
+                                <div class="detail-label">Kepala Sekolah</div>
+                                <div>Bernadeta Nunung Nurhaeni</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="school-card">
+                        <h3 class="school-name">SD Strada Cakung</h3>
+                        <div class="school-meta">
+                            <span><i class="fas fa-calendar-alt"></i> Berdiri: 1 Agustus 1959</span>
+                            <span><i class="fas fa-map-marker-alt"></i> Bekasi</span>
+                        </div>
+                        <div class="school-details">
+                            <div class="detail-item">
+                                <div class="detail-label">Alamat</div>
+                                <div>Jl. Wibawa Mukti II, Jatisari, Bekasi 17426, Jawa Barat</div>
+                            </div>
+                            <div class="detail-item">
+                                <div class="detail-label">Kontak</div>
+                                <div><i class="fas fa-phone"></i> (021)-845.3171</div>
+                                <div><i class="fas fa-envelope"></i> sdstradacakung@gmail.com</div>
+                            </div>
+                            <div class="detail-item">
+                                <div class="detail-label">Kepala Sekolah</div>
+                                <div>Priskalia Niken Widowati</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="school-levels" id="smp">
+            <div class="region-tabs">
+                <div class="region-tab active" data-region="jakpusbarsel">Jakpusbarsel</div>
+                <div class="region-tab" data-region="jakuttim">Jakuttim</div>
+                <div class="region-tab" data-region="tangerang">Tangerang</div>
+                <div class="region-tab" data-region="bekasi">Bekasi</div>
+            </div>
+
+            <div class="schools-container">
+                <div class="school-region active" data-region="jakpusbarsel">
+                    <div class="school-card">
+                        <h3 class="school-name">SMP Strada Mardi Utama I</h3>
+                        <div class="school-meta">
+                            <span><i class="fas fa-calendar-alt"></i> Berdiri: 1 Januari 1972</span>
+                            <span><i class="fas fa-map-marker-alt"></i> Jakarta Pusat</span>
+                        </div>
+                        <div class="school-details">
+                            <div class="detail-item">
+                                <div class="detail-label">Alamat</div>
+                                <div>Jl. Gunung Sahari Raya No.88, Jakarta Pusat 10610</div>
+                            </div>
+                            <div class="detail-item">
+                                <div class="detail-label">Kontak</div>
+                                <div><i class="fas fa-phone"></i> (021)-428.8539</div>
+                                <div><i class="fas fa-envelope"></i> smpstradamu1@gmail.com</div>
+                            </div>
+                            <div class="detail-item">
+                                <div class="detail-label">Kepala Sekolah</div>
+                                <div>Yuliana Bekti Kristanti</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="school-card">
+                        <h3 class="school-name">SMP Strada Pejompongan</h3>
+                        <div class="school-meta">
+                            <span><i class="fas fa-calendar-alt"></i> Berdiri: 1 Januari 1976</span>
+                            <span><i class="fas fa-map-marker-alt"></i> Jakarta Pusat</span>
+                        </div>
+                        <div class="school-details">
+                            <div class="detail-item">
+                                <div class="detail-label">Alamat</div>
+                                <div>Jl. Petamburan V No.67, Tanah Abang, Jakarta Pusat 10260</div>
+                            </div>
+                            <div class="detail-item">
+                                <div class="detail-label">Kontak</div>
+                                <div><i class="fas fa-phone"></i> (021)-536.50004</div>
+                                <div><i class="fas fa-envelope"></i> smpstradapjp@gmail.com</div>
+                            </div>
+                            <div class="detail-item">
+                                <div class="detail-label">Kepala Sekolah</div>
+                                <div>Nurnaningsih</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="school-card">
+                        <h3 class="school-name">SMP Strada Pelita II</h3>
+                        <div class="school-meta">
+                            <span><i class="fas fa-calendar-alt"></i> Berdiri: 1 Januari 1978</span>
+                            <span><i class="fas fa-map-marker-alt"></i> Jakarta Barat</span>
+                        </div>
+                        <div class="school-details">
+                            <div class="detail-item">
+                                <div class="detail-label">Alamat</div>
+                                <div>Jl. Fajar Baru Selatan No64, Cengkareng, Jakarta Barat 11730</div>
+                            </div>
+                            <div class="detail-item">
+                                <div class="detail-label">Kontak</div>
+                                <div><i class="fas fa-phone"></i> (021)-544.3939</div>
+                                <div><i class="fas fa-envelope"></i> smpstradap2@gmail.com</div>
+                            </div>
+                            <div class="detail-item">
+                                <div class="detail-label">Kepala Sekolah</div>
+                                <div>Donata Sariwangi Heni Darwati</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="school-card">
+                        <h3 class="school-name">SMP Strada Bhakti Utama</h3>
+                        <div class="school-meta">
+                            <span><i class="fas fa-calendar-alt"></i> Berdiri: 1 Juli 1983</span>
+                            <span><i class="fas fa-map-marker-alt"></i> Jakarta Selatan</span>
+                        </div>
+                        <div class="school-details">
+                            <div class="detail-item">
+                                <div class="detail-label">Alamat</div>
+                                <div>Jl. Bromo Pesanggrahan, Jakarta Selatan 12320</div>
+                            </div>
+                            <div class="detail-item">
+                                <div class="detail-label">Kontak</div>
+                                <div><i class="fas fa-phone"></i> (021)-736.2887</div>
+                                <div><i class="fas fa-envelope"></i> smpstradabu@gmail.com</div>
+                            </div>
+                            <div class="detail-item">
+                                <div class="detail-label">Kepala Sekolah</div>
+                                <div>FX. Erlian Cahyadi</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="school-card">
+                        <h3 class="school-name">SMP Strada Marga Mulia</h3>
+                        <div class="school-meta">
+                            <span><i class="fas fa-calendar-alt"></i> Berdiri: 1 Januari 1976</span>
+                            <span><i class="fas fa-map-marker-alt"></i> Jakarta Selatan</span>
+                        </div>
+                        <div class="school-details">
+                            <div class="detail-item">
+                                <div class="detail-label">Alamat</div>
+                                <div>Jl. Raya Pejaten No.34, Pasar Minggu, Jakarta Selatan 12540</div>
+                            </div>
+                            <div class="detail-item">
+                                <div class="detail-label">Kontak</div>
+                                <div><i class="fas fa-phone"></i> (021)-780.2738</div>
+                                <div><i class="fas fa-envelope"></i> smpstradamgm@gmail.com</div>
+                            </div>
+                            <div class="detail-item">
+                                <div class="detail-label">Kepala Sekolah</div>
+                                <div>Agapitus Triwibowo</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="school-region" data-region="jakuttim">
+                    <div class="school-card">
+                        <h3 class="school-name">SMP Strada Santo Fransiskus Xaverius I</h3>
+                        <div class="school-meta">
+                            <span><i class="fas fa-calendar-alt"></i> Berdiri: 1 Agustus 1956</span>
+                            <span><i class="fas fa-map-marker-alt"></i> Jakarta Utara</span>
+                        </div>
+                        <div class="school-details">
+                            <div class="detail-item">
+                                <div class="detail-label">Alamat</div>
+                                <div>Jl. Gadang No 81, Tanjung Priok, Jakarta Utara 14330</div>
+                            </div>
+                            <div class="detail-item">
+                                <div class="detail-label">Kontak</div>
+                                <div><i class="fas fa-phone"></i> (021)-430.0411</div>
+                                <div><i class="fas fa-envelope"></i> smpstradafx1@gmail.com</div>
+                            </div>
+                            <div class="detail-item">
+                                <div class="detail-label">Kepala Sekolah</div>
+                                <div>Rachmi Agustinuk Subandriyah</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="school-card">
+                        <h3 class="school-name">SMP Strada Santo Fransiskus Xaverius II</h3>
+                        <div class="school-meta">
+                            <span><i class="fas fa-calendar-alt"></i> Berdiri: 1 Agustus 1962</span>
+                            <span><i class="fas fa-map-marker-alt"></i> Jakarta Utara</span>
+                        </div>
+                        <div class="school-details">
+                            <div class="detail-item">
+                                <div class="detail-label">Alamat</div>
+                                <div>Jl. Bayangkara No 38, Tugu Utara, Koja, Jakarta Utara 14260</div>
+                            </div>
+                            <div class="detail-item">
+                                <div class="detail-label">Kontak</div>
+                                <div><i class="fas fa-phone"></i> (021)-430.4713</div>
+                                <div><i class="fas fa-envelope"></i> smpstradafx2@gmail.com</div>
+                            </div>
+                            <div class="detail-item">
+                                <div class="detail-label">Kepala Sekolah</div>
+                                <div>Feronika Leli Retnawati</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="school-card">
+                        <h3 class="school-name">SMP Strada Santo Fransiskus Xaverius III</h3>
+                        <div class="school-meta">
+                            <span><i class="fas fa-calendar-alt"></i> Berdiri: 1 Januari 1974</span>
+                            <span><i class="fas fa-map-marker-alt"></i> Jakarta Utara</span>
+                        </div>
+                        <div class="school-details">
+                            <div class="detail-item">
+                                <div class="detail-label">Alamat</div>
+                                <div>Jl. Raya Cakung Cilincing No.11, Semper Timur, Jakarta Utara 14130</div>
+                            </div>
+                            <div class="detail-item">
+                                <div class="detail-label">Kontak</div>
+                                <div><i class="fas fa-phone"></i> (021)-440.7047</div>
+                                <div><i class="fas fa-envelope"></i> smpstradafx3@gmail.com</div>
+                            </div>
+                            <div class="detail-item">
+                                <div class="detail-label">Kepala Sekolah</div>
+                                <div>Antonius Tefa Kofi</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="school-card">
+                        <h3 class="school-name">SMP Strada Santa Anna</h3>
+                        <div class="school-meta">
+                            <span><i class="fas fa-calendar-alt"></i> Berdiri: 1 Juli 1987</span>
+                            <span><i class="fas fa-map-marker-alt"></i> Jakarta Timur</span>
+                        </div>
+                        <div class="school-details">
+                            <div class="detail-item">
+                                <div class="detail-label">Alamat</div>
+                                <div>Jl. Laut Arafuru Kav. AL, Duren Sawit, Jakarta Timur 13440</div>
+                            </div>
+                            <div class="detail-item">
+                                <div class="detail-label">Kontak</div>
+                                <div><i class="fas fa-phone"></i> (021)-862.5922</div>
+                                <div><i class="fas fa-envelope"></i> smpstradaanna@gmail.com</div>
+                            </div>
+                            <div class="detail-item">
+                                <div class="detail-label">Kepala Sekolah</div>
+                                <div>Wahyu Prihono</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="school-region" data-region="tangerang">
+                    <div class="school-card">
+                        <h3 class="school-name">SMP Strada Santa Maria I</h3>
+                        <div class="school-meta">
+                            <span><i class="fas fa-calendar-alt"></i> Berdiri: 1 Agustus 1975</span>
+                            <span><i class="fas fa-map-marker-alt"></i> Tangerang</span>
+                        </div>
+                        <div class="school-details">
+                            <div class="detail-item">
+                                <div class="detail-label">Alamat</div>
+                                <div>Jl. Daan Mogot No.44 RT 02/08, Sukarasa, Tangerang 15111</div>
+                            </div>
+                            <div class="detail-item">
+                                <div class="detail-label">Kontak</div>
+                                <div><i class="fas fa-phone"></i> (021)-552.1131</div>
+                                <div><i class="fas fa-envelope"></i> smpstradasanmar1@gmail.com</div>
+                            </div>
+                            <div class="detail-item">
+                                <div class="detail-label">Kepala Sekolah</div>
+                                <div>Stanisla Arini Budi Susanti</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="school-card">
+                        <h3 class="school-name">SMP Strada Santa Maria II</h3>
+                        <div class="school-meta">
+                            <span><i class="fas fa-calendar-alt"></i> Berdiri: 1 Januari 1975</span>
+                            <span><i class="fas fa-map-marker-alt"></i> Tangerang</span>
+                        </div>
+                        <div class="school-details">
+                            <div class="detail-item">
+                                <div class="detail-label">Alamat</div>
+                                <div>Jl. Daan Mogot No.44 RT 02/08, Sukarasa, Tangerang 15111</div>
+                            </div>
+                            <div class="detail-item">
+                                <div class="detail-label">Kontak</div>
+                                <div><i class="fas fa-phone"></i> (021)-552.1131</div>
+                                <div><i class="fas fa-envelope"></i> smpstradasanmar2@gmail.com</div>
+                            </div>
+                            <div class="detail-item">
+                                <div class="detail-label">Kepala Sekolah</div>
+                                <div>Retno Palupi Maria Magdalena</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="school-card">
+                        <h3 class="school-name">SMP Strada Bhakti Mulia</h3>
+                        <div class="school-meta">
+                            <span><i class="fas fa-calendar-alt"></i> Berdiri: 1 Juli 1984</span>
+                            <span><i class="fas fa-map-marker-alt"></i> Tangerang</span>
+                        </div>
+                        <div class="school-details">
+                            <div class="detail-item">
+                                <div class="detail-label">Alamat</div>
+                                <div>Jl. Tanjung Pasir No. 2 RT 01/01, Pangkalan Teluk Naga, Tangerang 15510</div>
+                            </div>
+                            <div class="detail-item">
+                                <div class="detail-label">Kontak</div>
+                                <div><i class="fas fa-phone"></i> (021)-559.32554</div>
+                                <div><i class="fas fa-envelope"></i> smpstradabm@gmail.com</div>
+                            </div>
+                            <div class="detail-item">
+                                <div class="detail-label">Kepala Sekolah</div>
+                                <div>Deni Candra Pamungkas</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="school-card">
+                        <h3 class="school-name">SMP Strada Slamet Riyadi</h3>
+                        <div class="school-meta">
+                            <span><i class="fas fa-calendar-alt"></i> Berdiri: 29 Juli 1989</span>
+                            <span><i class="fas fa-map-marker-alt"></i> Tangerang</span>
+                        </div>
+                        <div class="school-details">
+                            <div class="detail-item">
+                                <div class="detail-label">Alamat</div>
+                                <div>Jl. Prambanan Raya RT 001/012, Cibodas, Perumnas II, Tangerang 15116</div>
+                            </div>
+                            <div class="detail-item">
+                                <div class="detail-label">Kontak</div>
+                                <div><i class="fas fa-phone"></i> (021)-553.7873</div>
+                                <div><i class="fas fa-envelope"></i> smpstradasr@gmail.com</div>
+                            </div>
+                            <div class="detail-item">
+                                <div class="detail-label">Kepala Sekolah</div>
+                                <div>Lusia Yefin Bertiana Winarno</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="school-card">
+                        <h3 class="school-name">SMP Strada Bhakti Nusa</h3>
+                        <div class="school-meta">
+                            <span><i class="fas fa-calendar-alt"></i> Berdiri: 1 Juli 2007</span>
+                            <span><i class="fas fa-map-marker-alt"></i> Tangerang</span>
+                        </div>
+                        <div class="school-details">
+                            <div class="detail-item">
+                                <div class="detail-label">Alamat</div>
+                                <div>Vila Melati Mas Blok F RT 27/09, Jelupang, Serpong, Tangerang 15310</div>
+                            </div>
+                            <div class="detail-item">
+                                <div class="detail-label">Kontak</div>
+                                <div><i class="fas fa-phone"></i> (021)-531.51962</div>
+                                <div><i class="fas fa-envelope"></i> smpstradabn@gmail.com</div>
+                            </div>
+                            <div class="detail-item">
+                                <div class="detail-label">Kepala Sekolah</div>
+                                <div>Veronika Yuli Budiasri</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="school-card">
+                        <h3 class="school-name">SMP Strada Yos Sudarso</h3>
+                        <div class="school-meta">
+                            <span><i class="fas fa-calendar-alt"></i> Berdiri: 1 Juli 2018</span>
+                            <span><i class="fas fa-map-marker-alt"></i> Tangerang</span>
+                        </div>
+                        <div class="school-details">
+                            <div class="detail-item">
+                                <div class="detail-label">Alamat</div>
+                                <div>Jl. Empang RT 01/07, Curug Wetan, Curug, Tangerang 15810</div>
+                            </div>
+                            <div class="detail-item">
+                                <div class="detail-label">Kontak</div>
+                                <div><i class="fas fa-phone"></i> (021)-5981005</div>
+                                <div><i class="fas fa-envelope"></i> smpstradayossudarso@gmail.com</div>
+                            </div>
+                            <div class="detail-item">
+                                <div class="detail-label">Kepala Sekolah</div>
+                                <div>Pollycarpus Febriyanto</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="school-region" data-region="bekasi">
+                    <div class="school-card">
+                        <h3 class="school-name">SMP Strada Budi Luhur</h3>
+                        <div class="school-meta">
+                            <span><i class="fas fa-calendar-alt"></i> Berdiri: 1 Januari 1967</span>
+                            <span><i class="fas fa-map-marker-alt"></i> Bekasi</span>
+                        </div>
+                        <div class="school-details">
+                            <div class="detail-item">
+                                <div class="detail-label">Alamat</div>
+                                <div>Jl.Ir. H.Juanda 164, Margahayu, Bekasi Timur, Bekasi 17113, Jabar</div>
+                            </div>
+                            <div class="detail-item">
+                                <div class="detail-label">Kontak</div>
+                                <div><i class="fas fa-phone"></i> (021)-881.0693</div>
+                                <div><i class="fas fa-envelope"></i> smpstradabl@gmail.com</div>
+                            </div>
+                            <div class="detail-item">
+                                <div class="detail-label">Kepala Sekolah</div>
+                                <div>Rosa Endah Budi Lestari</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="school-card">
+                        <h3 class="school-name">SMP Strada Bhakti Wiyata</h3>
+                        <div class="school-meta">
+                            <span><i class="fas fa-calendar-alt"></i> Berdiri: 1 Juli 1986</span>
+                            <span><i class="fas fa-map-marker-alt"></i> Bekasi</span>
+                        </div>
+                        <div class="school-details">
+                            <div class="detail-item">
+                                <div class="detail-label">Alamat</div>
+                                <div>Jl. Bintara Raya No.38, Kranji, Bekasi Barat, Bekasi 17135</div>
+                            </div>
+                            <div class="detail-item">
+                                <div class="detail-label">Kontak</div>
+                                <div><i class="fas fa-phone"></i> (021)-884.6840</div>
+                                <div><i class="fas fa-envelope"></i> smpstradabw@gmail.com</div>
+                            </div>
+                            <div class="detail-item">
+                                <div class="detail-label">Kepala Sekolah</div>
+                                <div>Martina Sulistyo Hastuti</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="school-card">
+                        <h3 class="school-name">SMP Strada Nawar</h3>
+                        <div class="school-meta">
+                            <span><i class="fas fa-calendar-alt"></i> Berdiri: 1 Juli 1983</span>
+                            <span><i class="fas fa-map-marker-alt"></i> Bekasi</span>
+                        </div>
+                        <div class="school-details">
+                            <div class="detail-item">
+                                <div class="detail-label">Alamat</div>
+                                <div>Jl. Raya Hankam No.85, Kel.Jatiranggon, Jatisampurna, Bekasi 17432</div>
+                            </div>
+                            <div class="detail-item">
+                                <div class="detail-label">Kontak</div>
+                                <div><i class="fas fa-phone"></i> (021)-844.0092</div>
+                                <div><i class="fas fa-envelope"></i> smpstradanwr@gmail.com</div>
+                            </div>
+                            <div class="detail-item">
+                                <div class="detail-label">Kepala Sekolah</div>
+                                <div>F.X. Ramlan Kusuma Atmaja</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="school-card">
+                        <h3 class="school-name">SMP Strada Kampung Sawah</h3>
+                        <div class="school-meta">
+                            <span><i class="fas fa-calendar-alt"></i> Berdiri: 1 Agustus 1965</span>
+                            <span><i class="fas fa-map-marker-alt"></i> Bekasi</span>
+                        </div>
+                        <div class="school-details">
+                            <div class="detail-item">
+                                <div class="detail-label">Alamat</div>
+                                <div>Jl. Raya Kampung Sawah No.67, RT 06/04, Jatimelati, Pondok Melati, Bekasi 17415</div>
+                            </div>
+                            <div class="detail-item">
+                                <div class="detail-label">Kontak</div>
+                                <div><i class="fas fa-phone"></i> (021)-845.0046</div>
+                                <div><i class="fas fa-envelope"></i> smpstradakampus@gmail.com</div>
+                            </div>
+                            <div class="detail-item">
+                                <div class="detail-label">Kepala Sekolah</div>
+                                <div>Prima Setyaningrum</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="school-levels" id="sma">
+            <div class="region-tabs">
+                <div class="region-tab active" data-region="tangerang">Tangerang</div>
+                <div class="region-tab" data-region="bekasi">Bekasi</div>
+            </div>
+
+            <div class="schools-container">
+                <div class="school-region active" data-region="tangerang">
+                    <div class="school-card">
+                        <div>
+                            <a href="http://santothomasaquino.smastrada.sch.id/" target="_blank">
+                                <h3 class="school-name">SMA Strada Santo Thomas</h3>
+                            </a>
+                        </div>
+                        <h3 class="school-name">SMA Strada Santo Thomas Aquino</h3>
+                        <div class="school-meta">
+                            <span><i class="fas fa-calendar-alt"></i> Berdiri: 1 Agustus 1964</span>
+                            <span><i class="fas fa-map-marker-alt"></i> Tangerang</span>
+                        </div>
+                        <div class="school-details">
+                            <div class="detail-item">
+                                <div class="detail-label">Alamat</div>
+                                <div>Jl. Kav. Surya RT 02/06, Pabuaran, Tangerang 15114</div>
+                            </div>
+                            <div class="detail-item">
+                                <div class="detail-label">Kontak</div>
+                                <div><i class="fas fa-phone"></i> (021)-551.4110</div>
+                                <div><i class="fas fa-envelope"></i> <a href="mailto:smastradathomas@gmail.com">smastradathomas@gmail.com</a></div>
+                            </div>
+                            <div class="detail-item">
+                                <div class="detail-label">Kepala Sekolah</div>
+                                <div>Maria Siti Hartati</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="school-region" data-region="bekasi">
+                    <div class="school-card">
+                        <div>
+                            <a href="http://bhaktiwiyata.smastrada.sch.id/" target="_blank">
+                                <h3 class="school-name">SMA Strada Bhakti Wiyata</h3>
+                            </a>
+                        </div>
+                        <div class="school-meta">
+                            <span><i class="fas fa-calendar-alt"></i> Berdiri: 1 Oktober 2016</span>
+                            <span><i class="fas fa-map-marker-alt"></i> Bekasi</span>
+                        </div>
+                        <div class="school-details">
+                            <div class="detail-item">
+                                <div class="detail-label">Alamat</div>
+                                <div>Jl. Bintara Raya No.38, Kranji, Bekasi Barat, Bekasi 17135</div>
+                            </div>
+                            <div class="detail-item">
+                                <div class="detail-label">Kontak</div>
+                                <div><i class="fas fa-phone"></i> (021)-89455578</div>
+                                <div><i class="fas fa-envelope"></i> <a href="mailto:smastradabhaktiwiyata@gmail.com">smastradabhaktiwiyata@gmail.com</a></div>
+                            </div>
+                            <div class="detail-item">
+                                <div class="detail-label">Kepala Sekolah</div>
+                                <div>Prima Setyningrum</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="school-levels" id="smk">
+            <div class="region-tabs">
+                <div class="region-tab active" data-region="jakpusbarsel">Jakpusbarsel</div>
+                <div class="region-tab" data-region="jakuttim">Jakuttim</div>
+                <div class="region-tab" data-region="tangerang">Tangerang</div>
+                <div class="region-tab" data-region="bekasi">Bekasi</div>
+            </div>
+
+            <div class="schools-container">
+                <div class="school-region active" data-region="jakpusbarsel">
+                    <div class="school-card">
+                        <div>
+                            <a href="http://strada1.smkstrada.sch.id/" target="_blank">
+                                <h3 class="school-name">SMK Strada I</h3>
+                            </a>
+                        </div>
+                        <div class="school-meta">
+                            <span><i class="fas fa-calendar-alt"></i> Berdiri: 1 Januari 1970</span>
+                            <span><i class="fas fa-map-marker-alt"></i> Jakarta Pusat</span>
+                        </div>
+                        <div class="school-details">
+                            <div class="detail-item">
+                                <div class="detail-label">Alamat</div>
+                                <div>Jl. Gunung Sahari Raya No.88, Jakarta Pusat 10610</div>
+                            </div>
+                            <div class="detail-item">
+                                <div class="detail-label">Kontak</div>
+                                <div><i class="fas fa-phone"></i> (021)-428.723.35</div>
+                                <div><i class="fas fa-envelope"></i> <a href="mailto:smkstrada1@gmail.com">smkstrada1@gmail.com</a></div>
+                            </div>
+                            <div class="detail-item">
+                                <div class="detail-label">Kepala Sekolah</div>
+                                <div>Ignatius Sigit Rinta Patmaka</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="school-card">
+                        <div>
+                            <a href="http://strada2.smkstrada.sch.id/" target="_blank">
+                                <h3 class="school-name">SMK Strada II</h3>
+                            </a>
+                        </div>
+                        <div class="school-meta">
+                            <span><i class="fas fa-calendar-alt"></i> Berdiri: 1 Januari 1975</span>
+                            <span><i class="fas fa-map-marker-alt"></i> Jakarta Barat</span>
+                        </div>
+                        <div class="school-details">
+                            <div class="detail-item">
+                                <div class="detail-label">Alamat</div>
+                                <div>Jl. Tamansari VIII No.83A, Jakarta Barat 11150</div>
+                            </div>
+                            <div class="detail-item">
+                                <div class="detail-label">Kontak</div>
+                                <div><i class="fas fa-phone"></i> (021)-622.00204</div>
+                                <div><i class="fas fa-envelope"></i> <a href="mailto:smkstrada2tamansari@gmail.com">smkstrada2tamansari@gmail.com</a></div>
+                            </div>
+                            <div class="detail-item">
+                                <div class="detail-label">Kepala Sekolah</div>
+                                <div>Ignatius Ismihandiyono</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="school-region" data-region="jakuttim">
+                    <div class="school-card">
+                        <div>
+                            <a href=" http://strada3.smkstrada.sch.id/" target="_blank">
+                                <h3 class="school-name">SMK Strada III</h3>
+                            </a>
+                        </div>
+                        <div class="school-meta">
+                            <span><i class="fas fa-calendar-alt"></i> Berdiri: 1 Januari 1978</span>
+                            <span><i class="fas fa-map-marker-alt"></i> Jakarta Utara</span>
+                        </div>
+                        <div class="school-details">
+                            <div class="detail-item">
+                                <div class="detail-label">Alamat</div>
+                                <div>Jl. Bayangkara No 38, Tugu Utara, Koja, Jakarta Utara 14260</div>
+                            </div>
+                            <div class="detail-item">
+                                <div class="detail-label">Kontak</div>
+                                <div><i class="fas fa-phone"></i> (021)-4304.987</div>
+                                <div><i class="fas fa-envelope"></i> <a href="mailto:smkstrada3koja@gmail.com">smkstrada3koja@gmail.com</a></div>
+                            </div>
+                            <div class="detail-item">
+                                <div class="detail-label">Kepala Sekolah</div>
+                                <div>Benedecta Yudha Wastuti</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="school-region" data-region="tangerang">
+                    <div class="school-card">
+                        <div>
+                            <a href="  http://daanmogot.smkstrada.sch.id/" target="_blank">
+                                 <h3 class="school-name">SMK Strada Daan Mogot</h3>
+                            </a>
+                        </div>
+                        <div class="school-meta">
+                            <span><i class="fas fa-calendar-alt"></i> Berdiri: 1 Januari 1975</span>
+                            <span><i class="fas fa-map-marker-alt"></i> Tangerang</span>
+                        </div>
+                        <div class="school-details">
+                            <div class="detail-item">
+                                <div class="detail-label">Alamat</div>
+                                <div>Jl. KS. Tubun No.1 RT 01/03, Pasar Baru, Tangerang 15112</div>
+                            </div>
+                            <div class="detail-item">
+                                <div class="detail-label">Kontak</div>
+                                <div><i class="fas fa-phone"></i> (021)-552.5576</div>
+                                <div><i class="fas fa-envelope"></i> <a href="mailto:smkstradadm@gmail.com">smkstradadm@gmail.com</a></div>
+                            </div>
+                            <div class="detail-item">
+                                <div class="detail-label">Kepala Sekolah</div>
+                                <div>Lucia Maria Suprihatin Maskat</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="school-region" data-region="bekasi">
+                    <div class="school-card">
+                        <div>
+                            <a href="http://budiluhur.smkstrada.sch.id/" target="_blank">
+                                <h3 class="school-name">SMK Strada Budi Luhur</h3>
+                            </a>
+                        </div>
+                        <div class="school-meta">
+                            <span><i class="fas fa-calendar-alt"></i> Berdiri: 1 Juli 1982</span>
+                            <span><i class="fas fa-map-marker-alt"></i> Bekasi</span>
+                        </div>
+                        <div class="school-details">
+                            <div class="detail-item">
+                                <div class="detail-label">Alamat</div>
+                                <div>Jl.Ir. H.Juanda 164, Margahayu, Bekasi Timur, Bekasi 17113, Jabar</div>
+                            </div>
+                            <div class="detail-item">
+                                <div class="detail-label">Kontak</div>
+                                <div><i class="fas fa-phone"></i> (021)-883.48387, 882.3342</div>
+                               <div><i class="fas fa-envelope"></i> <a href="mailto:smkstradabudiluhur@gmail.com">smkstradabudiluhur@gmail.com</a></div>
+                            </div>
+                            <div class="detail-item">
+                                <div class="detail-label">Kepala Sekolah</div>
+                                <div>Antonius Cipto Kusumayanto Tri Widodo</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <footer class="main-footer">
+  <div class="footer-wrapper">
+        <div class="footer-content">
+            <!-- Column 1: About & Logo -->
+            <div class="footer-column">
+                <img src="asset/Logo.jpg" alt="Strada Logo" class="footer-logo" style="height: 60px; margin-bottom: 20px;">
+                <p style="margin-bottom: 20px; line-height: 1.6; color: rgba(255,255,255,0.8); text-align: justify;">
+                    SMA Strada Bhakti Wiyata adalah bagian dari jaringan pendidikan Strada yang berkomitmen untuk membentuk generasi unggul, peduli, dan berjiwa melayani.
+                </p>
+                <div class="social-links">
+                    <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                    <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
+                    <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+                </div>
+            </div>
+
+            <!-- Column 2: Contact Info -->
+            <div class="footer-column">
+                <h3>Hubungi Kami</h3>
+                <div class="contact-info">
+                    <p><i class="fas fa-map-marker-alt"></i> Jl. Bintara Raya No.38, Kranji, Bekasi Barat</p>
+                    <p><i class="fas fa-phone"></i> (021)-89455578</p>
+                    <p><i class="fas fa-envelope"></i> smastradabhaktiwiyata@gmail.com</p>
+                    <p><i class="fas fa-clock"></i> Senin-Jumat: 07.00 - 16.00 WIB</p>
+                </div>
+            </div>
+
+            <!-- Column 3: Map & Newsletter -->
+            <div class="footer-column">
+                <h3>Lokasi Kami</h3>
+                <div class="map-container">
+                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3966.123456789012!2d106.987654321!3d-6.123456789!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zNsKwMDcnMjQuNCJTIDEwNsKwNTknMTUuNiJF!5e0!3m2!1sen!2sid!4v1234567890123!5m2!1sen!2sid" allowfullscreen="" loading="lazy"></iframe>
+                </div>
+            </div>
+
+        <!-- Column 4: Footer statistic -->
+        <div class="footer-column">
+            <h3>Statistik</h3>
+            <ul style="list-style: none; padding: 0; color: rgba(255,255,255,0.8); font-size: 0.95rem;">
+                <li style="margin-bottom: 10px;">
+                <i class="fas fa-chart-line" style="color:#FFD700; width: 20px;"></i>
+                <strong>Total:</strong> <span id="stat-total">-</span> / <span id="stat-total-views">-</span>
+                </li>
+                <li style="margin-bottom: 10px;">
+                <i class="fas fa-calendar-day" style="color:#FFD700; width: 20px;"></i>
+                <strong>Hari Ini:</strong> <span id="stat-today">-</span> / <span id="stat-today-views">-</span>
+                </li>
+                <li style="margin-bottom: 10px;">
+                <i class="fas fa-calendar-week" style="color:#FFD700; width: 20px;"></i>
+                <strong>Minggu Ini:</strong> <span id="stat-week">-</span> / <span id="stat-week-views">-</span>
+                </li>
+                <li style="margin-bottom: 10px;">
+                <i class="fas fa-calendar-alt" style="color:#FFD700; width: 20px;"></i>
+                <strong>Bulan Ini:</strong> <span id="stat-month">-</span> / <span id="stat-month-views">-</span>
+                </li>
+            </ul>
+            </div>
+        </div>
+    </div>
+     </section>
+    </main>
+</body>
+
+            <div class="footer-copyright">
+                <p>&copy; 2025 SMA Strada Bhakti Wiyata. All Rights Reserved.</p>
+                <p style="text-align:center; font-size: 0.8em; margin-top: 5px; color: rgba(255,255,255,0.6);">
+                </p>
+            </div>
+            
+           <div class="footer-hymne">
+                <a href="https://youtu.be/sD9UOIZrO5g?feature=shared" target="_blank" style="color: #FFD700; text-decoration: none; align-items: center;">
+                    <i class="fas fa-music"></i> Dengarkan Hymne Strada
+                </a>
+            </div>
+        </div>
+    </div>
+</footer>
+<button class="back-to-top" id="backToTopBtn" aria-label="Kembali ke atas">
+    <i class="fas fa-arrow-up"></i>
+</button>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // School level navigation
+            const levelButtons = document.querySelectorAll('.school-nav-btn');
+            const schoolLevels = document.querySelectorAll('.school-levels');
+
+            levelButtons.forEach(button => {
+                button.addEventListener('click', function() {
+                    // Remove active class from all buttons and levels
+                    levelButtons.forEach(btn => btn.classList.remove('active'));
+                    schoolLevels.forEach(level => level.classList.remove('active'));
+
+                    // Add active class to clicked button
+                    this.classList.add('active');
+
+                    // Show corresponding level
+                    const levelId = this.getAttribute('data-level');
+                    document.getElementById(levelId).classList.add('active');
+
+                    // Reset region tabs to first tab
+                    const activeLevel = document.getElementById(levelId);
+                    const regionTabs = activeLevel.querySelectorAll('.region-tab');
+                    const schoolRegions = activeLevel.querySelectorAll('.school-region');
+
+                    regionTabs.forEach(tab => tab.classList.remove('active'));
+                    schoolRegions.forEach(region => region.classList.remove('active'));
+
+                    if (regionTabs.length > 0) {
+                        regionTabs[0].classList.add('active');
+                        schoolRegions[0].classList.add('active');
+                    }
+                });
+            });
+
+            // Region tab navigation
+            document.querySelectorAll('.region-tab').forEach(tab => {
+                tab.addEventListener('click', function() {
+                    const region = this.getAttribute('data-region');
+                    const container = this.closest('.school-levels');
+
+                    // Remove active class from all tabs and regions in this level
+                    container.querySelectorAll('.region-tab').forEach(t => t.classList.remove('active'));
+                    container.querySelectorAll('.school-region').forEach(r => r.classList.remove('active'));
+
+                    // Add active class to clicked tab and corresponding region
+                    this.classList.add('active');
+                    container.querySelector(`.school-region[data-region="${region}"]`).classList.add('active');
+                });
+            });
+        });
+
+        // Set current date
+    const now = new Date();
+    const options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
+    document.getElementById('current-date').textContent = now.toLocaleDateString('id-ID', options);
+
+    // Hamburger menu toggle
+    const hamburger = document.querySelector('.hamburger-menu');
+    const navList = document.querySelector('.nav-list');
+    hamburger.addEventListener('click', function() {
+        this.classList.toggle('active');
+        navList.classList.toggle('active');
+    });
+
+    // Close menu on link click (mobile)
+    document.querySelectorAll('.nav-list a').forEach(link => {
+        link.addEventListener('click', () => {
+            if (window.innerWidth <= 992) {
+                hamburger.classList.remove('active');
+                navList.classList.remove('active');
+            }
+        });
+    });
+
+    // Initialize footer statistics
+    const stats = {
+        total: [3377, 100299],
+        today: [15, 32],
+        week: [193, 2841],
+        month: [548, 11234]
+    };
+    document.getElementById("stat-total").textContent = stats.total[0];
+    document.getElementById("stat-total-views").textContent = stats.total[1];
+    document.getElementById("stat-today").textContent = stats.today[0];
+    document.getElementById("stat-today-views").textContent = stats.today[1];
+    document.getElementById("stat-week").textContent = stats.week[0];
+    document.getElementById("stat-week-views").textContent = stats.week[1];
+    document.getElementById("stat-month").textContent = stats.month[0];
+    document.getElementById("stat-month-views").textContent = stats.month[1];
+
+    // Back to Top Button
+    const backToTopBtn = document.getElementById('backToTopBtn');
+    window.addEventListener('scroll', function() {
+        if (window.scrollY > 300) {
+            backToTopBtn.classList.add('visible');
+        } else {
+            backToTopBtn.classList.remove('visible');
+        }
+    });
+    backToTopBtn.addEventListener('click', function() {
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+    });
+    </script>
+</body>
+</html>
